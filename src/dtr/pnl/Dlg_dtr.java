@@ -635,7 +635,7 @@ public class Dlg_dtr extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -656,9 +656,9 @@ public class Dlg_dtr extends javax.swing.JDialog {
         tbl_dtr.setModel(tbl_dtr_M);
         tbl_dtr.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_dtr.setRowHeight(25);
-        int[] tbl_widths_dtr = {100, 100, 150, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_dtr = {100, 50, 100, 150, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_dtr.length; i < n; i++) {
-            if (i == 1) {
+            if (i == 2) {
                 continue;
             }
             TableWidthUtilities.setColumnWidth(tbl_dtr, i, tbl_widths_dtr[i]);
@@ -679,7 +679,7 @@ public class Dlg_dtr extends javax.swing.JDialog {
     public static class TbldtrModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Department", "Name", "Date/Time", "no", "datetime", "location_id", "id_no", "verify_code", "card_no", "date_added", "user_id", "user_screen_name"
+            "Department", "No.", "Name", "Date/Time", "datetime", "location_id", "id_no", "verify_code", "card_no", "date_added", "user_id", "user_screen_name"
         };
 
         public TbldtrModel(ListModel listmodel) {
@@ -709,11 +709,11 @@ public class Dlg_dtr extends javax.swing.JDialog {
                 case 0:
                     return " " + tt.department;
                 case 1:
-                    return " " + tt.name;
+                    return " " + tt.no;
                 case 2:
-                    return " " + tt.datetime;
+                    return " " + tt.name;
                 case 3:
-                    return tt.no;
+                    return " " + tt.datetime;
                 case 4:
                     return tt.datetime;
                 case 5:

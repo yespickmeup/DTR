@@ -148,6 +148,28 @@ public class Employees {
         }
     }
 
+    public static void update_id(to_employees to_employees, int new_id) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update employees set "
+                    + " id= :id "
+                    + " where id='" + to_employees.id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setNumber("id", new_id)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Employees.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static void delete_data(to_employees to_employees) {
         try {
             Connection conn = MyConnection.connect();

@@ -51,6 +51,45 @@ public class Dtr {
             this.user_id = user_id;
             this.user_screen_name = user_screen_name;
         }
+
+    }
+
+    public static class periods {
+
+        String period;
+        String date_from;
+        String date_to;
+
+        public periods(String period, String date_from, String date_to) {
+            this.period = period;
+            this.date_from = date_from;
+            this.date_to = date_to;
+        }
+
+        public String getPeriod() {
+            return period;
+        }
+
+        public void setPeriod(String period) {
+            this.period = period;
+        }
+
+        public String getDate_from() {
+            return date_from;
+        }
+
+        public void setDate_from(String date_from) {
+            this.date_from = date_from;
+        }
+
+        public String getDate_to() {
+            return date_to;
+        }
+
+        public void setDate_to(String date_to) {
+            this.date_to = date_to;
+        }
+
     }
 
     public static void add_data(to_dtr to_dtr) {

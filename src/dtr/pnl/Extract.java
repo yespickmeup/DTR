@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import mijzcx.synapse.desk.utils.FitIn;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDataFormatter;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -33,14 +32,14 @@ public class Extract {
 
     public static class field {
 
-        String department;
-        String name;
-        String no;
-        String datetime;
-        String location_id;
-        String id_no;
-        String verify_code;
-        String card_no;
+        public String department;
+        public String name;
+        public String no;
+        public String datetime;
+        public String location_id;
+        public String id_no;
+        public String verify_code;
+        public String card_no;
 
         public field(String department, String name, String no, String datetime, String location_id, String id_no, String verify_code, String card_no) {
             this.department = department;
