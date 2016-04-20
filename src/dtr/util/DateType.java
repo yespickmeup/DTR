@@ -34,6 +34,7 @@ public class DateType {
     public static SimpleDateFormat day_1 = new SimpleDateFormat("EEEEEEEEEEE dd");
     public static SimpleDateFormat month_year = new SimpleDateFormat("MMMMMMMMMMM yyyy");
     public static SimpleDateFormat month_date = new SimpleDateFormat("MMMMMMMMMM dd, yyyy");
+    public static SimpleDateFormat month_date2 = new SimpleDateFormat("MMMMMMMMMM dd yyyy");
     public static SimpleDateFormat day_and_time = new SimpleDateFormat("MMMMMMMMMM dd, yyyy HH:mm aa");
     public static SimpleDateFormat slash = new SimpleDateFormat("MM/dd/yyyy");
     public static SimpleDateFormat slash_w_time = new SimpleDateFormat("MM/dd/yyyy HH:mm aa");
@@ -41,7 +42,10 @@ public class DateType {
     public static SimpleDateFormat slash_w_time3 = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
     public static SimpleDateFormat hour_minute = new SimpleDateFormat("HH:mm:ss");
     public static SimpleDateFormat hour_minute2 = new SimpleDateFormat("HH:mm aa");
+    public static SimpleDateFormat hour_minute3 = new SimpleDateFormat("hh:mm aa");
     public static SimpleDateFormat hour = new SimpleDateFormat("HH");
+    public static SimpleDateFormat minute = new SimpleDateFormat("mm");
+    public static SimpleDateFormat second = new SimpleDateFormat("ss");
     public static SimpleDateFormat time3 = new SimpleDateFormat("hh:mm:ss aa");
     public static SimpleDateFormat backup = new SimpleDateFormat("MM_dd_yyyy_HH_mm_ss");
 
@@ -145,6 +149,22 @@ public class DateType {
         return date;
     }
 
+    public static String convert_slash_datetime5(String datetime) {
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.slash_w_time3.format(new Date());
+        }
+        try {
+            d = DateType.slash_w_time3.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        date = DateType.datetime.format(d);
+        return date;
+    }
+
     public static String convert_slash_datetime2(String datetime) {
         String date = "";
         Date d = new Date();
@@ -225,6 +245,22 @@ public class DateType {
         return date;
     }
 
+    public static String convert_dash_date3(String datetime) {
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.month_date2.format(new Date());
+        }
+        try {
+            d = DateType.month_date2.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        date = DateType.sf.format(d);
+        return date;
+    }
+
     public static String convert_datetime_to_month(String datetime) {
         String date = "";
 
@@ -239,6 +275,23 @@ public class DateType {
                     log(Level.SEVERE, null, ex);
         }
         date = DateType.m.format(d);
+        return date;
+    }
+
+    public static String convert_datetime_to_hour_minute(String datetime) {
+        String date = "";
+
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.datetime.format(new Date());
+        }
+        try {
+            d = DateType.datetime.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        date = DateType.hour_minute3.format(d);
         return date;
     }
 

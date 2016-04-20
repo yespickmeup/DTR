@@ -54,6 +54,16 @@ public class Dtr {
 
     }
 
+    public static class dtr_dates {
+
+        String date;
+
+        public dtr_dates(String date) {
+            this.date = date;
+        }
+
+    }
+
     public static class periods {
 
         String period;

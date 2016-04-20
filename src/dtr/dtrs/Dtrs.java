@@ -23,7 +23,7 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
 public class Dtrs {
 
     public static class to_dtrs {
-
+        
         public final int id;
         public final String employee_id;
         public final String employee_name;

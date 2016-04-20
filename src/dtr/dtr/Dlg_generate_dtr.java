@@ -7,21 +7,25 @@ package dtr.dtr;
 
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
-import dtr.departments.Departments;
-import static dtr.pnl.Dlg_dtr.loadData_dtr;
+import dtr.dtrs.Dlg_edit_dtr;
+import dtr.dtrs.Dtrs;
+import dtr.dtrs.Dtrs.to_dtrs;
+import dtr.employees.Employees;
 import dtr.pnl.Extract;
 import static dtr.pnl.Extract.showExcelData;
 import dtr.reports.Srpt_dtr;
+import dtr.util.Alert;
+import dtr.util.Dlg_confirm_action;
 import dtr.util.TableRenderer;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,7 +43,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.JasperUtil;
@@ -224,6 +227,21 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField3 = new Field.Combo();
+        jLabel8 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jTextField4 = new Field.Combo();
+        jButton4 = new Button.Success();
+        jButton5 = new Button.Primary();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_dtrs = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new Button.Primary();
         jLabel1 = new javax.swing.JLabel();
@@ -239,16 +257,180 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new Button.Success();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        pnl_report = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel6 = new javax.swing.JLabel();
-        pnl_report = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Payroll Period:");
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField3.setFocusable(false);
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField3MouseClicked(evt);
+            }
+        });
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Employee:");
+
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox1.setText("All");
+
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField4MouseClicked(evt);
+            }
+        });
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/img/technology.png"))); // NOI18N
+        jButton4.setText("Preview");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/img/find (5).png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox2.setText("All");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(180, 180, 180)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        tbl_dtrs.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbl_dtrs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_dtrsMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbl_dtrs);
+
+        jLabel9.setText("No. of rows:");
+
+        jLabel10.setText("0");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Report", jPanel3);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -318,7 +500,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jLabel5.setText("Status:");
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/img/technology.png"))); // NOI18N
-        jButton3.setText("Print and Save");
+        jButton3.setText("Save");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -335,7 +517,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                         .addGap(313, 313, 313)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -354,8 +536,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             .addComponent(jTextField2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(86, 86, 86)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -375,7 +557,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -389,20 +571,18 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Scan", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_report.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 875, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnl_reportLayout = new javax.swing.GroupLayout(pnl_report);
+        pnl_report.setLayout(pnl_reportLayout);
+        pnl_reportLayout.setHorizontalGroup(
+            pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE)
+        pnl_reportLayout.setVerticalGroup(
+            pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 499, Short.MAX_VALUE)
         );
-
-        jTabbedPane1.addTab("Report", jPanel2);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -417,7 +597,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(680, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -433,36 +613,22 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 .addGap(5, 5, 5))
         );
 
-        pnl_report.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pnl_reportLayout = new javax.swing.GroupLayout(pnl_report);
-        pnl_report.setLayout(pnl_reportLayout);
-        pnl_reportLayout.setHorizontalGroup(
-            pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnl_reportLayout.setVerticalGroup(
-            pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnl_report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(pnl_report, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Print Preview", jPanel3);
+        jTabbedPane1.addTab("Print Preview", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -477,8 +643,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTabbedPane1))
         );
 
         pack();
@@ -505,8 +670,37 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        init_report();
+        save_dtr();
+
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
+        init_periods(jTextField3);
+    }//GEN-LAST:event_jTextField3MouseClicked
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        init_periods(jTextField3);
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
+        init_employees(jTextField4);
+    }//GEN-LAST:event_jTextField4MouseClicked
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        init_employees(jTextField4);
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        data_cols_dtr();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void tbl_dtrsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_dtrsMouseClicked
+        select_employee_dtr();
+    }//GEN-LAST:event_tbl_dtrsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -516,24 +710,38 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel pnl_report;
+    private javax.swing.JTable tbl_dtrs;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
@@ -541,6 +749,9 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         setPeriod();
 
         init_tbl_dtr(jTable1);
+        init_tbl_dtrs(tbl_dtrs);
+        String where = " ";
+        employees1 = Employees.ret_data(where);
 
     }
 
@@ -567,6 +778,9 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
     // </editor-fold>
     private void setPeriod() {
+        Field.Combo combo1 = (Field.Combo) jTextField2;
+        Field.Combo combo2 = (Field.Combo) jTextField3;
+
         String dir = System.getProperty("user.home") + "\\Desktop\\dtr.xls";
         jTextField1.setText(dir);
         int year = FitIn.toInt(DateType.y.format(new Date()));
@@ -575,17 +789,20 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         for (int i = 0; i < 12; i++) {
             String[] date = lastDay(i, year);
 
-            String period1 = date[0] + " " + "1" + ", " + date[2] + " - " + date[0] + " " + "15" + ", " + date[2];
-            String period2 = date[0] + " " + "16" + ", " + date[2] + " - " + date[0] + " " + date[1] + ", " + date[2];
-            Dtr.periods p1 = new Dtr.periods(period1, date[0] + " " + "1" + ", " + date[2], date[0] + " " + "15" + ", " + date[2]);
-            Dtr.periods p2 = new Dtr.periods(period2, date[0] + " " + "16" + ", " + date[2], date[0] + " " + "15" + ", " + date[2]);
+            String period1 = date[0] + " " + "1" + " " + date[2] + " - " + date[0] + " " + "15" + " " + date[2];
+            String period2 = date[0] + " " + "16" + " " + date[2] + " - " + date[0] + " " + date[1] + " " + date[2];
+            Dtr.periods p1 = new Dtr.periods(period1, date[0] + " " + "1" + ", " + date[2], date[0] + " " + "15" + " " + date[2]);
+            Dtr.periods p2 = new Dtr.periods(period2, date[0] + " " + "16" + ", " + date[2], date[0] + " " + "15" + " " + date[2]);
             dtr_periods.add(p1);
             dtr_periods.add(p2);
             if (i + 1 == month) {
                 if (day <= 15) {
-                    jTextField2.setText(p1.period);
+                    combo1.setText(p1.period);
+                    combo2.setText(p1.period);
                 } else {
-                    jTextField2.setText(p2.period);
+                    combo1.setText(p1.period);
+                    combo2.setText(p1.period);
+
                 }
             }
         }
@@ -747,7 +964,11 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         }
     }
 
+    private void data_cols_dtrs() {
+
+    }
 //</editor-fold> 
+
     private void search() {
         jProgressBar1.setString("Loading...Please wait...");
         jProgressBar1.setIndeterminate(true);
@@ -823,7 +1044,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     }
 
     private void init_report() {
-        jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane1.setSelectedIndex(1);
         jProgressBar2.setString("Loading...Please wait...");
         jProgressBar2.setIndeterminate(true);
 
@@ -980,6 +1201,354 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         } catch (JRException e) {
             JOptionPane.showMessageDialog(null, "Failed To Print, Please Check the Printer");
             throw new RuntimeException(e);
+        }
+    }
+
+    List<Employees.to_employees> employees = new ArrayList();
+    List<Employees.to_employees> employees1 = new ArrayList();
+
+    private void init_employees(final JTextField tf) {
+        String search = jTextField4.getText();
+        String where = " where concat(lname,space(1), fname) like '%" + search + "%' "
+                + " or concat(fname,space(1), lname) like '%" + search + "%'"
+                + " order by lname asc ";
+        employees = Employees.ret_data(where);
+        Object[][] obj = new Object[employees.size()][2];
+        int i = 0;
+        for (Employees.to_employees to : employees) {
+            obj[i][0] = " " + to.id;
+            obj[i][1] = " " + to.lname + ", " + to.fname + " " + to.mi;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {50, tf.getWidth() - 50};
+        int width = 0;
+        String[] col_names = {"", ""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo combo = (Field.Combo) tf;
+                Employees.to_employees to = employees.get(data.selected_row);
+                combo.setText("" + to.lname + ", " + to.fname + " " + to.mi);
+                combo.setId("" + to.id);
+            }
+        });
+    }
+
+    private void save_dtr() {
+        Window p = (Window) this;
+        Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_confirm_action.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+                closeDialog.ok();
+                jProgressBar1.setString("Loading...Please wait...");
+                jProgressBar1.setIndeterminate(true);
+                Thread t = new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        String[] payroll_period = jTextField3.getText().split("-");
+                        int payroll_from_day = 0;
+                        int payroll_to_day = 0;
+                        String payroll_month = "";
+                        String payroll_year = "";
+                        try {
+                            Date period_from = dtr.util.DateType.month_date2.parse(payroll_period[0]);
+                            String pr = payroll_period[1];
+                            pr = pr.substring(1, pr.length());
+                            Date period_to = dtr.util.DateType.month_date2.parse(pr);
+
+                            payroll_from_day = FitIn.toInt(DateType.d.format(period_from));
+                            payroll_to_day = FitIn.toInt(DateType.d.format(period_to));
+                            payroll_month = "" + FitIn.toInt(DateType.m1.format(period_to));
+                            payroll_year = "" + FitIn.toInt(DateType.y.format(period_to));
+
+                            if (payroll_month.length() == 1) {
+                                payroll_month = "0" + payroll_month;
+                            }
+                        } catch (ParseException ex) {
+                            Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                        List<Employees.to_employees> emp = employees1;
+
+                        List<Dtr.to_dtr> dtrs = tbl_dtr_ALM;
+                        List<Dtrs.to_dtrs> my_dtr = new ArrayList();
+
+                        int year = FitIn.toInt(dtr.util.DateType.y.format(new Date()));
+                        int month = FitIn.toInt(dtr.util.DateType.m1.format(new Date()));
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, month);
+                        int numDays = calendar.getActualMaximum(Calendar.DATE);
+
+                        for (Employees.to_employees e : emp) {
+                            List<Dtr.to_dtr> dtr_emp = new ArrayList();
+                            int i = 0;
+                            for (Dtr.to_dtr dtr : dtrs) {
+                                if (dtr.no.equalsIgnoreCase("" + e.id)) {
+                                    dtr_emp.add(dtr);
+                                    i++;
+                                }
+                            }
+
+                            if (i != 0) {
+                                for (int a = payroll_from_day; a <= payroll_to_day; a++) {
+
+                                    String dtr_date = "";
+                                    String dtr_date2 = "";
+                                    int count = 0;
+                                    String j = "" + a;
+                                    if (j.length() == 1) {
+                                        j = "0" + j;
+                                    }
+                                    String payroll_to_date = payroll_year + "-" + payroll_month + "-" + j;
+
+                                    List<String> dtr_dates = new ArrayList();
+                                    for (Dtr.to_dtr d : dtr_emp) {
+
+                                        try {
+                                            Date date = dtr.util.DateType.slash_w_time3.parse(d.datetime);
+                                            String day1 = DateType.d.format(date);
+                                            if (day1.length() == 1) {
+                                                day1 = "0" + day1;
+                                            }
+                                            dtr_date = dtr.util.DateType.y.format(date) + "-" + dtr.util.DateType.m1.format(date) + "-" + day1;
+
+                                            if (payroll_to_date.equalsIgnoreCase(dtr_date)) {
+                                                dtr_dates.add(d.datetime);
+                                                dtr_date2 = DateType.sf.format(date);
+                                                count++;
+                                            }
+
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                    String am_arrival = "";
+                                    String am_departure = "";
+                                    String pm_arrival = "";
+                                    String pm_departure = "";
+
+                                    int d = 0;
+                                    for (String dd : dtr_dates) {
+                                        if (d == 0) {
+                                            am_arrival = dtr.util.DateType.convert_slash_datetime5(dd);
+                                        }
+                                        if (d == 1) {
+                                            am_departure = dtr.util.DateType.convert_slash_datetime5(dd);
+                                        }
+                                        if (d == 2) {
+                                            pm_arrival = dtr.util.DateType.convert_slash_datetime5(dd);
+                                        }
+                                        if (d == 3) {
+                                            pm_departure = dtr.util.DateType.convert_slash_datetime5(dd);
+                                        }
+                                        d++;
+                                    }
+                                    if (am_arrival.isEmpty()) {
+                                        am_arrival = null;
+                                    }
+                                    if (am_departure.isEmpty()) {
+                                        am_departure = null;
+                                    }
+                                    if (pm_arrival.isEmpty()) {
+                                        pm_arrival = null;
+                                    }
+                                    if (pm_departure.isEmpty()) {
+                                        pm_departure = null;
+                                    }
+                                    int id = 0;
+                                    String employee_id = "" + e.id;
+                                    String employee_name = e.lname + ", " + e.fname + " " + e.mi;
+                                    String department_id = e.department_id;
+                                    String department_name = e.department;
+                                    double undertime_hours = 0;
+                                    double undertime_minutes = 0;
+                                    String date_added = dtr.util.DateType.datetime.format(new Date());
+                                    String user_id = "";
+                                    String user_screen_name = "";
+                                    if (!dtr_date2.isEmpty()) {
+                                        Dtrs.to_dtrs dtrrs = new Dtrs.to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date2, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);
+                                        my_dtr.add(dtrrs);
+                                    }
+                                }
+                            }
+                        }
+                        Dtrs.add_data(my_dtr);
+                        Alert.set(1, "");
+                        tbl_dtr_ALM.clear();
+                        tbl_dtr_M.fireTableDataChanged();
+                        jProgressBar1.setString("Finished...");
+                        jProgressBar1.setIndeterminate(false);
+                    }
+                });
+                t.start();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+    //<editor-fold defaultstate="collapsed" desc=" dtrs "> 
+    public static ArrayListModel tbl_dtrs_ALM;
+    public static TbldtrsModel tbl_dtrs_M;
+
+    public static void init_tbl_dtrs(JTable tbl_dtrs) {
+        tbl_dtrs_ALM = new ArrayListModel();
+        tbl_dtrs_M = new TbldtrsModel(tbl_dtrs_ALM);
+        tbl_dtrs.setModel(tbl_dtrs_M);
+        tbl_dtrs.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tbl_dtrs.setRowHeight(25);
+        int[] tbl_widths_dtrs = {70, 50, 100, 60, 60, 60, 60, 50, 50, 0, 0, 0, 0, 0, 0};
+        for (int i = 0, n = tbl_widths_dtrs.length; i < n; i++) {
+            if (i == 2) {
+                continue;
+            }
+            TableWidthUtilities.setColumnWidth(tbl_dtrs, i, tbl_widths_dtrs[i]);
+        }
+        Dimension d = tbl_dtrs.getTableHeader().getPreferredSize();
+        d.height = 25;
+        tbl_dtrs.getTableHeader().setPreferredSize(d);
+        tbl_dtrs.getTableHeader().setFont(new java.awt.Font("Arial", 0, 12));
+        tbl_dtrs.setRowHeight(25);
+        tbl_dtrs.setFont(new java.awt.Font("Arial", 0, 12));
+    }
+
+    public static void loadData_dtrs(List<to_dtrs> acc) {
+        tbl_dtrs_ALM.clear();
+        tbl_dtrs_ALM.addAll(acc);
+    }
+
+    public static class TbldtrsModel extends AbstractTableAdapter {
+
+        public static String[] COLUMNS = {
+            "Date", "No", "Employee", "AM-Arr", "AM-Dep", "PM-Arr", "PM-Dep", "", "", "pm_departure", "undertime_hours", "undertime_minutes", "date_added", "user_id", "user_screen_name"
+        };
+
+        public TbldtrsModel(ListModel listmodel) {
+            super(listmodel, COLUMNS);
+        }
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            if (column == 100) {
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public Class getColumnClass(int col) {
+            if (col == 1000) {
+                return Boolean.class;
+            }
+            return Object.class;
+        }
+
+        @Override
+        public Object getValueAt(int row, int col) {
+            to_dtrs tt = (to_dtrs) getRow(row);
+            switch (col) {
+                case 0:
+                    return " " + dtr.util.DateType.convert_slash_datetime2(tt.dtr_date);
+                case 1:
+                    return " " + tt.employee_id;
+
+                case 2:
+                    return " " + tt.employee_name;
+                case 3:
+                    if (tt.am_arrival == null) {
+                        return "";
+                    }
+                    return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.am_arrival);
+                case 4:
+                    if (tt.am_departure == null) {
+                        return "";
+                    }
+                    return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.am_departure);
+                case 5:
+                    if (tt.pm_arrival == null) {
+                        return "";
+                    }
+                    return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.pm_arrival);
+                case 6:
+                    if (tt.pm_departure == null) {
+                        return "";
+                    }
+                    return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.pm_departure);
+                case 7:
+                    return " Update";
+                case 8:
+                    return " Delete";
+                case 9:
+                    return tt.pm_departure;
+                case 10:
+                    return tt.undertime_hours;
+                case 11:
+                    return tt.undertime_minutes;
+                case 12:
+                    return tt.date_added;
+                case 13:
+                    return tt.user_id;
+                default:
+                    return tt.user_screen_name;
+            }
+        }
+    }
+
+    private void data_cols_dtr() {
+        String[] dtr_date = jTextField3.getText().split("-");
+        String from = dtr.util.DateType.convert_dash_date3(dtr_date[0]);
+        String to = dtr_date[1].substring(1, dtr_date[1].length());
+        to = dtr.util.DateType.convert_dash_date3(to);
+        Field.Combo employee = (Field.Combo) jTextField4;
+        String where = " where department_name like '%" + "" + "%'  ";
+
+        if (!jCheckBox2.isSelected()) {
+            where = where + " and Date(dtr_date) between '" + from + "' and '" + to + "'";
+        }
+        if (!jCheckBox1.isSelected()) {
+            where = where + " and employee_id= '" + employee.getId() + "' ";
+        }
+        where = where + " order by Date(dtr_date),employee_id asc ";
+        System.out.println(where);
+        List<to_dtrs> datas = Dtrs.ret_data(where);
+        loadData_dtrs(datas);
+    }
+//</editor-fold> 
+
+    private void select_employee_dtr() {
+        int row = tbl_dtrs.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        int col = tbl_dtrs.getSelectedColumn();
+        to_dtrs to = (to_dtrs) tbl_dtrs_ALM.get(row);
+        if (col == 7) {
+            //edit
+            Window p = (Window) this;
+            Dlg_edit_dtr nd = Dlg_edit_dtr.create(p, true);
+            nd.setTitle("");
+            nd.do_pass(to);
+            nd.setCallback(new Dlg_edit_dtr.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_edit_dtr.OutputData data) {
+                    closeDialog.ok();
+
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
+        if (col == 8) {
+            //delete
         }
     }
 }
