@@ -2877,7 +2877,21 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             nd.setVisible(true);
         }
         if (col == 8) {
-            //delete
+            Window p = (Window) this;
+            Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+            nd.setTitle("");
+            nd.setCallback(new Dlg_confirm_action.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+                    closeDialog.ok();
+                    Dtrs.delete_data(to);
+                    Alert.set(3, "");
+                    data_cols_dtr();
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
         }
     }
 }
