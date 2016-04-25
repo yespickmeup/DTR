@@ -86,8 +86,8 @@ id int auto_increment primary key
 ,am_departure datetime
 ,pm_arrival datetime
 ,pm_departure datetime
-,undertime_hours double
-,undertime_minutes double
+,undertime_hours varchar(255)
+,undertime_minutes varchar(255)
 ,date_added datetime
 ,user_id varchar(255)
 ,user_screen_name varchar(255)

@@ -931,8 +931,8 @@ public class Dlg_dtr extends javax.swing.JDialog {
                         String department_name = e.department;
                         String am_departure = am_arrival;
                         String pm_arrival = pm_departure;
-                        double undertime_hours = 0;
-                        double undertime_minutes = 0;
+                        String undertime_hours = "00";
+                        String undertime_minutes = "00";
                         String date_added = DateType.datetime.format(new Date());
                         String user_id = "";
                         String user_screen_name = "";
@@ -1029,14 +1029,14 @@ public class Dlg_dtr extends javax.swing.JDialog {
                 case 4:
                     String undertime_h = FitIn.fmt_woc(tt.undertime_hours);
                     String undertime_m = FitIn.fmt_woc(tt.undertime_minutes);
-                    if (tt.undertime_hours == 0) {
+                    if (tt.undertime_hours.equalsIgnoreCase("00")) {
                         undertime_h = "";
                     }
-                    if (tt.undertime_minutes == 0) {
+                    if (tt.undertime_minutes .equalsIgnoreCase("00")) {
                         undertime_m = "";
                     }
 
-                    if (tt.undertime_hours == 0 && tt.undertime_minutes == 0) {
+                    if (tt.undertime_hours .equalsIgnoreCase("00") && tt.undertime_minutes .equalsIgnoreCase("00")) {
                         return "";
                     } else {
                         if (undertime_h.length() == 1) {
@@ -1105,8 +1105,8 @@ public class Dlg_dtr extends javax.swing.JDialog {
                     String am_departure = to.am_departure;
                     String pm_arrival = to.pm_arrival;
                     String pm_departure = data.pm_departure;
-                    double undertime_hours = data.undertime_hours;
-                    double undertime_minutes = data.undertime_minutes;
+                    String undertime_hours = ""+data.undertime_hours;
+                    String undertime_minutes = ""+data.undertime_minutes;
                     String date_added = to.date_added;
                     String user_id = to.user_id;
                     String user_screen_name = to.user_screen_name;

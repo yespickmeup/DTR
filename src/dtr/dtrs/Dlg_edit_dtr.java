@@ -50,6 +50,23 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     }
 
     public static class OutputData {
+
+        public final String am_arrival;
+        public final String am_departure;
+        public final String pm_arrival;
+        public final String pm_departure;
+        public final String undertime_hour;
+        public final String undertime_minute;
+
+        public OutputData(String am_arrival, String am_departure, String pm_arrival, String pm_departure, String undertime_hour, String undertime_minute) {
+            this.am_arrival = am_arrival;
+            this.am_departure = am_departure;
+            this.pm_arrival = pm_arrival;
+            this.pm_departure = pm_departure;
+            this.undertime_hour = undertime_hour;
+            this.undertime_minute = undertime_minute;
+        }
+
     }
 //</editor-fold>
 
@@ -442,6 +459,11 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         });
 
         jButton1.setText("Save");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -682,6 +704,10 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         init_seconds(jTextField16);
     }//GEN-LAST:event_jTextField16MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ok();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -741,7 +767,8 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jTextField1.setText(to.employee_id);
         jTextField2.setText(to.employee_name);
         jTextField7.setText(DateType.convert_jan_1_2013_sf(to.dtr_date));
-
+        jTextField8.setText(to.undertime_hours);
+        jTextField17.setText(to.undertime_minutes);
         try {
             if (to.am_arrival != null) {
                 Date am_arrival = DateType.datetime.parse(to.am_arrival);
@@ -752,7 +779,33 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
                 jTextField9.setText(minute);
                 jTextField10.setText(second);
             }
-
+            if (to.am_departure != null) {
+                Date am_arrival = DateType.datetime.parse(to.am_departure);
+                String hour = DateType.hour.format(am_arrival);
+                String minute = DateType.minute.format(am_arrival);
+                String second = DateType.second.format(am_arrival);
+                jTextField4.setText(hour);
+                jTextField11.setText(minute);
+                jTextField12.setText(second);
+            }
+            if (to.pm_arrival != null) {
+                Date am_arrival = DateType.datetime.parse(to.pm_arrival);
+                String hour = DateType.hour.format(am_arrival);
+                String minute = DateType.minute.format(am_arrival);
+                String second = DateType.second.format(am_arrival);
+                jTextField5.setText(hour);
+                jTextField13.setText(minute);
+                jTextField14.setText(second);
+            }
+            if (to.pm_departure != null) {
+                Date am_arrival = DateType.datetime.parse(to.pm_departure);
+                String hour = DateType.hour.format(am_arrival);
+                String minute = DateType.minute.format(am_arrival);
+                String second = DateType.second.format(am_arrival);
+                jTextField6.setText(hour);
+                jTextField15.setText(minute);
+                jTextField16.setText(second);
+            }
         } catch (ParseException ex) {
             Logger.getLogger(Dlg_edit_dtr.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -853,5 +906,17 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
                 combo.setText(to.hour);
             }
         });
+    }
+
+    private void ok() {
+        String am_arrival = jTextField3.getText() + ":" + jTextField9.getText() + ":" + jTextField10.getText();
+        String am_departure = jTextField4.getText() + ":" + jTextField11.getText() + ":" + jTextField12.getText();
+        String pm_arrival = jTextField5.getText() + ":" + jTextField13.getText() + ":" + jTextField14.getText();
+        String pm_departure = jTextField6.getText() + ":" + jTextField15.getText() + ":" + jTextField16.getText();
+        String undertime_hour = jTextField8.getText();
+        String undertime_minute = jTextField17.getText();
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData(am_arrival, am_departure, pm_arrival, pm_departure, undertime_hour, undertime_minute));
+        }
     }
 }

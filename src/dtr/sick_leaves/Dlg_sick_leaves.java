@@ -215,8 +215,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         jButton5 = new Button.Default();
         jButton4 = new Button.Primary();
         jButton3 = new Button.Info();
-        jButton2 = new Button.Dangerous();
-        jLabel10 = new Label.Separator();
+        jButton2 = new Button.Warning();
         jLabel4 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
@@ -306,9 +305,6 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
             }
         });
 
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Date From:");
 
@@ -344,6 +340,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         });
 
         jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox3.setSelected(true);
         jCheckBox3.setText("All");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -374,7 +371,6 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,11 +396,11 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                                .addGap(43, 43, 43)
+                                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jLabel5)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                                                .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                                                 .addGap(105, 105, 105))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(tf_employee_id1)
@@ -460,9 +456,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -561,7 +555,6 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -609,7 +602,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
     List<Employees.to_employees> employees = new ArrayList();
 
     private void init_employees(final JTextField tf) {
-        String search = tf_employee_name.getText();
+        String search = tf.getText();
         String where = " where concat(lname,space(1),fname) like '%" + search + "%'  "
                 + " or concat(fname,space(1),lname) like '%" + search + "%'  ";
         System.out.println(where);
@@ -733,7 +726,17 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
 //</editor-fold> 
 
     private void data_cols() {
-        String where = "";
+        Field.Combo combo = (Field.Combo) tf_employee_id1;
+        String from = dtr.util.DateType.sf.format(jDateChooser2.getDate());
+        String to = dtr.util.DateType.sf.format(jDateChooser3.getDate());
+        String where = " where user_screen_name like '%" + "" + "%'  ";
+        if (!jCheckBox3.isSelected()) {
+            where = where + " and Date(date_of_leave) between '" + from + "' and '" + to + "' ";
+        }
+        if (!jCheckBox4.isSelected()) {
+            where = where + " and employee_id= '" + combo.getId() + "' ";
+        }
+        System.out.println(where);
         List<to_sick_leaves> datas = Sick_leaves.ret_data(where);
         loadData_sick_leaves(datas);
     }
