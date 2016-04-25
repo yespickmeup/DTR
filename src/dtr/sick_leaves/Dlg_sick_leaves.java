@@ -344,7 +344,6 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         });
 
         jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox3.setSelected(true);
         jCheckBox3.setText("All");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -363,7 +362,6 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         });
 
         jCheckBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox4.setSelected(true);
         jCheckBox4.setText("All");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -583,8 +581,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         init_tbl_sick_leaves(tbl_sick_leaves);
-        String where = "";
-        employees = Employees.ret_data(where);
+
     }
 
     public void do_pass() {
@@ -598,7 +595,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -612,7 +609,11 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
     List<Employees.to_employees> employees = new ArrayList();
 
     private void init_employees(final JTextField tf) {
-
+        String search = tf_employee_name.getText();
+        String where = " where concat(lname,space(1),fname) like '%" + search + "%'  "
+                + " or concat(fname,space(1),lname) like '%" + search + "%'  ";
+        System.out.println(where);
+        employees = Employees.ret_data(where);
         Object[][] obj = new Object[employees.size()][1];
         int i = 0;
         for (Employees.to_employees to : employees) {
@@ -630,7 +631,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
             public void ok(TableRenderer.OutputData data) {
                 Field.Combo combo = (Field.Combo) tf;
                 Employees.to_employees to = employees.get(data.selected_row);
-                combo.setId("" + to.employee_id);
+                combo.setId("" + to.id);
                 combo.setText(to.lname + ", " + to.fname + " " + to.mi);
             }
         });

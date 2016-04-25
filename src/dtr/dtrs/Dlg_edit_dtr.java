@@ -5,13 +5,19 @@
  */
 package dtr.dtrs;
 
+import dtr.dtr.Dtr;
 import dtr.util.DateType;
+import dtr.util.TableRenderer;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
@@ -245,6 +251,18 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel3.setText("AM Arrival:");
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField3.setText("00");
+        jTextField3.setFocusable(false);
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField3MouseClicked(evt);
+            }
+        });
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("AM Departure:");
@@ -262,11 +280,25 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel10.setText("Minute:");
 
         jTextField9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField9.setText("00");
+        jTextField9.setFocusable(false);
+        jTextField9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField9MouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel11.setText("Seconds:");
 
         jTextField10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField10.setText("00");
+        jTextField10.setFocusable(false);
+        jTextField10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField10MouseClicked(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel12.setText("Hour:");
@@ -275,13 +307,34 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel13.setText("Minute:");
 
         jTextField11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField11.setText("00");
+        jTextField11.setFocusable(false);
+        jTextField11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField11MouseClicked(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel14.setText("Seconds:");
 
         jTextField12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField12.setText("00");
+        jTextField12.setFocusable(false);
+        jTextField12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField12MouseClicked(evt);
+            }
+        });
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField4.setText("00");
+        jTextField4.setFocusable(false);
+        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField4MouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("PM Arrival:");
@@ -290,16 +343,37 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel15.setText("Hour:");
 
         jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField5.setText("00");
+        jTextField5.setFocusable(false);
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField5MouseClicked(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel16.setText("Minute:");
 
         jTextField13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField13.setText("00");
+        jTextField13.setFocusable(false);
+        jTextField13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField13MouseClicked(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel17.setText("Seconds:");
 
         jTextField14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField14.setText("00");
+        jTextField14.setFocusable(false);
+        jTextField14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField14MouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("PM Departure:");
@@ -308,21 +382,49 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel18.setText("Hour:");
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField6.setText("00");
+        jTextField6.setFocusable(false);
+        jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField6MouseClicked(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel19.setText("Minute:");
 
         jTextField15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField15.setText("00");
+        jTextField15.setFocusable(false);
+        jTextField15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField15MouseClicked(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel20.setText("Seconds:");
 
         jTextField16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField16.setText("00");
+        jTextField16.setFocusable(false);
+        jTextField16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField16MouseClicked(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel21.setText("Undertime:");
 
         jTextField8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField8.setText("00");
+        jTextField8.setFocusable(false);
+        jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField8MouseClicked(evt);
+            }
+        });
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         jLabel22.setText("Hour:");
@@ -331,6 +433,13 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel23.setText("Minute:");
 
         jTextField17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField17.setText("00");
+        jTextField17.setFocusable(false);
+        jTextField17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField17MouseClicked(evt);
+            }
+        });
 
         jButton1.setText("Save");
 
@@ -513,6 +622,66 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         disposed();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
+        init_hours(jTextField3);
+    }//GEN-LAST:event_jTextField3MouseClicked
+
+    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
+        init_hours(jTextField4);
+    }//GEN-LAST:event_jTextField4MouseClicked
+
+    private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
+        init_hours(jTextField5);
+    }//GEN-LAST:event_jTextField5MouseClicked
+
+    private void jTextField6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField6MouseClicked
+        init_hours(jTextField6);
+    }//GEN-LAST:event_jTextField6MouseClicked
+
+    private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
+        init_hours(jTextField8);
+    }//GEN-LAST:event_jTextField8MouseClicked
+
+    private void jTextField9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField9MouseClicked
+        init_minutes(jTextField9);
+    }//GEN-LAST:event_jTextField9MouseClicked
+
+    private void jTextField11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField11MouseClicked
+        init_minutes(jTextField11);
+    }//GEN-LAST:event_jTextField11MouseClicked
+
+    private void jTextField13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField13MouseClicked
+        init_minutes(jTextField13);
+    }//GEN-LAST:event_jTextField13MouseClicked
+
+    private void jTextField15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField15MouseClicked
+        init_minutes(jTextField15);
+    }//GEN-LAST:event_jTextField15MouseClicked
+
+    private void jTextField17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField17MouseClicked
+        init_minutes(jTextField17);
+    }//GEN-LAST:event_jTextField17MouseClicked
+
+    private void jTextField10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField10MouseClicked
+        init_seconds(jTextField10);
+    }//GEN-LAST:event_jTextField10MouseClicked
+
+    private void jTextField12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField12MouseClicked
+        init_seconds(jTextField12);
+    }//GEN-LAST:event_jTextField12MouseClicked
+
+    private void jTextField14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField14MouseClicked
+        init_seconds(jTextField14);
+    }//GEN-LAST:event_jTextField14MouseClicked
+
+    private void jTextField16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField16MouseClicked
+        init_seconds(jTextField16);
+    }//GEN-LAST:event_jTextField16MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -563,6 +732,9 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
+        dtr_hours = Dtr.hours.seed();
+        dtr_minutes = Dtr.minutes.seed();
+        dtr_seconds = Dtr.seconds.seed();
     }
 
     public void do_pass(Dtrs.to_dtrs to) {
@@ -604,4 +776,82 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     }
     // </editor-fold>
 
+    List<Dtr.hours> dtr_hours = new ArrayList();
+
+    private void init_hours(final JTextField tf) {
+
+        Object[][] obj = new Object[dtr_hours.size()][1];
+        int i = 0;
+        for (Dtr.hours to : dtr_hours) {
+            obj[i][0] = " " + to.hour;
+            i++;
+        }
+
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        int width = 0;
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo combo = (Field.Combo) tf;
+                Dtr.hours to = dtr_hours.get(data.selected_row);
+                combo.setText(to.hour);
+            }
+        });
+    }
+    List<Dtr.minutes> dtr_minutes = new ArrayList();
+
+    private void init_minutes(final JTextField tf) {
+
+        Object[][] obj = new Object[dtr_minutes.size()][1];
+        int i = 0;
+        for (Dtr.minutes to : dtr_minutes) {
+            obj[i][0] = " " + to.hour;
+            i++;
+        }
+
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        int width = 0;
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo combo = (Field.Combo) tf;
+                Dtr.minutes to = dtr_minutes.get(data.selected_row);
+                combo.setText(to.hour);
+            }
+        });
+    }
+    List<Dtr.seconds> dtr_seconds = new ArrayList();
+
+    private void init_seconds(final JTextField tf) {
+
+        Object[][] obj = new Object[dtr_seconds.size()][1];
+        int i = 0;
+        for (Dtr.seconds to : dtr_seconds) {
+            obj[i][0] = " " + to.hour;
+            i++;
+        }
+
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        int width = 0;
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo combo = (Field.Combo) tf;
+                Dtr.seconds to = dtr_seconds.get(data.selected_row);
+                combo.setText(to.hour);
+            }
+        });
+    }
 }

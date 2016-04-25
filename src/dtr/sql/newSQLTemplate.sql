@@ -119,3 +119,43 @@ id int auto_increment primary key
 ,user_id varchar(255)
 ,user_name varchar(255)
 );
+
+drop table if exists shiftings;
+create table shiftings(
+id int auto_increment primary key
+,shift varchar(255)
+,am_12 varchar(255)
+,am_1 varchar(255)
+,am_2 varchar(255)
+,am_3 varchar(255)
+,am_4 varchar(255)
+,am_5 varchar(255)
+,am_6 varchar(255)
+,am_7 varchar(255)
+,am_8 varchar(255)
+,am_9 varchar(255)
+,am_10 varchar(255)
+,am_11 varchar(255)
+,pm_12 varchar(255)
+,pm_1 varchar(255)
+,pm_2 varchar(255)
+,pm_3 varchar(255)
+,pm4 varchar(255)
+,pm_5 varchar(255)
+,pm_6 varchar(255)
+,pm_7 varchar(255)
+,pm_8 varchar(255)
+,pm_9 varchar(255)
+,pm_10 varchar(255)
+,pm_11 varchar(255)
+,status int
+,created_at datetime
+,updated_at datetime
+,created_by varchar(255)
+,updated_by varchar(255)
+);
+
+alter table employees add shift varchar(255);
+alter table employees add shift_id varchar(255);
+update employees set shift='Regular';
+update employees set shift_id='0';

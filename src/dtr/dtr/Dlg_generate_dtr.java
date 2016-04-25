@@ -11,9 +11,12 @@ import dtr.dtrs.Dlg_edit_dtr;
 import dtr.dtrs.Dtrs;
 import dtr.dtrs.Dtrs.to_dtrs;
 import dtr.employees.Employees;
+import dtr.holidays.Holidays;
 import dtr.pnl.Extract;
 import static dtr.pnl.Extract.showExcelData;
 import dtr.reports.Srpt_dtr;
+import dtr.shifting.Shiftings;
+import dtr.sick_leaves.Sick_leaves;
 import dtr.util.Alert;
 import dtr.util.Dlg_confirm_action;
 import dtr.util.TableRenderer;
@@ -22,6 +25,7 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import static java.awt.image.ImageObserver.ALLBITS;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -226,6 +230,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -237,6 +243,9 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jButton4 = new Button.Success();
         jButton5 = new Button.Primary();
         jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel11 = new javax.swing.JLabel();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_dtrs = new javax.swing.JTable();
@@ -256,6 +265,9 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new Button.Success();
+        jLabel12 = new javax.swing.JLabel();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         pnl_report = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -319,6 +331,28 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox2.setText("All");
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Range:");
+
+        buttonGroup1.add(jCheckBox3);
+        jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox3.setSelected(true);
+        jCheckBox3.setText("Monthly");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jCheckBox4);
+        jCheckBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox4.setText("Bi-Monthly");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -327,27 +361,41 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox2)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jCheckBox3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jCheckBox4)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(jCheckBox2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(180, 180, 180)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(180, 180, 180)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -425,7 +473,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -507,6 +555,28 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("Range:");
+
+        buttonGroup2.add(jCheckBox5);
+        jCheckBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox5.setSelected(true);
+        jCheckBox5.setText("Monthly");
+        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox5ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(jCheckBox6);
+        jCheckBox6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox6.setText("Bi-Monthly");
+        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -523,27 +593,41 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField1)
-                                .addGap(1, 1, 1)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCheckBox5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox6)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jTextField1)
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(86, 86, 86)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -581,7 +665,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         );
         pnl_reportLayout.setVerticalGroup(
             pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 499, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -683,15 +767,15 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
-        init_employees(jTextField4);
+        init_employees2(jTextField4);
     }//GEN-LAST:event_jTextField4MouseClicked
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        init_employees(jTextField4);
+        init_employees2(jTextField4);
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        init_report();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -702,11 +786,29 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         select_employee_dtr();
     }//GEN-LAST:event_tbl_dtrsMouseClicked
 
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        setPeriod();
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        setPeriod();
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+        setPeriod();
+    }//GEN-LAST:event_jCheckBox5ActionPerformed
+
+    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+        setPeriod();
+    }//GEN-LAST:event_jCheckBox6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -714,8 +816,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -778,6 +886,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
     // </editor-fold>
     private void setPeriod() {
+        dtr_periods.clear();
         Field.Combo combo1 = (Field.Combo) jTextField2;
         Field.Combo combo2 = (Field.Combo) jTextField3;
 
@@ -791,20 +900,33 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
             String period1 = date[0] + " " + "1" + " " + date[2] + " - " + date[0] + " " + "15" + " " + date[2];
             String period2 = date[0] + " " + "16" + " " + date[2] + " - " + date[0] + " " + date[1] + " " + date[2];
-            Dtr.periods p1 = new Dtr.periods(period1, date[0] + " " + "1" + ", " + date[2], date[0] + " " + "15" + " " + date[2]);
-            Dtr.periods p2 = new Dtr.periods(period2, date[0] + " " + "16" + ", " + date[2], date[0] + " " + "15" + " " + date[2]);
-            dtr_periods.add(p1);
-            dtr_periods.add(p2);
-            if (i + 1 == month) {
-                if (day <= 15) {
-                    combo1.setText(p1.period);
-                    combo2.setText(p1.period);
-                } else {
-                    combo1.setText(p1.period);
-                    combo2.setText(p1.period);
+            String period3 = date[0] + " " + "1" + " " + date[2] + " - " + date[0] + " " + date[1] + " " + date[2];
+            if (jCheckBox4.isSelected()) {
+                Dtr.periods p1 = new Dtr.periods(period1, date[0] + " " + "1" + ", " + date[2], date[0] + " " + "15" + " " + date[2]);
+                Dtr.periods p2 = new Dtr.periods(period2, date[0] + " " + "16" + ", " + date[2], date[0] + " " + "15" + " " + date[2]);
 
+                if (i + 1 == month) {
+                    if (day <= 15) {
+                        combo1.setText(p1.period);
+                        combo2.setText(p1.period);
+                    } else {
+                        combo1.setText(p1.period);
+                        combo2.setText(p1.period);
+                    }
                 }
+                dtr_periods.add(p1);
+                dtr_periods.add(p2);
+            } else {
+
+                Dtr.periods p1 = new Dtr.periods(period3, date[0] + " " + "1" + ", " + date[2], date[0] + " " + date[1] + " " + date[2]);
+                dtr_periods.add(p1);
+                if (i + 1 == month) {
+                    combo1.setText(p1.period);
+                    combo2.setText(p1.period);
+                }
+
             }
+
         }
     }
 
@@ -1044,82 +1166,1221 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     }
 
     private void init_report() {
-        jTabbedPane1.setSelectedIndex(1);
-        jProgressBar2.setString("Loading...Please wait...");
-        jProgressBar2.setIndeterminate(true);
 
         Thread t = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 List<Srpt_dtr.field> datas = new ArrayList();
-                for (int i = 0; i < 4; i++) {
-                    String employee_id = "1";
-                    String employee_name = "ELECCION, VIRGILIO GINOO";
-                    String aa1 = "07:59";
-                    String aa2 = "07:59";
-                    String aa3 = "SATURDAY";
-                    String aa4 = "SUNDAY";
-                    String aa5 = "07:59";
-                    String aa6 = "07:59";
-                    String aa7 = "07:59";
-                    String aa8 = "07:59";
-                    String aa9 = "07:59";
-                    String aa10 = "SATURDAY";
-                    String aa11 = "SUNDAY";
-                    String aa12 = "07:59";
-                    String aa13 = "07:59";
-                    String aa14 = "07:59";
-                    String aa15 = "07:59";
-                    String aa16 = "07:59";
-                    String aa17 = "SATURDAY";
-                    String aa18 = "SUNDAY";
-                    String aa19 = "07:59";
-                    String aa20 = "07:59";
-                    String aa21 = "07:59";
-                    String aa22 = "07:59";
-                    String aa23 = "07:59";
-                    String aa24 = "SATURDAY";
-                    String aa25 = "SUNDAY";
-                    String aa26 = "07:59";
-                    String aa27 = "07:59";
-                    String aa28 = "07:59";
-                    String aa29 = "07:59";
-                    String aa30 = "07:59";
-                    String aa31 = "SATURDAY";
-                    String pd1 = "05:03";
-                    String pd2 = "05:03";
-                    String pd3 = "SATURDAY";
-                    String pd4 = "SUNDAY";
-                    String pd5 = "05:03";
-                    String pd6 = "05:03";
-                    String pd7 = "05:03";
-                    String pd8 = "05:03";
-                    String pd9 = "05:03";
-                    String pd10 = "SATURDAY";
-                    String pd11 = "SUNDAY";
-                    String pd12 = "05:03";
-                    String pd13 = "05:03";
-                    String pd14 = "05:03";
-                    String pd15 = "05:03";
-                    String pd16 = "05:03";
-                    String pd17 = "SATURDAY";
-                    String pd18 = "SUNDAY";
-                    String pd19 = "05:03";
-                    String pd20 = "05:03";
-                    String pd21 = "05:03";
-                    String pd22 = "05:03";
-                    String pd23 = "05:03";
-                    String pd24 = "SATURDAY";
-                    String pd25 = "SUNDAY";
-                    String pd26 = "05:03";
-                    String pd27 = "05:03";
-                    String pd28 = "05:03";
-                    String pd29 = "05:03";
-                    String pd30 = "05:03";
-                    String pd31 = "SATURDAY";
-                    Srpt_dtr.field field = new Srpt_dtr.field(employee_id, employee_name, aa1, aa2, aa3, aa4, aa5, aa6, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24, aa25, aa26, aa27, aa28, aa29, aa30, aa31, pd1, pd2, pd3, pd4, pd5, pd6, pd7, pd8, pd9, pd10, pd11, pd12, pd13, pd14, pd15, pd16, pd17, pd18, pd19, pd20, pd21, pd22, pd23, pd24, pd25, pd26, pd27, pd28, pd29, pd30, pd31);
-                    datas.add(field);
+                List<Employees.to_employees> employees = new ArrayList();
+                List<to_dtrs> dtrs = tbl_dtrs_ALM;
+                List<to_dtrs> employee_dtrs = new ArrayList();
+                if (jCheckBox1.isSelected()) {
+                    employees = employees1;
+                } else if (employee.id == 0) {
+                    Alert.set(0, "Choose Employee");
+                    return;
+                } else {
+                    employees.add(employee);
+                }
+
+                jTabbedPane1.setSelectedIndex(2);
+                jProgressBar2.setString("Loading...Please wait...");
+                jProgressBar2.setIndeterminate(true);
+
+                String[] payroll_period = jTextField3.getText().split("-");
+                try {
+                    Date period_from = dtr.util.DateType.month_date2.parse(payroll_period[0]);
+                    String pr = payroll_period[1];
+                    pr = pr.substring(1, pr.length());
+                    Date period_to = dtr.util.DateType.month_date2.parse(pr);
+
+                    int payroll_from_day = FitIn.toInt(DateType.d.format(period_from));
+                    int payroll_to_day = FitIn.toInt(DateType.d.format(period_to));
+                    String payroll_month = "" + FitIn.toInt(DateType.m1.format(period_to));
+                    String payroll_year = "" + FitIn.toInt(DateType.y.format(period_to));
+
+                    if (payroll_month.length() == 1) {
+                        payroll_month = "0" + payroll_month;
+                    }
+
+                    //<editor-fold defaultstate="collapsed" desc=" holidays ">
+                    String where4 = " where Date(date_of_holiday) between '" + DateType.sf.format(period_from) + "' and '" + DateType.sf.format(period_to) + "' ";
+                    List<Holidays.to_holidays> holidays = Holidays.ret_data(where4);
+                    //</editor-fold>
+
+                    for (Employees.to_employees emp : employees) {
+                        String where2 = " where id='" + emp.shift_id + "' ";
+                        Shiftings.to_shiftings shift = new Shiftings.to_shiftings(0, "Regular", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "");
+
+                        //<editor-fold defaultstate="collapsed" desc=" retrieve leaves ">
+                        String where3 = " where employee_id='" + emp.id + "' and Date(date_of_leave) between '" + DateType.sf.format(period_from) + "' and '" + DateType.sf.format(period_to) + "' ";
+
+                        List<Sick_leaves.to_sick_leaves> leaves = Sick_leaves.ret_data(where3);
+                        //</editor-fold>
+
+                        if (!emp.shift_id.equalsIgnoreCase("0")) {
+                            List<Shiftings.to_shiftings> shifts = Shiftings.ret_data(where2);
+                            shift = shifts.get(0);
+                        }
+                        for (to_dtrs dtr : dtrs) {
+                            if (dtr.employee_id.equalsIgnoreCase("" + emp.id)) {
+                                employee_dtrs.add(dtr);
+                            }
+                        }
+
+                        //<editor-fold defaultstate="collapsed" desc=" fields ">
+                        String employee_id = "" + emp.id;
+                        String employee_name = emp.lname + ", " + emp.fname + " " + emp.mi;
+                        employee_name = employee_name.toUpperCase();
+                        String aa1 = "";
+                        String aa2 = "";
+                        String aa3 = "";
+                        String aa4 = "";
+                        String aa5 = "";
+                        String aa6 = "";
+                        String aa7 = "";
+                        String aa8 = "";
+                        String aa9 = "";
+                        String aa10 = "";
+                        String aa11 = "";
+                        String aa12 = "";
+                        String aa13 = "";
+                        String aa14 = "";
+                        String aa15 = "";
+                        String aa16 = "";
+                        String aa17 = "";
+                        String aa18 = "";
+                        String aa19 = "";
+                        String aa20 = "";
+                        String aa21 = "";
+                        String aa22 = "";
+                        String aa23 = "";
+                        String aa24 = "";
+                        String aa25 = "";
+                        String aa26 = "";
+                        String aa27 = "";
+                        String aa28 = "";
+                        String aa29 = "";
+                        String aa30 = "";
+                        String aa31 = "";
+                        String pd1 = "";
+                        String pd2 = "";
+                        String pd3 = "";
+                        String pd4 = "";
+                        String pd5 = "";
+                        String pd6 = "";
+                        String pd7 = "";
+                        String pd8 = "";
+                        String pd9 = "";
+                        String pd10 = "";
+                        String pd11 = "";
+                        String pd12 = "";
+                        String pd13 = "";
+                        String pd14 = "";
+                        String pd15 = "";
+                        String pd16 = "";
+                        String pd17 = "";
+                        String pd18 = "";
+                        String pd19 = "";
+                        String pd20 = "";
+                        String pd21 = "";
+                        String pd22 = "";
+                        String pd23 = "";
+                        String pd24 = "";
+                        String pd25 = "";
+                        String pd26 = "";
+                        String pd27 = "";
+                        String pd28 = "";
+                        String pd29 = "";
+                        String pd30 = "";
+                        String pd31 = "";
+                        String ad1 = "";
+                        String ad2 = "";
+                        String ad3 = "";
+                        String ad4 = "";
+                        String ad5 = "";
+                        String ad6 = "";
+                        String ad7 = "";
+                        String ad8 = "";
+                        String ad9 = "";
+                        String ad10 = "";
+                        String ad11 = "";
+                        String ad12 = "";
+                        String ad13 = "";
+                        String ad14 = "";
+                        String ad15 = "";
+                        String ad16 = "";
+                        String ad17 = "";
+                        String ad18 = "";
+                        String ad19 = "";
+                        String ad20 = "";
+                        String ad21 = "";
+                        String ad22 = "";
+                        String ad23 = "";
+                        String ad24 = "";
+                        String ad25 = "";
+                        String ad26 = "";
+                        String ad27 = "";
+                        String ad28 = "";
+                        String ad29 = "";
+                        String ad30 = "";
+                        String ad31 = "";
+                        String pa1 = "";
+                        String pa2 = "";
+                        String pa3 = "";
+                        String pa4 = "";
+                        String pa5 = "";
+                        String pa6 = "";
+                        String pa7 = "";
+                        String pa8 = "";
+                        String pa9 = "";
+                        String pa10 = "";
+                        String pa11 = "";
+                        String pa12 = "";
+                        String pa13 = "";
+                        String pa14 = "";
+                        String pa15 = "";
+                        String pa16 = "";
+                        String pa17 = "";
+                        String pa18 = "";
+                        String pa19 = "";
+                        String pa20 = "";
+                        String pa21 = "";
+                        String pa22 = "";
+                        String pa23 = "";
+                        String pa24 = "";
+                        String pa25 = "";
+                        String pa26 = "";
+                        String pa27 = "";
+                        String pa28 = "";
+                        String pa29 = "";
+                        String pa30 = "";
+                        String pa31 = "";
+                        String uh1 = "";
+                        String uh2 = "";
+                        String uh3 = "";
+                        String uh4 = "";
+                        String uh5 = "";
+                        String uh6 = "";
+                        String uh7 = "";
+                        String uh8 = "";
+                        String uh9 = "";
+                        String uh10 = "";
+                        String uh11 = "";
+                        String uh12 = "";
+                        String uh13 = "";
+                        String uh14 = "";
+                        String uh15 = "";
+                        String uh16 = "";
+                        String uh17 = "";
+                        String uh18 = "";
+                        String uh19 = "";
+                        String uh20 = "";
+                        String uh21 = "";
+                        String uh22 = "";
+                        String uh23 = "";
+                        String uh24 = "";
+                        String uh25 = "";
+                        String uh26 = "";
+                        String uh27 = "";
+                        String uh28 = "";
+                        String uh29 = "";
+                        String uh30 = "";
+                        String uh31 = "";
+                        String um1 = "";
+                        String um2 = "";
+                        String um3 = "";
+                        String um4 = "";
+                        String um5 = "";
+                        String um6 = "";
+                        String um7 = "";
+                        String um8 = "";
+                        String um9 = "";
+                        String um10 = "";
+                        String um11 = "";
+                        String um12 = "";
+                        String um13 = "";
+                        String um14 = "";
+                        String um15 = "";
+                        String um16 = "";
+                        String um17 = "";
+                        String um18 = "";
+                        String um19 = "";
+                        String um20 = "";
+                        String um21 = "";
+                        String um22 = "";
+                        String um23 = "";
+                        String um24 = "";
+                        String um25 = "";
+                        String um26 = "";
+                        String um27 = "";
+                        String um28 = "";
+                        String um29 = "";
+                        String um30 = "";
+                        String um31 = "";
+                        //</editor-fold>
+
+                        for (int i = payroll_from_day; i <= payroll_to_day; i++) {
+
+                            String str_date = "" + i;
+                            if (str_date.length() == 1) {
+                                str_date = "0" + i;
+                            }
+                            str_date = payroll_year + "-" + payroll_month + "-" + str_date;
+                            Date loop_date = DateType.sf.parse(str_date);
+                            String what_day = DateType.day.format(loop_date);
+
+                            to_dtrs my_dtr = new to_dtrs(0, "", "", "", "", "", "", "", "", "", 0, 0, "", "", "");
+                            for (to_dtrs dtr : employee_dtrs) {
+                                if (str_date.equalsIgnoreCase(dtr.dtr_date)) {
+                                    my_dtr = dtr;
+                                }
+                            }
+
+                            String aa = "";
+                            String ad = "";
+                            String pa = "";
+                            String pd = "";
+                            String uh = "";
+                            String um = "";
+                            if (my_dtr.id != 0) {
+                                if (my_dtr.am_arrival != null) {
+                                    aa = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.am_arrival);
+                                    System.out.println("Old: " + aa);
+                                    if (shift.id != 0) {
+                                        String hh1 = aa.substring(0, 2);
+                                        String hh2 = aa.substring(3, 5);
+                                        String hh3 = aa.substring(6, 8);
+
+                                        //<editor-fold defaultstate="collapsed" desc=" shift convertions ">
+                                        if (hh1.equalsIgnoreCase("00") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_12;
+                                        }
+                                        if (hh1.equalsIgnoreCase("01") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_1;
+                                        }
+                                        if (hh1.equalsIgnoreCase("02") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_2;
+                                        }
+                                        if (hh1.equalsIgnoreCase("03") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_3;
+                                        }
+                                        if (hh1.equalsIgnoreCase("04") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_4;
+                                        }
+                                        if (hh1.equalsIgnoreCase("05") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_5;
+                                        }
+                                        if (hh1.equalsIgnoreCase("06") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_6;
+                                        }
+                                        if (hh1.equalsIgnoreCase("07") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_7;
+                                        }
+                                        if (hh1.equalsIgnoreCase("08") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_8;
+                                        }
+                                        if (hh1.equalsIgnoreCase("09") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_9;
+                                        }
+                                        if (hh1.equalsIgnoreCase("10") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_10;
+                                        }
+                                        if (hh1.equalsIgnoreCase("11") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_11;
+                                        }
+                                        if (hh1.equalsIgnoreCase("12") && hh3.equalsIgnoreCase("PM")) {
+
+                                            hh1 = shift.pm_12;
+                                        }
+                                        if (hh1.equalsIgnoreCase("13") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_1;
+                                        }
+                                        if (hh1.equalsIgnoreCase("14") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_2;
+                                        }
+                                        if (hh1.equalsIgnoreCase("15") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_3;
+                                        }
+                                        if (hh1.equalsIgnoreCase("16") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm4;
+                                        }
+                                        if (hh1.equalsIgnoreCase("17") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_5;
+                                        }
+                                        if (hh1.equalsIgnoreCase("18") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_6;
+                                        }
+                                        if (hh1.equalsIgnoreCase("19") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_7;
+                                        }
+                                        if (hh1.equalsIgnoreCase("20") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_8;
+                                        }
+                                        if (hh1.equalsIgnoreCase("21") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_9;
+                                        }
+                                        if (hh1.equalsIgnoreCase("22") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_10;
+                                        }
+                                        if (hh1.equalsIgnoreCase("23") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_11;
+                                        }
+                                        //</editor-fold>
+                                        int ampm = FitIn.toInt(hh1);
+                                        if (ampm > 11 && ampm < 24) {
+                                            hh3 = "PM";
+                                        } else {
+                                            hh3 = "AM";
+                                        }
+                                        aa = hh1 + ":" + hh2 + " " + hh3;
+
+                                    }
+
+                                }
+                                if (my_dtr.am_departure != null) {
+                                    ad = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.am_departure);
+                                    if (shift.id != 0) {
+                                        String hh1 = ad.substring(0, 2);
+                                        String hh2 = ad.substring(3, 5);
+                                        String hh3 = ad.substring(5, 8);
+                                        //<editor-fold defaultstate="collapsed" desc=" shift convertions ">
+                                        if (hh1.equalsIgnoreCase("00") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_12;
+                                        }
+                                        if (hh1.equalsIgnoreCase("01") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_1;
+                                        }
+                                        if (hh1.equalsIgnoreCase("02") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_2;
+                                        }
+                                        if (hh1.equalsIgnoreCase("03") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_3;
+                                        }
+                                        if (hh1.equalsIgnoreCase("04") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_4;
+                                        }
+                                        if (hh1.equalsIgnoreCase("05") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_5;
+                                        }
+                                        if (hh1.equalsIgnoreCase("06") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_6;
+                                        }
+                                        if (hh1.equalsIgnoreCase("07") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_7;
+                                        }
+                                        if (hh1.equalsIgnoreCase("08") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_8;
+                                        }
+                                        if (hh1.equalsIgnoreCase("09") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_9;
+                                        }
+                                        if (hh1.equalsIgnoreCase("10") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_10;
+                                        }
+                                        if (hh1.equalsIgnoreCase("11") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_11;
+                                        }
+                                        if (hh1.equalsIgnoreCase("12") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_12;
+                                        }
+                                        if (hh1.equalsIgnoreCase("13") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_1;
+                                        }
+                                        if (hh1.equalsIgnoreCase("14") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_2;
+                                        }
+                                        if (hh1.equalsIgnoreCase("15") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_3;
+                                        }
+                                        if (hh1.equalsIgnoreCase("16") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm4;
+                                        }
+                                        if (hh1.equalsIgnoreCase("17") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_5;
+                                        }
+                                        if (hh1.equalsIgnoreCase("18") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_6;
+                                        }
+                                        if (hh1.equalsIgnoreCase("19") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_7;
+                                        }
+                                        if (hh1.equalsIgnoreCase("20") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_8;
+                                        }
+                                        if (hh1.equalsIgnoreCase("21") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_9;
+                                        }
+                                        if (hh1.equalsIgnoreCase("22") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_10;
+                                        }
+                                        if (hh1.equalsIgnoreCase("23") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_11;
+                                        }
+                                        //</editor-fold>
+                                        int ampm = FitIn.toInt(hh1);
+                                        if (ampm > 11 && ampm < 24) {
+                                            hh3 = "PM";
+                                        } else {
+                                            hh3 = "AM";
+                                        }
+                                        ad = hh1 + ":" + hh2 + " " + hh3;
+                                    }
+                                }
+                                if (my_dtr.pm_arrival != null) {
+                                    pa = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.pm_arrival);
+                                    if (shift.id != 0) {
+                                        String hh1 = pa.substring(0, 2);
+                                        String hh2 = pa.substring(3, 5);
+                                        String hh3 = pa.substring(5, 8);
+                                        //<editor-fold defaultstate="collapsed" desc=" shift convertions ">
+                                        if (hh1.equalsIgnoreCase("00") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_12;
+                                        }
+                                        if (hh1.equalsIgnoreCase("01") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_1;
+                                        }
+                                        if (hh1.equalsIgnoreCase("02") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_2;
+                                        }
+                                        if (hh1.equalsIgnoreCase("03") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_3;
+                                        }
+                                        if (hh1.equalsIgnoreCase("04") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_4;
+                                        }
+                                        if (hh1.equalsIgnoreCase("05") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_5;
+                                        }
+                                        if (hh1.equalsIgnoreCase("06") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_6;
+                                        }
+                                        if (hh1.equalsIgnoreCase("07") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_7;
+                                        }
+                                        if (hh1.equalsIgnoreCase("08") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_8;
+                                        }
+                                        if (hh1.equalsIgnoreCase("09") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_9;
+                                        }
+                                        if (hh1.equalsIgnoreCase("10") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_10;
+                                        }
+                                        if (hh1.equalsIgnoreCase("11") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_11;
+                                        }
+                                        if (hh1.equalsIgnoreCase("12") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_12;
+                                        }
+                                        if (hh1.equalsIgnoreCase("13") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_1;
+                                        }
+                                        if (hh1.equalsIgnoreCase("14") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_2;
+                                        }
+                                        if (hh1.equalsIgnoreCase("15") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_3;
+                                        }
+                                        if (hh1.equalsIgnoreCase("16") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm4;
+                                        }
+                                        if (hh1.equalsIgnoreCase("17") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_5;
+                                        }
+                                        if (hh1.equalsIgnoreCase("18") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_6;
+                                        }
+                                        if (hh1.equalsIgnoreCase("19") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_7;
+                                        }
+                                        if (hh1.equalsIgnoreCase("20") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_8;
+                                        }
+                                        if (hh1.equalsIgnoreCase("21") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_9;
+                                        }
+                                        if (hh1.equalsIgnoreCase("22") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_10;
+                                        }
+                                        if (hh1.equalsIgnoreCase("23") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_11;
+                                        }
+                                        //</editor-fold>
+                                        int ampm = FitIn.toInt(hh1);
+                                        if (ampm > 11 && ampm < 24) {
+                                            hh3 = "PM";
+                                        } else {
+                                            hh3 = "AM";
+                                        }
+                                        pa = hh1 + ":" + hh2 + " " + hh3;
+                                    }
+                                }
+                                if (my_dtr.pm_departure != null) {
+                                    pd = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.pm_departure);
+                                    if (shift.id != 0) {
+                                        String hh1 = pd.substring(0, 2);
+                                        String hh2 = pd.substring(3, 5);
+                                        String hh3 = pd.substring(5, 8);
+                                        //<editor-fold defaultstate="collapsed" desc=" shift convertions ">
+                                        if (hh1.equalsIgnoreCase("00") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_12;
+                                        }
+                                        if (hh1.equalsIgnoreCase("01") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_1;
+                                        }
+                                        if (hh1.equalsIgnoreCase("02") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_2;
+                                        }
+                                        if (hh1.equalsIgnoreCase("03") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_3;
+                                        }
+                                        if (hh1.equalsIgnoreCase("04") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_4;
+                                        }
+                                        if (hh1.equalsIgnoreCase("05") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_5;
+                                        }
+                                        if (hh1.equalsIgnoreCase("06") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_6;
+                                        }
+                                        if (hh1.equalsIgnoreCase("07") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_7;
+                                        }
+                                        if (hh1.equalsIgnoreCase("08") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_8;
+                                        }
+                                        if (hh1.equalsIgnoreCase("09") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_9;
+                                        }
+                                        if (hh1.equalsIgnoreCase("10") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_10;
+                                        }
+                                        if (hh1.equalsIgnoreCase("11") && hh3.equalsIgnoreCase("AM")) {
+                                            hh1 = shift.am_11;
+                                        }
+                                        if (hh1.equalsIgnoreCase("12") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_12;
+                                        }
+                                        if (hh1.equalsIgnoreCase("13") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_1;
+                                        }
+                                        if (hh1.equalsIgnoreCase("14") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_2;
+                                        }
+                                        if (hh1.equalsIgnoreCase("15") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_3;
+                                        }
+                                        if (hh1.equalsIgnoreCase("16") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm4;
+                                        }
+                                        if (hh1.equalsIgnoreCase("17") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_5;
+                                        }
+                                        if (hh1.equalsIgnoreCase("18") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_6;
+                                        }
+                                        if (hh1.equalsIgnoreCase("19") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_7;
+                                        }
+                                        if (hh1.equalsIgnoreCase("20") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_8;
+                                        }
+                                        if (hh1.equalsIgnoreCase("21") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_9;
+                                        }
+                                        if (hh1.equalsIgnoreCase("22") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_10;
+                                        }
+                                        if (hh1.equalsIgnoreCase("23") && hh3.equalsIgnoreCase("PM")) {
+                                            hh1 = shift.pm_11;
+                                        }
+                                        //</editor-fold>
+                                        int ampm = FitIn.toInt(hh1);
+                                        if (ampm > 11 && ampm < 24) {
+                                            hh3 = "PM";
+                                        } else {
+                                            hh3 = "AM";
+                                        }
+                                        pd = hh1 + ":" + hh2 + " " + hh3;
+                                    }
+                                }
+                                if (my_dtr.undertime_hours == 0) {
+                                    uh = "";
+                                } else {
+                                    uh = FitIn.fmt_woc("" + my_dtr.undertime_hours);
+                                }
+                                if (my_dtr.undertime_minutes == 0) {
+                                    um = "";
+                                } else {
+                                    um = FitIn.fmt_woc("" + my_dtr.undertime_minutes);
+                                }
+
+                            }
+                            for (Sick_leaves.to_sick_leaves leave : leaves) {
+                                if (str_date.equalsIgnoreCase(leave.date_of_leave)) {
+                                    if (leave.half_day_am == 1) {
+                                        aa = "Sick Leave";
+                                        ad = "Sick Leave";
+                                    }
+                                    if (leave.half_day_pm == 1) {
+                                        pa = "Sick Leave";
+                                        pd = "Sick Leave";
+                                    }
+                                }
+                            }
+                            for (Holidays.to_holidays holiday : holidays) {
+                                if (str_date.equalsIgnoreCase(holiday.date_of_holiday)) {
+                                    if (holiday.half_day_am == 1) {
+                                        aa = "Holiday";
+                                        ad = "Holiday";
+                                    }
+                                    if (holiday.half_day_pm == 1) {
+                                        pa = "Holiday";
+                                        pd = "Holiday";
+                                    }
+                                }
+                            }
+                            //<editor-fold defaultstate="collapsed" desc=" days ">
+                            if (i == 1) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa1 = what_day;
+                                    ad1 = what_day;
+                                    pa1 = what_day;
+                                    pd1 = what_day;
+                                    uh1 = what_day;
+                                    um1 = what_day;
+                                } else {
+                                    aa1 = aa;
+                                    ad1 = ad;
+                                    pa1 = pa;
+                                    pd1 = pd;
+                                    uh1 = uh;
+                                    um1 = um;
+                                }
+                            }
+                            if (i == 2) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa2 = what_day;
+                                    ad2 = what_day;
+                                    pa2 = what_day;
+                                    pd2 = what_day;
+                                    uh2 = what_day;
+                                    um2 = what_day;
+                                } else {
+                                    aa2 = aa;
+                                    ad2 = ad;
+                                    pa2 = pa;
+                                    pd2 = pd;
+                                    uh2 = uh;
+                                    um2 = um;
+                                }
+                            }
+                            if (i == 3) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa3 = what_day;
+                                    ad3 = what_day;
+                                    pa3 = what_day;
+                                    pd3 = what_day;
+                                    uh3 = what_day;
+                                    um3 = what_day;
+                                } else {
+                                    aa3 = aa;
+                                    ad3 = ad;
+                                    pa3 = pa;
+                                    pd3 = pd;
+                                    uh3 = uh;
+                                    um3 = um;
+                                }
+                            }
+                            if (i == 4) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa4 = what_day;
+                                    ad4 = what_day;
+                                    pa4 = what_day;
+                                    pd4 = what_day;
+                                    uh4 = what_day;
+                                    um4 = what_day;
+                                } else {
+                                    aa4 = aa;
+                                    ad4 = ad;
+                                    pa4 = pa;
+                                    pd4 = pd;
+                                    uh4 = uh;
+                                    um4 = um;
+                                }
+                            }
+                            if (i == 5) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa5 = what_day;
+                                    ad5 = what_day;
+                                    pa5 = what_day;
+                                    pd5 = what_day;
+                                    uh5 = what_day;
+                                    um5 = what_day;
+                                } else {
+                                    aa5 = aa;
+                                    ad5 = ad;
+                                    pa5 = pa;
+                                    pd5 = pd;
+                                    uh5 = uh;
+                                    um5 = um;
+                                }
+                            }
+                            if (i == 6) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa6 = what_day;
+                                    ad6 = what_day;
+                                    pa6 = what_day;
+                                    pd6 = what_day;
+                                    uh6 = what_day;
+                                    um6 = what_day;
+                                } else {
+                                    aa6 = aa;
+                                    ad6 = ad;
+                                    pa6 = pa;
+                                    pd6 = pd;
+                                    uh6 = uh;
+                                    um6 = um;
+                                }
+                            }
+                            if (i == 7) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa7 = what_day;
+                                    ad7 = what_day;
+                                    pa7 = what_day;
+                                    pd7 = what_day;
+                                    uh7 = what_day;
+                                    um7 = what_day;
+                                } else {
+                                    aa7 = aa;
+                                    ad7 = ad;
+                                    pa7 = pa;
+                                    pd7 = pd;
+                                    uh7 = uh;
+                                    um7 = um;
+                                }
+                            }
+                            if (i == 8) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa8 = what_day;
+                                    ad8 = what_day;
+                                    pa8 = what_day;
+                                    pd8 = what_day;
+                                    uh8 = what_day;
+                                    um8 = what_day;
+                                } else {
+                                    aa8 = aa;
+                                    ad8 = ad;
+                                    pa8 = pa;
+                                    pd8 = pd;
+                                    uh8 = uh;
+                                    um8 = um;
+                                }
+                            }
+                            if (i == 9) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa9 = what_day;
+                                    ad9 = what_day;
+                                    pa9 = what_day;
+                                    pd9 = what_day;
+                                    uh9 = what_day;
+                                    um9 = what_day;
+                                } else {
+                                    aa9 = aa;
+                                    ad9 = ad;
+                                    pa9 = pa;
+                                    pd9 = pd;
+                                    uh9 = uh;
+                                    um9 = um;
+                                }
+                            }
+                            if (i == 10) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa10 = what_day;
+                                    ad10 = what_day;
+                                    pa10 = what_day;
+                                    pd10 = what_day;
+                                    uh10 = what_day;
+                                    um10 = what_day;
+                                } else {
+                                    aa10 = aa;
+                                    ad10 = ad;
+                                    pa10 = pa;
+                                    pd10 = pd;
+                                    uh10 = uh;
+                                    um10 = um;
+                                }
+                            }
+                            if (i == 11) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa11 = what_day;
+                                    ad11 = what_day;
+                                    pa11 = what_day;
+                                    pd11 = what_day;
+                                    uh11 = what_day;
+                                    um11 = what_day;
+                                } else {
+                                    aa11 = aa;
+                                    ad11 = ad;
+                                    pa11 = pa;
+                                    pd11 = pd;
+                                    uh11 = uh;
+                                    um11 = um;
+                                }
+                            }
+                            if (i == 12) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa12 = what_day;
+                                    ad12 = what_day;
+                                    pa12 = what_day;
+                                    pd12 = what_day;
+                                    uh12 = what_day;
+                                    um12 = what_day;
+                                } else {
+                                    aa12 = aa;
+                                    ad12 = ad;
+                                    pa12 = pa;
+                                    pd12 = pd;
+                                    uh12 = uh;
+                                    um12 = um;
+                                }
+                            }
+                            if (i == 13) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa13 = what_day;
+                                    ad13 = what_day;
+                                    pa13 = what_day;
+                                    pd13 = what_day;
+                                    uh13 = what_day;
+                                    um13 = what_day;
+                                } else {
+                                    aa13 = aa;
+                                    ad13 = ad;
+                                    pa13 = pa;
+                                    pd13 = pd;
+                                    uh13 = uh;
+                                    um13 = um;
+                                }
+                            }
+                            if (i == 14) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa14 = what_day;
+                                    ad14 = what_day;
+                                    pa14 = what_day;
+                                    pd14 = what_day;
+                                    uh14 = what_day;
+                                    um14 = what_day;
+                                } else {
+                                    aa14 = aa;
+                                    ad14 = ad;
+                                    pa14 = pa;
+                                    pd14 = pd;
+                                    uh14 = uh;
+                                    um14 = um;
+                                }
+                            }
+                            if (i == 15) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa15 = what_day;
+                                    ad15 = what_day;
+                                    pa15 = what_day;
+                                    pd15 = what_day;
+                                    uh15 = what_day;
+                                    um15 = what_day;
+                                } else {
+                                    aa15 = aa;
+                                    ad15 = ad;
+                                    pa15 = pa;
+                                    pd15 = pd;
+                                    uh15 = uh;
+                                    um15 = um;
+                                }
+                            }
+                            if (i == 16) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa16 = what_day;
+                                    ad16 = what_day;
+                                    pa16 = what_day;
+                                    pd16 = what_day;
+                                    uh16 = what_day;
+                                    um16 = what_day;
+                                } else {
+                                    aa16 = aa;
+                                    ad16 = ad;
+                                    pa16 = pa;
+                                    pd16 = pd;
+                                    uh16 = uh;
+                                    um16 = um;
+                                }
+                            }
+                            if (i == 17) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa17 = what_day;
+                                    ad17 = what_day;
+                                    pa17 = what_day;
+                                    pd17 = what_day;
+                                    uh17 = what_day;
+                                    um17 = what_day;
+                                } else {
+                                    aa17 = aa;
+                                    ad17 = ad;
+                                    pa17 = pa;
+                                    pd17 = pd;
+                                    uh17 = uh;
+                                    um17 = um;
+                                }
+                            }
+                            if (i == 18) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa18 = what_day;
+                                    ad18 = what_day;
+                                    pa18 = what_day;
+                                    pd18 = what_day;
+                                    uh18 = what_day;
+                                    um18 = what_day;
+                                } else {
+                                    aa18 = aa;
+                                    ad18 = ad;
+                                    pa18 = pa;
+                                    pd18 = pd;
+                                    uh18 = uh;
+                                    um18 = um;
+                                }
+                            }
+                            if (i == 19) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa19 = what_day;
+                                    ad19 = what_day;
+                                    pa19 = what_day;
+                                    pd19 = what_day;
+                                    uh19 = what_day;
+                                    um19 = what_day;
+                                } else {
+                                    aa19 = aa;
+                                    ad19 = ad;
+                                    pa19 = pa;
+                                    pd19 = pd;
+                                    uh19 = uh;
+                                    um19 = um;
+                                }
+                            }
+                            if (i == 20) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa20 = what_day;
+                                    ad20 = what_day;
+                                    pa20 = what_day;
+                                    pd20 = what_day;
+                                    uh20 = what_day;
+                                    um20 = what_day;
+                                } else {
+                                    aa20 = aa;
+                                    ad20 = ad;
+                                    pa20 = pa;
+                                    pd20 = pd;
+                                    uh20 = uh;
+                                    um20 = um;
+                                }
+                            }
+                            if (i == 21) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa21 = what_day;
+                                    ad21 = what_day;
+                                    pa21 = what_day;
+                                    pd21 = what_day;
+                                    uh21 = what_day;
+                                    um21 = what_day;
+                                } else {
+                                    aa21 = aa;
+                                    ad21 = ad;
+                                    pa21 = pa;
+                                    pd21 = pd;
+                                    uh21 = uh;
+                                    um21 = um;
+                                }
+                            }
+                            if (i == 22) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa22 = what_day;
+                                    ad22 = what_day;
+                                    pa22 = what_day;
+                                    pd22 = what_day;
+                                    uh22 = what_day;
+                                    um22 = what_day;
+                                } else {
+                                    aa22 = aa;
+                                    ad22 = ad;
+                                    pa22 = pa;
+                                    pd22 = pd;
+                                    uh22 = uh;
+                                    um22 = um;
+                                }
+                            }
+                            if (i == 23) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa23 = what_day;
+                                    ad23 = what_day;
+                                    pa23 = what_day;
+                                    pd23 = what_day;
+                                    uh23 = what_day;
+                                    um23 = what_day;
+                                } else {
+                                    aa23 = aa;
+                                    ad23 = ad;
+                                    pa23 = pa;
+                                    pd23 = pd;
+                                    uh23 = uh;
+                                    um23 = um;
+                                }
+                            }
+                            if (i == 24) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa24 = what_day;
+                                    ad24 = what_day;
+                                    pa24 = what_day;
+                                    pd24 = what_day;
+                                    uh24 = what_day;
+                                    um24 = what_day;
+                                } else {
+                                    aa24 = aa;
+                                    ad24 = ad;
+                                    pa24 = pa;
+                                    pd24 = pd;
+                                    uh24 = uh;
+                                    um24 = um;
+                                }
+                            }
+                            if (i == 25) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa25 = what_day;
+                                    ad25 = what_day;
+                                    pa25 = what_day;
+                                    pd25 = what_day;
+                                    uh25 = what_day;
+                                    um25 = what_day;
+                                } else {
+                                    aa25 = aa;
+                                    ad25 = ad;
+                                    pa25 = pa;
+                                    pd25 = pd;
+                                    uh25 = uh;
+                                    um25 = um;
+                                }
+                            }
+                            if (i == 26) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa26 = what_day;
+                                    ad26 = what_day;
+                                    pa26 = what_day;
+                                    pd26 = what_day;
+                                    uh26 = what_day;
+                                    um26 = what_day;
+                                } else {
+                                    aa26 = aa;
+                                    ad26 = ad;
+                                    pa26 = pa;
+                                    pd26 = pd;
+                                    uh26 = uh;
+                                    um26 = um;
+                                }
+                            }
+                            if (i == 27) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa27 = what_day;
+                                    ad27 = what_day;
+                                    pa27 = what_day;
+                                    pd27 = what_day;
+                                    uh27 = what_day;
+                                    um27 = what_day;
+                                } else {
+                                    aa27 = aa;
+                                    ad27 = ad;
+                                    pa27 = pa;
+                                    pd27 = pd;
+                                    uh27 = uh;
+                                    um27 = um;
+                                }
+                            }
+                            if (i == 28) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa28 = what_day;
+                                    ad28 = what_day;
+                                    pa28 = what_day;
+                                    pd28 = what_day;
+                                    uh28 = what_day;
+                                    um28 = what_day;
+                                } else {
+                                    aa28 = aa;
+                                    ad28 = ad;
+                                    pa28 = pa;
+                                    pd28 = pd;
+                                    uh28 = uh;
+                                    um28 = um;
+                                }
+                            }
+                            if (i == 29) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa29 = what_day;
+                                    ad29 = what_day;
+                                    pa29 = what_day;
+                                    pd29 = what_day;
+                                    uh29 = what_day;
+                                    um29 = what_day;
+                                } else {
+                                    aa29 = aa;
+                                    ad29 = ad;
+                                    pa29 = pa;
+                                    pd29 = pd;
+                                    uh29 = uh;
+                                    um29 = um;
+                                }
+                            }
+                            if (i == 30) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa30 = what_day;
+                                    ad30 = what_day;
+                                    pa30 = what_day;
+                                    pd30 = what_day;
+                                    uh30 = what_day;
+                                    um30 = what_day;
+                                } else {
+                                    aa30 = aa;
+                                    ad30 = ad;
+                                    pa30 = pa;
+                                    pd30 = pd;
+                                    uh30 = uh;
+                                    um30 = um;
+                                }
+                            }
+                            if (i == 31) {
+                                if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
+                                    aa31 = what_day;
+                                    ad31 = what_day;
+                                    pa31 = what_day;
+                                    pd31 = what_day;
+                                    uh31 = what_day;
+                                    um31 = what_day;
+                                } else {
+                                    aa31 = aa;
+                                    ad31 = ad;
+                                    pa31 = pa;
+                                    pd31 = pd;
+                                    uh31 = uh;
+                                    um31 = um;
+                                }
+                            }
+                            //</editor-fold>
+                        }
+                        //end of day loop
+                        Srpt_dtr.field field = new Srpt_dtr.field(employee_id, employee_name, aa1, aa2, aa3, aa4, aa5, aa6, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24, aa25, aa26, aa27, aa28, aa29, aa30, aa31, pd1, pd2, pd3, pd4, pd5, pd6, pd7, pd8, pd9, pd10, pd11, pd12, pd13, pd14, pd15, pd16, pd17, pd18, pd19, pd20, pd21, pd22, pd23, pd24, pd25, pd26, pd27, pd28, pd29, pd30, pd31, ad1, ad2, ad3, ad4, ad5, ad6, ad7, ad8, ad9, ad10, ad11, ad12, ad13, ad14, ad15, ad16, ad17, ad18, ad19, ad20, ad21, ad22, ad23, ad24, ad25, ad26, ad27, ad28, ad29, ad30, ad31, pa1, pa2, pa3, pa4, pa5, pa6, pa7, pa8, pa9, pa10, pa11, pa12, pa13, pa14, pa15, pa16, pa17, pa18, pa19, pa20, pa21, pa22, pa23, pa24, pa25, pa26, pa27, pa28, pa29, pa30, pa31, uh1, uh2, uh3, uh4, uh5, uh6, uh7, uh8, uh9, uh10, uh11, uh12, uh13, uh14, uh15, uh16, uh17, uh18, uh19, uh20, uh21, uh22, uh23, uh24, uh25, uh26, uh27, uh28, uh29, uh30, uh31, um1, um2, um3, um4, um5, um6, um7, um8, um9, um10, um11, um12, um13, um14, um15, um16, um17, um18, um19, um20, um21, um22, um23, um24, um25, um26, um27, um28, um29, um30, um31);
+                        datas.add(field);
+                        datas.add(field);
+                    }
+
+                    //end of main loop
+                } catch (ParseException ex) {
+                    Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 String business_name = System.getProperty("business_name", "Algorithm Computer Services");
@@ -1207,7 +2468,9 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     List<Employees.to_employees> employees = new ArrayList();
     List<Employees.to_employees> employees1 = new ArrayList();
 
-    private void init_employees(final JTextField tf) {
+    Employees.to_employees employee = new Employees.to_employees(0, "", "", "", "", "", "", "", "", "", "", "", "", "");
+
+    private void init_employees2(final JTextField tf) {
         String search = jTextField4.getText();
         String where = " where concat(lname,space(1), fname) like '%" + search + "%' "
                 + " or concat(fname,space(1), lname) like '%" + search + "%'"
@@ -1231,6 +2494,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             public void ok(TableRenderer.OutputData data) {
                 Field.Combo combo = (Field.Combo) tf;
                 Employees.to_employees to = employees.get(data.selected_row);
+                employee = to;
                 combo.setText("" + to.lname + ", " + to.fname + " " + to.mi);
                 combo.setId("" + to.id);
             }
@@ -1253,6 +2517,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
                     @Override
                     public void run() {
+
                         String[] payroll_period = jTextField3.getText().split("-");
                         int payroll_from_day = 0;
                         int payroll_to_day = 0;

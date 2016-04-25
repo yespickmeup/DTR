@@ -9,6 +9,7 @@ import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import dtr.departments.Departments;
 import dtr.employees.Employees.to_employees;
+import dtr.shifting.Shiftings;
 import dtr.util.Alert;
 import dtr.util.Dlg_confirm_action;
 import dtr.util.TableRenderer;
@@ -226,6 +227,8 @@ public class Dlg_employees extends javax.swing.JDialog {
         jButton4 = new Button.Primary();
         jButton5 = new Button.Default();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        tf_department1 = new Field.Combo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -358,6 +361,21 @@ public class Dlg_employees extends javax.swing.JDialog {
         jCheckBox1.setSelected(true);
         jCheckBox1.setText("All");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Shift:");
+
+        tf_department1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_department1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_department1MouseClicked(evt);
+            }
+        });
+        tf_department1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_department1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -368,10 +386,6 @@ public class Dlg_employees extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_address))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -387,14 +401,6 @@ public class Dlg_employees extends javax.swing.JDialog {
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(tf_mi))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_contact_no)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_department))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -413,7 +419,27 @@ public class Dlg_employees extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_address))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_contact_no)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_department))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_department1)))))
                         .addGap(23, 23, 23))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,9 +480,13 @@ public class Dlg_employees extends javax.swing.JDialog {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_department, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_department1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -538,6 +568,14 @@ public class Dlg_employees extends javax.swing.JDialog {
         init_departments(jTextField8);
     }//GEN-LAST:event_jTextField8MouseClicked
 
+    private void tf_department1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_department1MouseClicked
+        init_shifting(tf_department1);
+    }//GEN-LAST:event_tf_department1MouseClicked
+
+    private void tf_department1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_department1ActionPerformed
+        init_shifting(tf_department1);
+    }//GEN-LAST:event_tf_department1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -559,6 +597,7 @@ public class Dlg_employees extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -568,6 +607,7 @@ public class Dlg_employees extends javax.swing.JDialog {
     private javax.swing.JTextField tf_address;
     private javax.swing.JTextField tf_contact_no;
     private javax.swing.JTextField tf_department;
+    private javax.swing.JTextField tf_department1;
     private javax.swing.JTextField tf_employee_id;
     private javax.swing.JTextField tf_fname;
     private javax.swing.JTextField tf_lname;
@@ -577,10 +617,18 @@ public class Dlg_employees extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         init_tbl_employees(tbl_employees);
-
+        Field.Combo sh = (Field.Combo) tf_department1;
+        sh.setText("Regular");
+        sh.setId("0");
         String where = "";
         departments = Departments.ret_data(where);
 
+        String where2 = "";
+        Shiftings.to_shiftings shift = new Shiftings.to_shiftings(0, "Regular", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "");
+
+        List<Shiftings.to_shiftings> shifts = Shiftings.ret_data(where2);
+        shiftings.add(shift);
+        shiftings.addAll(shifts);
     }
 
     public void do_pass() {
@@ -632,6 +680,33 @@ public class Dlg_employees extends javax.swing.JDialog {
         });
     }
 
+    List<Shiftings.to_shiftings> shiftings = new ArrayList();
+
+    private void init_shifting(final JTextField tf) {
+
+        Object[][] obj = new Object[shiftings.size()][1];
+        int i = 0;
+        for (Shiftings.to_shiftings to : shiftings) {
+            obj[i][0] = " " + to.shift;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        int width = 0;
+        String[] col_names = {"Shift"};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo combo = (Field.Combo) tf;
+                Shiftings.to_shiftings to = shiftings.get(data.selected_row);
+                combo.setId("" + to.id);
+                combo.setText(to.shift);
+            }
+        });
+    }
+
     //<editor-fold defaultstate="collapsed" desc=" employees "> 
     public static ArrayListModel tbl_employees_ALM;
     public static TblemployeesModel tbl_employees_M;
@@ -642,7 +717,7 @@ public class Dlg_employees extends javax.swing.JDialog {
         tbl_employees.setModel(tbl_employees_M);
         tbl_employees.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_employees.setRowHeight(25);
-        int[] tbl_widths_employees = {50, 100, 100, 120, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_employees = {50, 100, 100, 120, 100, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_employees.length; i < n; i++) {
             if (i == 2) {
                 continue;
@@ -665,7 +740,7 @@ public class Dlg_employees extends javax.swing.JDialog {
     public static class TblemployeesModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "ID", "ID No", "Name", "Department", "lname", "contact_no", "address", "department", "department_id", "date_added", "user_id", "user_screen_name"
+            "ID", "ID No", "Name", "Department", "Shift", "contact_no", "address", "department", "department_id", "date_added", "user_id", "user_screen_name"
         };
 
         public TblemployeesModel(ListModel listmodel) {
@@ -699,7 +774,7 @@ public class Dlg_employees extends javax.swing.JDialog {
                 case 3:
                     return " " + tt.department;
                 case 4:
-                    return tt.lname;
+                    return " " + tt.shift;
                 case 5:
                     return tt.contact_no;
                 case 6:
@@ -736,6 +811,7 @@ public class Dlg_employees extends javax.swing.JDialog {
     private void add_employees() {
 
         Field.Combo combo = (Field.Combo) tf_department;
+        Field.Combo sh = (Field.Combo) tf_department1;
         int id = 0;
         String employee_id = tf_employee_id.getText();
         String fname = tf_fname.getText();
@@ -748,8 +824,9 @@ public class Dlg_employees extends javax.swing.JDialog {
         String date_added = DateType.datetime.format(new Date());
         String user_id = "";// tf_user_id.getText();
         String user_screen_name = "";// tf_user_screen_name.getText();
-
-        to_employees to = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name);
+        String shift = sh.getText();
+        String shift_id = sh.getId();
+        to_employees to = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name, shift, shift_id);
         Employees.add_data(to);
         Alert.set(1, null);
         clear();
@@ -768,6 +845,7 @@ public class Dlg_employees extends javax.swing.JDialog {
 
     private void select_employees() {
         Field.Combo combo = (Field.Combo) tf_department;
+        Field.Combo sh = (Field.Combo) tf_department1;
         int row = tbl_employees.getSelectedRow();
         if (row < 0) {
             return;
@@ -784,7 +862,7 @@ public class Dlg_employees extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_employees_update_id.OutputData data) {
                     closeDialog.ok();
-                    Employees.update_id(to,data.id);
+                    Employees.update_id(to, data.id);
                     Alert.set(1, "");
                     data_cols();
                 }
@@ -801,12 +879,15 @@ public class Dlg_employees extends javax.swing.JDialog {
             tf_address.setText(to.address);
             tf_department.setText(to.department);
             combo.setId(to.department_id);
+            sh.setText(to.shift);
+            sh.setId(to.shift_id);
         }
 
     }
 
     private void update_employees() {
         Field.Combo combo = (Field.Combo) tf_department;
+        Field.Combo sh = (Field.Combo) tf_department1;
         int row = tbl_employees.getSelectedRow();
         if (row < 0) {
             return;
@@ -824,8 +905,9 @@ public class Dlg_employees extends javax.swing.JDialog {
         String date_added = to.date_added;
         String user_id = to.user_id;
         String user_screen_name = to.user_screen_name;
-
-        to_employees to1 = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name);
+        String shift = sh.getText();
+        String shift_id = sh.getId();
+        to_employees to1 = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name, shift, shift_id);
         Employees.update_data(to1);
         Alert.set(2, null);
         clear();

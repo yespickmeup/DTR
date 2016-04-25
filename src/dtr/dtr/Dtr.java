@@ -54,6 +54,148 @@ public class Dtr {
 
     }
 
+    public static class hours {
+
+        public String hour;
+
+        public hours(String hour) {
+            this.hour = hour;
+        }
+
+        public static List<hours> seed() {
+            List<hours> datas = new ArrayList();
+            hours h1 = new hours("00");
+            hours h2 = new hours("01");
+            hours h3 = new hours("02");
+            hours h4 = new hours("03");
+            hours h5 = new hours("04");
+            hours h6 = new hours("05");
+            hours h7 = new hours("06");
+            hours h8 = new hours("07");
+            hours h9 = new hours("08");
+            hours h10 = new hours("09");
+            hours h11 = new hours("10");
+            hours h12 = new hours("11");
+            hours h13 = new hours("12");
+            hours h14 = new hours("14");
+            hours h15 = new hours("15");
+            hours h16 = new hours("16");
+            hours h17 = new hours("17");
+            hours h18 = new hours("18");
+            hours h19 = new hours("19");
+            hours h20 = new hours("20");
+            hours h21 = new hours("21");
+            hours h22 = new hours("22");
+            hours h23 = new hours("23");
+            
+            datas.add(h1);
+            datas.add(h2);
+            datas.add(h3);
+            datas.add(h4);
+            datas.add(h5);
+            datas.add(h6);
+            datas.add(h7);
+            datas.add(h8);
+            datas.add(h9);
+            datas.add(h10);
+            datas.add(h11);
+            datas.add(h12);
+            datas.add(h13);
+            datas.add(h14);
+            datas.add(h15);
+            datas.add(h16);
+            datas.add(h17);
+            datas.add(h18);
+            datas.add(h19);
+            datas.add(h20);
+            datas.add(h21);
+            datas.add(h22);
+            datas.add(h23);
+           
+            return datas;
+        }
+    }
+
+    public static class minutes {
+
+        public String hour;
+
+        public minutes(String hour) {
+            this.hour = hour;
+        }
+
+        public static List<minutes> seed() {
+            List<minutes> datas = new ArrayList();
+            minutes h1 = new minutes("00");
+            minutes h2 = new minutes("05");
+            minutes h3 = new minutes("10");
+            minutes h4 = new minutes("15");
+            minutes h5 = new minutes("20");
+            minutes h6 = new minutes("25");
+            minutes h7 = new minutes("30");
+            minutes h8 = new minutes("35");
+            minutes h9 = new minutes("40");
+            minutes h10 = new minutes("45");
+            minutes h11 = new minutes("50");
+            minutes h12 = new minutes("55");
+
+            datas.add(h1);
+            datas.add(h2);
+            datas.add(h3);
+            datas.add(h4);
+            datas.add(h5);
+            datas.add(h6);
+            datas.add(h7);
+            datas.add(h8);
+            datas.add(h9);
+            datas.add(h10);
+            datas.add(h11);
+            datas.add(h12);
+
+            return datas;
+        }
+    }
+
+    public static class seconds {
+
+        public String hour;
+
+        public seconds(String hour) {
+            this.hour = hour;
+        }
+
+        public static List<seconds> seed() {
+            List<seconds> datas = new ArrayList();
+            seconds h1 = new seconds("00");
+            seconds h2 = new seconds("05");
+            seconds h3 = new seconds("10");
+            seconds h4 = new seconds("15");
+            seconds h5 = new seconds("20");
+            seconds h6 = new seconds("25");
+            seconds h7 = new seconds("30");
+            seconds h8 = new seconds("35");
+            seconds h9 = new seconds("40");
+            seconds h10 = new seconds("45");
+            seconds h11 = new seconds("50");
+            seconds h12 = new seconds("55");
+
+            datas.add(h1);
+            datas.add(h2);
+            datas.add(h3);
+            datas.add(h4);
+            datas.add(h5);
+            datas.add(h6);
+            datas.add(h7);
+            datas.add(h8);
+            datas.add(h9);
+            datas.add(h10);
+            datas.add(h11);
+            datas.add(h12);
+
+            return datas;
+        }
+    }
+
     public static class dtr_dates {
 
         String date;

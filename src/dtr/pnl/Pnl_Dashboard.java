@@ -5,8 +5,10 @@
 package dtr.pnl;
 
 import dtr.departments.Dlg_departments;
+import dtr.dtr.Dlg_generate_dtr;
 import dtr.employees.Dlg_employees;
 import dtr.holidays.Dlg_holidays;
+import dtr.shifting.Dlg_shifting;
 import dtr.sick_leaves.Dlg_sick_leaves;
 import dtr.users.Dlg_users;
 import dtr.users.MyUser;
@@ -652,6 +654,9 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Sick Leaves")) {
                     sick_leaves();
                 }
+                if (data.stmt.equals("Shifting")) {
+                    shifting();
+                }
                 //</editor-fold>
                 //<editor-fold defaultstate="collapsed" desc=" maintenance ">
                 if (data.stmt.equals("Departments")) {
@@ -688,7 +693,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
     }
 
     private void dtr() {
-        Dlg_dtr dtc = new Dlg_dtr();
+        Dlg_generate_dtr dtc = new Dlg_generate_dtr();
         MyFrame.set(dtc.getSurface(), jPanel1, "DTR");
     }
 
@@ -700,6 +705,11 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
     private void sick_leaves() {
         Dlg_sick_leaves dtc = new Dlg_sick_leaves();
         MyFrame.set(dtc.getSurface(), jPanel1, "Sick Leaves");
+    }
+
+    private void shifting() {
+        Dlg_shifting dtc = new Dlg_shifting();
+        MyFrame.set(dtc.getSurface(), jPanel1, "Shifting");
     }
 
     private void departments() {
