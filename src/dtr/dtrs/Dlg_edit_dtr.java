@@ -268,7 +268,6 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel3.setText("AM Arrival:");
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setText("00");
         jTextField3.setFocusable(false);
         jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -345,7 +344,6 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         });
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField4.setText("00");
         jTextField4.setFocusable(false);
         jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -360,7 +358,6 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel15.setText("Hour:");
 
         jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField5.setText("00");
         jTextField5.setFocusable(false);
         jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -399,7 +396,6 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel18.setText("Hour:");
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField6.setText("00");
         jTextField6.setFocusable(false);
         jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -435,7 +431,6 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         jLabel21.setText("Undertime:");
 
         jTextField8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField8.setText("00");
         jTextField8.setFocusable(false);
         jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -498,55 +493,55 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel9)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel11)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)))
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel15)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel14)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField12))
+                                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel16)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel17)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel18)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jLabel19)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jLabel20)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -554,11 +549,11 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
@@ -649,23 +644,23 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
-        init_hours(jTextField3);
+        init_hours_am(jTextField3);
     }//GEN-LAST:event_jTextField3MouseClicked
 
     private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
-        init_hours(jTextField4);
+        init_hours_am(jTextField4);
     }//GEN-LAST:event_jTextField4MouseClicked
 
     private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
-        init_hours(jTextField5);
+        init_hours_pm(jTextField5);
     }//GEN-LAST:event_jTextField5MouseClicked
 
     private void jTextField6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField6MouseClicked
-        init_hours(jTextField6);
+        init_hours_pm(jTextField6);
     }//GEN-LAST:event_jTextField6MouseClicked
 
     private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
-        init_hours(jTextField8);
+        init_hours_all(jTextField8);
     }//GEN-LAST:event_jTextField8MouseClicked
 
     private void jTextField9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField9MouseClicked
@@ -758,7 +753,9 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
-        dtr_hours = Dtr.hours.seed();
+        dtr_hours_am = Dtr.hours.seed_am();
+        dtr_hours_pm = Dtr.hours.seed_pm();
+        dtr_hours_all = Dtr.hours.seed_all();
         dtr_minutes = Dtr.minutes.seed();
         dtr_seconds = Dtr.seconds.seed();
     }
@@ -772,7 +769,7 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         try {
             if (to.am_arrival != null) {
                 Date am_arrival = DateType.datetime.parse(to.am_arrival);
-                String hour = DateType.hour.format(am_arrival);
+                String hour = Dtr.convert_to_ampm(DateType.hour.format(am_arrival));
                 String minute = DateType.minute.format(am_arrival);
                 String second = DateType.second.format(am_arrival);
                 jTextField3.setText(hour);
@@ -781,7 +778,7 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
             }
             if (to.am_departure != null) {
                 Date am_arrival = DateType.datetime.parse(to.am_departure);
-                String hour = DateType.hour.format(am_arrival);
+                String hour = Dtr.convert_to_ampm(DateType.hour.format(am_arrival));
                 String minute = DateType.minute.format(am_arrival);
                 String second = DateType.second.format(am_arrival);
                 jTextField4.setText(hour);
@@ -790,7 +787,7 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
             }
             if (to.pm_arrival != null) {
                 Date am_arrival = DateType.datetime.parse(to.pm_arrival);
-                String hour = DateType.hour.format(am_arrival);
+                String hour = Dtr.convert_to_ampm(DateType.hour.format(am_arrival));
                 String minute = DateType.minute.format(am_arrival);
                 String second = DateType.second.format(am_arrival);
                 jTextField5.setText(hour);
@@ -799,7 +796,7 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
             }
             if (to.pm_departure != null) {
                 Date am_arrival = DateType.datetime.parse(to.pm_departure);
-                String hour = DateType.hour.format(am_arrival);
+                String hour = Dtr.convert_to_ampm(DateType.hour.format(am_arrival));
                 String minute = DateType.minute.format(am_arrival);
                 String second = DateType.second.format(am_arrival);
                 jTextField6.setText(hour);
@@ -829,13 +826,13 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     }
     // </editor-fold>
 
-    List<Dtr.hours> dtr_hours = new ArrayList();
+    List<Dtr.hours> dtr_hours_am = new ArrayList();
 
-    private void init_hours(final JTextField tf) {
+    private void init_hours_am(final JTextField tf) {
 
-        Object[][] obj = new Object[dtr_hours.size()][1];
+        Object[][] obj = new Object[dtr_hours_am.size()][1];
         int i = 0;
-        for (Dtr.hours to : dtr_hours) {
+        for (Dtr.hours to : dtr_hours_am) {
             obj[i][0] = " " + to.hour;
             i++;
         }
@@ -850,11 +847,65 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
             @Override
             public void ok(TableRenderer.OutputData data) {
                 Field.Combo combo = (Field.Combo) tf;
-                Dtr.hours to = dtr_hours.get(data.selected_row);
+                Dtr.hours to = dtr_hours_am.get(data.selected_row);
                 combo.setText(to.hour);
             }
         });
     }
+    List<Dtr.hours> dtr_hours_pm = new ArrayList();
+
+    private void init_hours_pm(final JTextField tf) {
+
+        Object[][] obj = new Object[dtr_hours_pm.size()][1];
+        int i = 0;
+        for (Dtr.hours to : dtr_hours_pm) {
+            obj[i][0] = " " + to.hour;
+            i++;
+        }
+
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        int width = 0;
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo combo = (Field.Combo) tf;
+                Dtr.hours to = dtr_hours_pm.get(data.selected_row);
+                combo.setText(to.hour);
+            }
+        });
+    }
+
+    List<Dtr.hours> dtr_hours_all = new ArrayList();
+
+    private void init_hours_all(final JTextField tf) {
+
+        Object[][] obj = new Object[dtr_hours_all.size()][1];
+        int i = 0;
+        for (Dtr.hours to : dtr_hours_all) {
+            obj[i][0] = " " + to.hour;
+            i++;
+        }
+
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        int width = 0;
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo combo = (Field.Combo) tf;
+                Dtr.hours to = dtr_hours_all.get(data.selected_row);
+                combo.setText(to.hour);
+            }
+        });
+    }
+
     List<Dtr.minutes> dtr_minutes = new ArrayList();
 
     private void init_minutes(final JTextField tf) {
@@ -909,11 +960,18 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     }
 
     private void ok() {
-        String am_arrival = jTextField3.getText() + ":" + jTextField9.getText() + ":" + jTextField10.getText();
-        String am_departure = jTextField4.getText() + ":" + jTextField11.getText() + ":" + jTextField12.getText();
-        String pm_arrival = jTextField5.getText() + ":" + jTextField13.getText() + ":" + jTextField14.getText();
-        String pm_departure = jTextField6.getText() + ":" + jTextField15.getText() + ":" + jTextField16.getText();
-        String undertime_hour = jTextField8.getText();
+        String aah = Dtr.convert_to_00(jTextField3.getText());
+        String adh = Dtr.convert_to_00(jTextField4.getText());
+        String pah = Dtr.convert_to_00(jTextField5.getText());
+        String pdh = Dtr.convert_to_00(jTextField6.getText());
+        String uh = Dtr.convert_to_00(jTextField8.getText());
+        
+        
+        String am_arrival = aah + ":" + jTextField9.getText() + ":" + jTextField10.getText();
+        String am_departure = adh + ":" + jTextField11.getText() + ":" + jTextField12.getText();
+        String pm_arrival = pah + ":" + jTextField13.getText() + ":" + jTextField14.getText();
+        String pm_departure = pdh + ":" + jTextField15.getText() + ":" + jTextField16.getText();
+        String undertime_hour = uh;
         String undertime_minute = jTextField17.getText();
         if (callback != null) {
             callback.ok(new CloseDialog(this), new OutputData(am_arrival, am_departure, pm_arrival, pm_departure, undertime_hour, undertime_minute));

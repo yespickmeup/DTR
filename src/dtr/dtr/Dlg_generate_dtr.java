@@ -15,9 +15,11 @@ import dtr.holidays.Holidays;
 import dtr.pnl.Extract;
 import static dtr.pnl.Extract.showExcelData;
 import dtr.reports.Srpt_dtr;
+import dtr.settings.Settings;
 import dtr.shifting.Shiftings;
 import dtr.sick_leaves.Sick_leaves;
 import dtr.util.Alert;
+import dtr.util.DateType;
 import dtr.util.Dlg_confirm_action;
 import dtr.util.Dlg_confirm_action2;
 import dtr.util.TableRenderer;
@@ -65,7 +67,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
-import synsoftech.util.DateType;
 
 /**
  *
@@ -246,10 +247,9 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
-        jLabel13 = new javax.swing.JLabel();
-        tf_fname = new Field.Input();
-        tf_fname1 = new Field.Input();
+        tf_supervisor = new Field.Input();
         jLabel14 = new javax.swing.JLabel();
+        jButton6 = new Button.Default();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_dtrs = new javax.swing.JTable();
@@ -336,6 +336,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
         jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox2.setText("All");
+        jCheckBox2.setEnabled(false);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Range:");
@@ -359,17 +360,17 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Verified by:");
-
-        tf_fname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_fname.setText("ELICCION, VIRGILIO GINOO");
-
-        tf_fname1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_fname1.setText("MARJORIE R. ROLA, Ph.D.");
+        tf_supervisor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("In Charged:");
+        jLabel14.setText("Supervisor:");
+
+        jButton6.setText("Update");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -401,13 +402,13 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_fname)
-                            .addComponent(tf_fname1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                            .addComponent(tf_supervisor, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -433,15 +434,13 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_fname1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(tf_supervisor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -487,7 +486,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -673,7 +672,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -697,7 +696,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         );
         pnl_reportLayout.setVerticalGroup(
             pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
+            .addGap(0, 549, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -834,6 +833,10 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         setPeriod();
     }//GEN-LAST:event_jCheckBox6ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        update_supervisor();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -846,6 +849,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -856,7 +860,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -884,19 +887,40 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel pnl_report;
     private javax.swing.JTable tbl_dtrs;
-    private javax.swing.JTextField tf_fname;
-    private javax.swing.JTextField tf_fname1;
+    private javax.swing.JTextField tf_supervisor;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
+        Field.Combo emp = (Field.Combo) jTextField4;
 
         setPeriod();
-
         init_tbl_dtr(jTable1);
         init_tbl_dtrs(tbl_dtrs);
         String where = " ";
         employees1 = Employees.ret_data(where);
 
+        List<Settings.to_settings> settings = Settings.ret_data("");
+        Settings.to_settings setting = settings.get(0);
+        tf_supervisor.setText(setting.supervisor);
+
+        //test
+        Field.Combo period = (Field.Combo) jTextField3;
+        period.setText("March 1 2016 - March 31 2016");
+        employees = Employees.ret_data(" ");
+        employee = employees.get(0);
+        System.out.println("Emp ID: " + employee.id);
+        System.out.println("Emp Name: " + employee.lname);
+        emp.setText("JUCOM O., SUESA");
+        emp.setId("1");
+        data_cols_dtr();
+//        init_report();
+    }
+
+    private void update_supervisor() {
+        String supervisor = tf_supervisor.getText();
+        Settings.to_settings setting = new Settings.to_settings(1, supervisor);
+        Settings.update_data(setting);
+        Alert.set(2, "");
     }
 
     public void do_pass() {
@@ -1171,6 +1195,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         sheetData.add(data);
                     }
                 } catch (IOException e) {
+
                     JOptionPane.showMessageDialog(null, "Unsupported Format");
                 } finally {
 
@@ -1185,7 +1210,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 String date_added = dtr.util.DateType.datetime.format(new Date());
                 List<Extract.field> datas = showExcelData(sheetData, path);
                 List<Dtr.to_dtr> dtrs = new ArrayList();
-
                 int i = 0;
                 for (Extract.field f : datas) {
                     if (i != 0) {
@@ -1284,6 +1308,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 jProgressBar2.setIndeterminate(true);
 
                 String[] payroll_period = jTextField3.getText().split("-");
+                String pay_month = "";
+                String pay_year = "";
                 try {
                     Date period_from = dtr.util.DateType.month_date2.parse(payroll_period[0]);
                     String pr = payroll_period[1];
@@ -1294,7 +1320,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                     int payroll_to_day = FitIn.toInt(DateType.d.format(period_to));
                     String payroll_month = "" + FitIn.toInt(DateType.m1.format(period_to));
                     String payroll_year = "" + FitIn.toInt(DateType.y.format(period_to));
-
+                    pay_month = payroll_month;
+                    pay_year = payroll_year;
                     if (payroll_month.length() == 1) {
                         payroll_month = "0" + payroll_month;
                     }
@@ -1928,12 +1955,12 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             for (Holidays.to_holidays holiday : holidays) {
                                 if (str_date.equalsIgnoreCase(holiday.date_of_holiday)) {
                                     if (holiday.half_day_am == 1) {
-                                        aa = "Holiday";
-                                        ad = "Holiday";
+                                        aa = holiday.holiday;
+                                        ad = holiday.holiday;
                                     }
                                     if (holiday.half_day_pm == 1) {
-                                        pa = "Holiday";
-                                        pd = "Holiday";
+                                        pa = holiday.holiday;
+                                        pd = holiday.holiday;
                                     }
                                 }
                             }
@@ -1944,8 +1971,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad1 = what_day;
                                     pa1 = what_day;
                                     pd1 = what_day;
-                                    uh1 = what_day;
-                                    um1 = what_day;
+                                    uh1 = "";
+                                    um1 = "";
                                 } else {
                                     aa1 = aa;
                                     ad1 = ad;
@@ -1961,8 +1988,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad2 = what_day;
                                     pa2 = what_day;
                                     pd2 = what_day;
-                                    uh2 = what_day;
-                                    um2 = what_day;
+                                    uh2 = "";
+                                    um2 = "";
                                 } else {
                                     aa2 = aa;
                                     ad2 = ad;
@@ -1978,8 +2005,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad3 = what_day;
                                     pa3 = what_day;
                                     pd3 = what_day;
-                                    uh3 = what_day;
-                                    um3 = what_day;
+                                    uh3 = "";
+                                    um3 = "";
                                 } else {
                                     aa3 = aa;
                                     ad3 = ad;
@@ -1995,8 +2022,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad4 = what_day;
                                     pa4 = what_day;
                                     pd4 = what_day;
-                                    uh4 = what_day;
-                                    um4 = what_day;
+                                    uh4 = "";
+                                    um4 = "";
                                 } else {
                                     aa4 = aa;
                                     ad4 = ad;
@@ -2012,8 +2039,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad5 = what_day;
                                     pa5 = what_day;
                                     pd5 = what_day;
-                                    uh5 = what_day;
-                                    um5 = what_day;
+                                    uh5 = "";
+                                    um5 = "";
                                 } else {
                                     aa5 = aa;
                                     ad5 = ad;
@@ -2029,8 +2056,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad6 = what_day;
                                     pa6 = what_day;
                                     pd6 = what_day;
-                                    uh6 = what_day;
-                                    um6 = what_day;
+                                    uh6 = "";
+                                    um6 = "";
                                 } else {
                                     aa6 = aa;
                                     ad6 = ad;
@@ -2046,8 +2073,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad7 = what_day;
                                     pa7 = what_day;
                                     pd7 = what_day;
-                                    uh7 = what_day;
-                                    um7 = what_day;
+                                    uh7 = "";
+                                    um7 = "";
                                 } else {
                                     aa7 = aa;
                                     ad7 = ad;
@@ -2063,8 +2090,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad8 = what_day;
                                     pa8 = what_day;
                                     pd8 = what_day;
-                                    uh8 = what_day;
-                                    um8 = what_day;
+                                    uh8 = "";
+                                    um8 = "";
                                 } else {
                                     aa8 = aa;
                                     ad8 = ad;
@@ -2080,8 +2107,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad9 = what_day;
                                     pa9 = what_day;
                                     pd9 = what_day;
-                                    uh9 = what_day;
-                                    um9 = what_day;
+                                    uh9 = "";
+                                    um9 = "";
                                 } else {
                                     aa9 = aa;
                                     ad9 = ad;
@@ -2097,8 +2124,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad10 = what_day;
                                     pa10 = what_day;
                                     pd10 = what_day;
-                                    uh10 = what_day;
-                                    um10 = what_day;
+                                    uh10 = "";
+                                    um10 = "";
                                 } else {
                                     aa10 = aa;
                                     ad10 = ad;
@@ -2114,8 +2141,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad11 = what_day;
                                     pa11 = what_day;
                                     pd11 = what_day;
-                                    uh11 = what_day;
-                                    um11 = what_day;
+                                    uh11 = "";
+                                    um11 = "";
                                 } else {
                                     aa11 = aa;
                                     ad11 = ad;
@@ -2131,8 +2158,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad12 = what_day;
                                     pa12 = what_day;
                                     pd12 = what_day;
-                                    uh12 = what_day;
-                                    um12 = what_day;
+                                    uh12 = "";
+                                    um12 = "";
                                 } else {
                                     aa12 = aa;
                                     ad12 = ad;
@@ -2148,8 +2175,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad13 = what_day;
                                     pa13 = what_day;
                                     pd13 = what_day;
-                                    uh13 = what_day;
-                                    um13 = what_day;
+                                    uh13 = "";
+                                    um13 = "";
                                 } else {
                                     aa13 = aa;
                                     ad13 = ad;
@@ -2165,8 +2192,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad14 = what_day;
                                     pa14 = what_day;
                                     pd14 = what_day;
-                                    uh14 = what_day;
-                                    um14 = what_day;
+                                    uh14 = "";
+                                    um14 = "";
                                 } else {
                                     aa14 = aa;
                                     ad14 = ad;
@@ -2182,8 +2209,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad15 = what_day;
                                     pa15 = what_day;
                                     pd15 = what_day;
-                                    uh15 = what_day;
-                                    um15 = what_day;
+                                    uh15 = "";
+                                    um15 = "";
                                 } else {
                                     aa15 = aa;
                                     ad15 = ad;
@@ -2199,8 +2226,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad16 = what_day;
                                     pa16 = what_day;
                                     pd16 = what_day;
-                                    uh16 = what_day;
-                                    um16 = what_day;
+                                    uh16 = "";
+                                    um16 = "";
                                 } else {
                                     aa16 = aa;
                                     ad16 = ad;
@@ -2216,8 +2243,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad17 = what_day;
                                     pa17 = what_day;
                                     pd17 = what_day;
-                                    uh17 = what_day;
-                                    um17 = what_day;
+                                    uh17 = "";
+                                    um17 = "";
                                 } else {
                                     aa17 = aa;
                                     ad17 = ad;
@@ -2233,8 +2260,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad18 = what_day;
                                     pa18 = what_day;
                                     pd18 = what_day;
-                                    uh18 = what_day;
-                                    um18 = what_day;
+                                    uh18 = "";
+                                    um18 = "";
                                 } else {
                                     aa18 = aa;
                                     ad18 = ad;
@@ -2250,8 +2277,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad19 = what_day;
                                     pa19 = what_day;
                                     pd19 = what_day;
-                                    uh19 = what_day;
-                                    um19 = what_day;
+                                    uh19 = "";
+                                    um19 = "";
                                 } else {
                                     aa19 = aa;
                                     ad19 = ad;
@@ -2267,8 +2294,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad20 = what_day;
                                     pa20 = what_day;
                                     pd20 = what_day;
-                                    uh20 = what_day;
-                                    um20 = what_day;
+                                    uh20 = "";
+                                    um20 = "";
                                 } else {
                                     aa20 = aa;
                                     ad20 = ad;
@@ -2284,8 +2311,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad21 = what_day;
                                     pa21 = what_day;
                                     pd21 = what_day;
-                                    uh21 = what_day;
-                                    um21 = what_day;
+                                    uh21 = "";
+                                    um21 = "";
                                 } else {
                                     aa21 = aa;
                                     ad21 = ad;
@@ -2301,8 +2328,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad22 = what_day;
                                     pa22 = what_day;
                                     pd22 = what_day;
-                                    uh22 = what_day;
-                                    um22 = what_day;
+                                    uh22 = "";
+                                    um22 = "";
                                 } else {
                                     aa22 = aa;
                                     ad22 = ad;
@@ -2318,8 +2345,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad23 = what_day;
                                     pa23 = what_day;
                                     pd23 = what_day;
-                                    uh23 = what_day;
-                                    um23 = what_day;
+                                    uh23 = "";
+                                    um23 = "";
                                 } else {
                                     aa23 = aa;
                                     ad23 = ad;
@@ -2335,8 +2362,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad24 = what_day;
                                     pa24 = what_day;
                                     pd24 = what_day;
-                                    uh24 = what_day;
-                                    um24 = what_day;
+                                    uh24 = "";
+                                    um24 = "";
                                 } else {
                                     aa24 = aa;
                                     ad24 = ad;
@@ -2352,8 +2379,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad25 = what_day;
                                     pa25 = what_day;
                                     pd25 = what_day;
-                                    uh25 = what_day;
-                                    um25 = what_day;
+                                    uh25 = "";
+                                    um25 = "";
                                 } else {
                                     aa25 = aa;
                                     ad25 = ad;
@@ -2369,8 +2396,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad26 = what_day;
                                     pa26 = what_day;
                                     pd26 = what_day;
-                                    uh26 = what_day;
-                                    um26 = what_day;
+                                    uh26 = "";
+                                    um26 = "";
                                 } else {
                                     aa26 = aa;
                                     ad26 = ad;
@@ -2386,8 +2413,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad27 = what_day;
                                     pa27 = what_day;
                                     pd27 = what_day;
-                                    uh27 = what_day;
-                                    um27 = what_day;
+                                    uh27 = "";
+                                    um27 = "";
                                 } else {
                                     aa27 = aa;
                                     ad27 = ad;
@@ -2403,8 +2430,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad28 = what_day;
                                     pa28 = what_day;
                                     pd28 = what_day;
-                                    uh28 = what_day;
-                                    um28 = what_day;
+                                    uh28 = "";
+                                    um28 = "";
                                 } else {
                                     aa28 = aa;
                                     ad28 = ad;
@@ -2420,8 +2447,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad29 = what_day;
                                     pa29 = what_day;
                                     pd29 = what_day;
-                                    uh29 = what_day;
-                                    um29 = what_day;
+                                    uh29 = "";
+                                    um29 = "";
                                 } else {
                                     aa29 = aa;
                                     ad29 = ad;
@@ -2437,8 +2464,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad30 = what_day;
                                     pa30 = what_day;
                                     pd30 = what_day;
-                                    uh30 = what_day;
-                                    um30 = what_day;
+                                    uh30 = "";
+                                    um30 = "";
                                 } else {
                                     aa30 = aa;
                                     ad30 = ad;
@@ -2454,8 +2481,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     ad31 = what_day;
                                     pa31 = what_day;
                                     pd31 = what_day;
-                                    uh31 = what_day;
-                                    um31 = what_day;
+                                    uh31 = "";
+                                    um31 = "";
                                 } else {
                                     aa31 = aa;
                                     ad31 = ad;
@@ -2478,11 +2505,11 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                     Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                String business_name = System.getProperty("business_name", "Algorithm Computer Services");
+                String business_name = System.getProperty("business_name", "");
                 String date = DateType.month_date.format(new Date());
                 String printed_by = "Administrator";
-
-                String dtr_date = "October 2015";
+                pay_month = DateType.toMonth((FitIn.toInt(pay_month) - 1));
+                String dtr_date = pay_month + " " + pay_year;
                 String date_printed = DateType.slash_w_time.format(new Date());
                 String regular_day_am = "8:00";
                 String regular_day_pm = "5:00";
@@ -2492,8 +2519,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 String two_nine = "29";
                 String thirty = "30";
                 String thirty_one = "31";
-                String verified_by = tf_fname.getText();
-                String in_charge = tf_fname1.getText();
+                String verified_by = "";
+                String in_charge = tf_supervisor.getText();
                 String user_home = System.getProperty("user.home");
                 Srpt_dtr rpt = new Srpt_dtr(dtr_date, date_printed, regular_day_am, regular_day_pm, total_hours, total_minutes, two_nine, thirty, thirty_one, verified_by, in_charge, user_home);
                 rpt.fields.addAll(datas);

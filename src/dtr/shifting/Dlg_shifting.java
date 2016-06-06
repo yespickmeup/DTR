@@ -270,10 +270,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         tf_shift.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel9.setText("6AM:");
+        jLabel9.setText("06 AM:");
 
         tf_am_6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_6.setText("06");
+        tf_am_6.setText("06 AM");
         tf_am_6.setFocusable(false);
         tf_am_6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -287,10 +287,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setText("7AM:");
+        jLabel10.setText("07 AM:");
 
         tf_am_7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_7.setText("07");
+        tf_am_7.setText("07 AM");
         tf_am_7.setFocusable(false);
         tf_am_7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -304,7 +304,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         tf_am_8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_8.setText("08");
+        tf_am_8.setText("08 AM");
         tf_am_8.setFocusable(false);
         tf_am_8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -318,13 +318,13 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setText("8AM:");
+        jLabel11.setText("08 AM:");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel12.setText("9AM:");
+        jLabel12.setText("09 AM:");
 
         tf_am_9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_9.setText("09");
+        tf_am_9.setText("09 AM");
         tf_am_9.setFocusable(false);
         tf_am_9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -338,10 +338,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel13.setText("10AM:");
+        jLabel13.setText("10 AM:");
 
         tf_am_10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_10.setText("10");
+        tf_am_10.setText("10 AM");
         tf_am_10.setFocusable(false);
         tf_am_10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -355,10 +355,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel14.setText("11AM:");
+        jLabel14.setText("11 AM:");
 
         tf_am_11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_11.setText("11");
+        tf_am_11.setText("11 AM");
         tf_am_11.setFocusable(false);
         tf_am_11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -372,10 +372,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel15.setText("12AM:");
+        jLabel15.setText("12 AM:");
 
         tf_am_12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_12.setText("00");
+        tf_am_12.setText("12 AM");
         tf_am_12.setFocusable(false);
         tf_am_12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -389,10 +389,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel16.setText("1AM:");
+        jLabel16.setText("01 AM:");
 
         tf_am_1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_1.setText("01");
+        tf_am_1.setText("01 AM");
         tf_am_1.setFocusable(false);
         tf_am_1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -406,7 +406,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         tf_am_2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_2.setText("02");
+        tf_am_2.setText("02 AM");
         tf_am_2.setFocusable(false);
         tf_am_2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -420,10 +420,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel17.setText("2AM:");
+        jLabel17.setText("02 AM:");
 
         tf_am_3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_3.setText("03");
+        tf_am_3.setText("03 AM");
         tf_am_3.setFocusable(false);
         tf_am_3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -437,10 +437,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel18.setText("3AM:");
+        jLabel18.setText("03 AM:");
 
         tf_am_4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_4.setText("04");
+        tf_am_4.setText("04 AM");
         tf_am_4.setFocusable(false);
         tf_am_4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -454,13 +454,13 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel19.setText("4AM:");
+        jLabel19.setText("04 AM:");
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel20.setText("5AM:");
+        jLabel20.setText("05 AM:");
 
         tf_am_5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_am_5.setText("05");
+        tf_am_5.setText("05 AM");
         tf_am_5.setFocusable(false);
         tf_am_5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -474,7 +474,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         tf_pm_12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_12.setText("12");
+        tf_pm_12.setText("12 PM");
         tf_pm_12.setFocusable(false);
         tf_pm_12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -488,10 +488,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel21.setText("1PM:");
+        jLabel21.setText("01 PM:");
 
         tf_pm_1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_1.setText("13");
+        tf_pm_1.setText("01 PM");
         tf_pm_1.setFocusable(false);
         tf_pm_1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -505,7 +505,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         tf_pm_2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_2.setText("14");
+        tf_pm_2.setText("02 PM");
         tf_pm_2.setFocusable(false);
         tf_pm_2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -519,10 +519,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel22.setText("2PM:");
+        jLabel22.setText("02 PM:");
 
         tf_pm_3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_3.setText("15");
+        tf_pm_3.setText("03 PM");
         tf_pm_3.setFocusable(false);
         tf_pm_3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -536,13 +536,13 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel23.setText("6PM:");
+        jLabel23.setText("06 PM:");
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel24.setText("3PM:");
+        jLabel24.setText("03 PM:");
 
         tf_pm_6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_6.setText("18");
+        tf_pm_6.setText("06 PM");
         tf_pm_6.setFocusable(false);
         tf_pm_6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -556,7 +556,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         tf_pm4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm4.setText("16");
+        tf_pm4.setText("04 PM");
         tf_pm4.setFocusable(false);
         tf_pm4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -570,16 +570,16 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel25.setText("4PM:");
+        jLabel25.setText("04 PM:");
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel26.setText("7PM:");
+        jLabel26.setText("07 PM:");
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel27.setText("5PM:");
+        jLabel27.setText("05 PM:");
 
         tf_pm_7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_7.setText("19");
+        tf_pm_7.setText("07 PM");
         tf_pm_7.setFocusable(false);
         tf_pm_7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -593,7 +593,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         tf_pm_5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_5.setText("17");
+        tf_pm_5.setText("05 PM");
         tf_pm_5.setFocusable(false);
         tf_pm_5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -607,7 +607,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         tf_pm_8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_8.setText("20");
+        tf_pm_8.setText("08 PM");
         tf_pm_8.setFocusable(false);
         tf_pm_8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -621,13 +621,13 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel28.setText("8PM:");
+        jLabel28.setText("08 PM:");
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel29.setText("9PM:");
+        jLabel29.setText("09 PM:");
 
         tf_pm_9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_9.setText("21");
+        tf_pm_9.setText("09 PM");
         tf_pm_9.setFocusable(false);
         tf_pm_9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -641,10 +641,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel30.setText("10PM:");
+        jLabel30.setText("10 PM:");
 
         tf_pm_10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_10.setText("22");
+        tf_pm_10.setText("10 PM");
         tf_pm_10.setFocusable(false);
         tf_pm_10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -658,10 +658,10 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel31.setText("11PM:");
+        jLabel31.setText("11 PM:");
 
         tf_pm_11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_pm_11.setText("23");
+        tf_pm_11.setText("11 PM");
         tf_pm_11.setFocusable(false);
         tf_pm_11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -675,7 +675,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
         });
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel32.setText("12PM:");
+        jLabel32.setText("12 PM:");
 
         jButton2.setText("New");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -769,105 +769,105 @@ public class Dlg_shifting extends javax.swing.JDialog {
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_12, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_1, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_2, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_3, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm4, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_5, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                                .addComponent(tf_pm_5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_6, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_7, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_8, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_9, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_10, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_pm_10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_pm_11, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                                .addComponent(tf_pm_11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_12, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_1, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_2, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_3, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_4, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_5, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                                .addComponent(tf_am_5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tf_shift))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_6, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_7, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_8, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_9, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_10, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                .addComponent(tf_am_10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_am_11, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))))
+                                .addComponent(tf_am_11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jTextField2))
                 .addGap(27, 27, 27))
         );
@@ -942,7 +942,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1253,7 +1253,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
-        dtr_hours = Dtr.hours.seed();
+        dtr_hours = Dtr.hours.seed_all();
         init_tbl_shiftings(tbl_shiftings);
     }
 
@@ -1587,30 +1587,31 @@ public class Dlg_shifting extends javax.swing.JDialog {
 
     private void clear_shifting() {
         tf_shift.setText("");
-        tf_am_12.setText("00");
-        tf_am_1.setText("01");
-        tf_am_2.setText("02");
-        tf_am_3.setText("03");
-        tf_am_4.setText("04");
-        tf_am_5.setText("05");
-        tf_am_6.setText("06");
-        tf_am_7.setText("07");
-        tf_am_8.setText("08");
-        tf_am_9.setText("09");
-        tf_am_10.setText("10");
-        tf_am_11.setText("11");
-        tf_pm_12.setText("12");
-        tf_pm_1.setText("13");
-        tf_pm_2.setText("14");
-        tf_pm_3.setText("15");
-        tf_pm4.setText("16");
-        tf_pm_5.setText("17");
-        tf_pm_6.setText("18");
-        tf_pm_7.setText("19");
-        tf_pm_8.setText("20");
-        tf_pm_9.setText("21");
-        tf_pm_10.setText("22");
-        tf_pm_11.setText("23");
+        tf_am_12.setText("12 AM");
+        tf_am_1.setText("01 AM");
+        tf_am_2.setText("02 AM");
+        tf_am_3.setText("03 AM");
+        tf_am_4.setText("04 AM");
+        tf_am_5.setText("05 AM");
+        tf_am_6.setText("06 AM");
+        tf_am_7.setText("07 AM");
+        tf_am_8.setText("08 AM");
+        tf_am_9.setText("09 AM");
+        tf_am_10.setText("10 AM");
+        tf_am_11.setText("11 AM");
+        tf_pm_12.setText("12 PM");
+        tf_pm_1.setText("01 PM");
+        tf_pm_2.setText("02 PM");
+        tf_pm_3.setText("03 PM");
+        tf_pm4.setText("04 PM");
+        tf_pm_5.setText("05 PM");
+        tf_pm_6.setText("06 PM");
+        tf_pm_7.setText("07 PM");
+        tf_pm_8.setText("08 PM");
+        tf_pm_9.setText("09 PM");
+        tf_pm_10.setText("10 PM");
+        tf_pm_11.setText("11 PM");
+        tbl_shiftings.clearSelection();
         tf_shift.grabFocus();
     }
 }

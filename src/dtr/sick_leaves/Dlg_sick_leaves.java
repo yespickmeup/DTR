@@ -34,7 +34,6 @@ import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
-import synsoftech.fields.Label;
 import synsoftech.util.DateType;
 
 /**
@@ -206,7 +205,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        tf_reason = new javax.swing.JTextField();
+        tf_reason = new Field.Combo();
         jLabel2 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -259,6 +258,11 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         jLabel1.setText("Reason:");
 
         tf_reason.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_reason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_reasonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Date:");
@@ -536,6 +540,10 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
     private void tf_employee_id1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_employee_id1MouseClicked
         init_employees(tf_employee_id1);
     }//GEN-LAST:event_tf_employee_id1MouseClicked
+
+    private void tf_reasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_reasonActionPerformed
+        init_reasons(tf_reason);
+    }//GEN-LAST:event_tf_reasonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -869,5 +877,41 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         nd.setVisible(true);
 
     }
+    List<Sick_leave_reasons.to_sick_leave_reasons> reasons = new ArrayList();
 
+    private void init_reasons(final JTextField tf) {
+        String reason = tf_reason.getText();
+        String where = " where reason like '%" + reason + "%' ";
+        reasons = Sick_leave_reasons.ret_data(where);
+        if (reasons.isEmpty()) {
+            Sick_leave_reasons.to_sick_leave_reasons rea = new Sick_leave_reasons.to_sick_leave_reasons(0, reason);
+            if (!reason.isEmpty()) {
+                Sick_leave_reasons.add_data(rea);
+                init_reasons(tf_reason);
+            }
+
+        } else {
+            Object[][] obj = new Object[reasons.size()][1];
+            int i = 0;
+            for (Sick_leave_reasons.to_sick_leave_reasons to : reasons) {
+                obj[i][0] = " " + to.reason;
+                i++;
+            }
+            JLabel[] labels = {};
+            int[] tbl_widths_customers = {tf.getWidth()};
+
+            String[] col_names = {"Name"};
+            TableRenderer tr = new TableRenderer();
+            TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+            tr.setCallback(new TableRenderer.Callback() {
+                @Override
+                public void ok(TableRenderer.OutputData data) {
+                    Field.Combo combo = (Field.Combo) tf;
+                    Sick_leave_reasons.to_sick_leave_reasons to = reasons.get(data.selected_row);
+                    combo.setId("" + to.id);
+                    combo.setText(to.reason);
+                }
+            });
+        }
+    }
 }

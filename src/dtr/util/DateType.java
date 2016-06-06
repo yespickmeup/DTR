@@ -347,6 +347,14 @@ public class DateType {
         return ret;
     }
 
+    public static String toMonth(int m) {
+        String ret = "";
+        String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
+        ret = months[m];
+        return ret;
+    }
+
     public static List<String> listDays() {
         List<String> datas = new ArrayList();
         for (int i = 1; i < 32; i++) {

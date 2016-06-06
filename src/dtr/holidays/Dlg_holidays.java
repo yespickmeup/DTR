@@ -8,19 +8,24 @@ package dtr.holidays;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import dtr.holidays.Holidays.to_holidays;
+import dtr.sick_leaves.Sick_leave_reasons;
 import dtr.util.Alert;
 import dtr.util.DateType;
 import dtr.util.Dlg_confirm_action;
+import dtr.util.TableRenderer;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import mijzcx.synapse.desk.utils.CloseDialog;
@@ -29,7 +34,6 @@ import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
-import synsoftech.fields.Label;
 
 /**
  *
@@ -200,7 +204,7 @@ public class Dlg_holidays extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        tf_holiday = new javax.swing.JTextField();
+        tf_holiday = new Field.Combo();
         jLabel2 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -250,6 +254,11 @@ public class Dlg_holidays extends javax.swing.JDialog {
         jLabel1.setText("Holiday:");
 
         tf_holiday.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_holiday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_holidayActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Date:");
@@ -467,6 +476,10 @@ public class Dlg_holidays extends javax.swing.JDialog {
     private void tbl_holidaysMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_holidaysMouseClicked
         select_holidays();
     }//GEN-LAST:event_tbl_holidaysMouseClicked
+
+    private void tf_holidayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_holidayActionPerformed
+        init_holiday_types(tf_holiday);
+    }//GEN-LAST:event_tf_holidayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -743,5 +756,43 @@ public class Dlg_holidays extends javax.swing.JDialog {
         nd.setLocationRelativeTo(this);
         nd.setVisible(true);
 
+    }
+
+    List<Holiday_types.to_holiday_types> holiday_types = new ArrayList();
+
+    private void init_holiday_types(final JTextField tf) {
+        String reason = tf_holiday.getText();
+        String where = " where holiday_type like '%" + reason + "%' ";
+        holiday_types = Holiday_types.ret_data(where);
+        if (holiday_types.isEmpty()) {
+            Holiday_types.to_holiday_types rea = new Holiday_types.to_holiday_types(0, reason);
+            if (!reason.isEmpty()) {
+                Holiday_types.add_data(rea);
+                init_holiday_types(tf_holiday);
+            }
+
+        } else {
+            Object[][] obj = new Object[holiday_types.size()][1];
+            int i = 0;
+            for (Holiday_types.to_holiday_types to : holiday_types) {
+                obj[i][0] = " " + to.holiday_type;
+                i++;
+            }
+            JLabel[] labels = {};
+            int[] tbl_widths_customers = {tf.getWidth()};
+
+            String[] col_names = {"Name"};
+            TableRenderer tr = new TableRenderer();
+            TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+            tr.setCallback(new TableRenderer.Callback() {
+                @Override
+                public void ok(TableRenderer.OutputData data) {
+                    Field.Combo combo = (Field.Combo) tf;
+                    Holiday_types.to_holiday_types to = holiday_types.get(data.selected_row);
+                    combo.setId("" + to.id);
+                    combo.setText(to.holiday_type);
+                }
+            });
+        }
     }
 }

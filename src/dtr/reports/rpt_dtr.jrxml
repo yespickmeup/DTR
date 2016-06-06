@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="64b07076-e8e6-408c-a537-169568e03f44">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="96"/>
+	<property name="ireport.y" value="745"/>
 	<parameter name="dtr_date" class="java.lang.String"/>
 	<parameter name="date_printed" class="java.lang.String"/>
 	<parameter name="regular_day_am" class="java.lang.String"/>
@@ -1704,7 +1704,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9" isBold="true" isUnderline="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{verified_by}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{employee_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="10" y="676" width="260" height="11"/>
@@ -1718,7 +1718,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[In Charged]]></text>
+				<text><![CDATA[Supervisor]]></text>
 			</staticText>
 			<textField>
 				<reportElement uuid="59e91530-0df4-41a3-809f-7c16aa2edcc3" x="9" y="700" width="260" height="12"/>
@@ -1728,7 +1728,7 @@
 				<textFieldExpression><![CDATA[$P{in_charged}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="9" y="165" width="261" height="572"/>
+				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="9" y="165" width="261" height="573"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>

@@ -159,3 +159,25 @@ alter table employees add shift varchar(255);
 alter table employees add shift_id varchar(255);
 update employees set shift='Regular';
 update employees set shift_id='0';
+
+
+drop table if exists settings;
+create table settings(
+id int auto_increment primary key
+,supervisor varchar(255)
+);
+
+insert into settings(supervisor)values
+('MARJORIE R. ROLA, Ph.D.')
+;
+
+drop table if exists sick_leave_reasons;
+create table sick_leave_reasons(
+id int auto_increment primary key
+,reason varchar(255)
+);
+drop table if exists holiday_types;
+create table holiday_types(
+id int auto_increment primary key
+,holiday_type varchar(255)
+);
