@@ -904,15 +904,15 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         tf_supervisor.setText(setting.supervisor);
 
         //test
-        Field.Combo period = (Field.Combo) jTextField3;
-        period.setText("March 1 2016 - March 31 2016");
-        employees = Employees.ret_data(" ");
-        employee = employees.get(0);
-        System.out.println("Emp ID: " + employee.id);
-        System.out.println("Emp Name: " + employee.lname);
-        emp.setText("JUCOM O., SUESA");
-        emp.setId("1");
-        data_cols_dtr();
+//        Field.Combo period = (Field.Combo) jTextField3;
+//        period.setText("March 1 2016 - March 31 2016");
+//        employees = Employees.ret_data(" ");
+//        employee = employees.get(0);
+//        System.out.println("Emp ID: " + employee.id);
+//        System.out.println("Emp Name: " + employee.lname);
+//        emp.setText("JUCOM O., SUESA");
+//        emp.setId("1");
+//        data_cols_dtr();
 //        init_report();
     }
 

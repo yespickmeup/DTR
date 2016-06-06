@@ -770,7 +770,6 @@ public class Dlg_holidays extends javax.swing.JDialog {
                 Holiday_types.add_data(rea);
                 init_holiday_types(tf_holiday);
             }
-
         } else {
             Object[][] obj = new Object[holiday_types.size()][1];
             int i = 0;
