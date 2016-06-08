@@ -182,8 +182,13 @@ id int auto_increment primary key
 ,holiday_type varchar(255)
 );
 
+
+
 alter table departments add supervisor varchar(255);
 alter table employees add supervisor varchar(255);
 
 update departments set supervisor='';
 update employees set supervisor='';
+
+anha siguro Dong. Ang shifting namo is MS(Morning Shift) for 7:00am - 3:00pm; SS(Swing Shift) for 3:00pm - GS(Graveyard Shift)11:00pm then 11:00pm - 7:00am 
+then we also have the ROH for 8:00 - 5:00 (NOH) (normal office hours) normal office sched

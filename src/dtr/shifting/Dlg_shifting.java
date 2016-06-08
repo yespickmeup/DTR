@@ -1253,7 +1253,7 @@ public class Dlg_shifting extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
-        dtr_hours = Dtr.hours.seed_all();
+        dtr_hours = Dtr.hours.seed_pm();
         init_tbl_shiftings(tbl_shiftings);
     }
 

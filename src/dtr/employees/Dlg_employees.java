@@ -382,7 +382,6 @@ public class Dlg_employees extends javax.swing.JDialog {
         jLabel14.setText("Supervisor:");
 
         tf_supervisor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_supervisor.setFocusable(false);
         tf_supervisor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tf_supervisorMouseClicked(evt);

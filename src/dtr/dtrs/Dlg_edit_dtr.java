@@ -754,8 +754,8 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         dtr_hours_am = Dtr.hours.seed_am();
-        dtr_hours_pm = Dtr.hours.seed_pm();
-        dtr_hours_all = Dtr.hours.seed_all();
+        dtr_hours_pm = Dtr.hours.seed_all();
+        dtr_hours_all = Dtr.hours.seed_pm();
         dtr_undertime = Dtr.hours.seed_undertime();
         dtr_minutes = Dtr.minutes.seed();
         dtr_seconds = Dtr.seconds.seed();

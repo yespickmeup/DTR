@@ -150,7 +150,7 @@ public class Dtr {
             return datas;
         }
 
-         public static List<hours> seed_undertime() {
+        public static List<hours> seed_undertime() {
             List<hours> datas = new ArrayList();
             hours h0 = new hours("");
             hours h1 = new hours("00");
@@ -166,7 +166,7 @@ public class Dtr {
             hours h11 = new hours("10");
             hours h12 = new hours("11");
             hours h13 = new hours("12");
-           
+
             datas.add(h0);
             datas.add(h1);
             datas.add(h2);
@@ -182,13 +182,13 @@ public class Dtr {
             datas.add(h12);
 
             datas.add(h13);
-           
+
             return datas;
         }
-         
+
         public static List<hours> seed_all() {
             List<hours> datas = new ArrayList();
-
+            hours h1 = new hours("");
             hours h13 = new hours("12 PM");
             hours h14 = new hours("01 PM");
             hours h15 = new hours("02 PM");
@@ -201,7 +201,7 @@ public class Dtr {
             hours h22 = new hours("09 PM");
             hours h23 = new hours("10 PM");
             hours h24 = new hours("11 PM");
-
+            datas.add(h1);
             datas.add(h13);
             datas.add(h14);
             datas.add(h15);
@@ -229,30 +229,31 @@ public class Dtr {
         public static List<minutes> seed() {
             List<minutes> datas = new ArrayList();
             minutes h1 = new minutes("00");
+            minutes h1a = new minutes("01");
+            minutes h1aa = new minutes("02");
+            minutes h1aaa = new minutes("03");
+            minutes h1aaaa = new minutes("04");
             minutes h2 = new minutes("05");
+            minutes h2a = new minutes("06");
+            minutes h2aa = new minutes("07");
+            minutes h2aaa = new minutes("08");
+            minutes h2aaaa = new minutes("09");
             minutes h3 = new minutes("10");
-            minutes h4 = new minutes("15");
-            minutes h5 = new minutes("20");
-            minutes h6 = new minutes("25");
-            minutes h7 = new minutes("30");
-            minutes h8 = new minutes("35");
-            minutes h9 = new minutes("40");
-            minutes h10 = new minutes("45");
-            minutes h11 = new minutes("50");
-            minutes h12 = new minutes("55");
-
             datas.add(h1);
+            datas.add(h1a);
+            datas.add(h1aa);
+            datas.add(h1aaa);
+            datas.add(h1aaaa);
             datas.add(h2);
+            datas.add(h2a);
+            datas.add(h2aa);
+            datas.add(h2aaa);
+            datas.add(h2aaaa);
             datas.add(h3);
-            datas.add(h4);
-            datas.add(h5);
-            datas.add(h6);
-            datas.add(h7);
-            datas.add(h8);
-            datas.add(h9);
-            datas.add(h10);
-            datas.add(h11);
-            datas.add(h12);
+            for (int i = 11; i < 60; i++) {
+                minutes g = new minutes("" + i);
+                datas.add(g);
+            }
 
             return datas;
         }
@@ -269,30 +270,31 @@ public class Dtr {
         public static List<seconds> seed() {
             List<seconds> datas = new ArrayList();
             seconds h1 = new seconds("00");
+            seconds h1a = new seconds("01");
+            seconds h1aa = new seconds("02");
+            seconds h1aaa = new seconds("03");
+            seconds h1aaaa = new seconds("04");
             seconds h2 = new seconds("05");
+            seconds h2a = new seconds("06");
+            seconds h2aa = new seconds("07");
+            seconds h2aaa = new seconds("08");
+            seconds h2aaaa = new seconds("09");
             seconds h3 = new seconds("10");
-            seconds h4 = new seconds("15");
-            seconds h5 = new seconds("20");
-            seconds h6 = new seconds("25");
-            seconds h7 = new seconds("30");
-            seconds h8 = new seconds("35");
-            seconds h9 = new seconds("40");
-            seconds h10 = new seconds("45");
-            seconds h11 = new seconds("50");
-            seconds h12 = new seconds("55");
-
             datas.add(h1);
+            datas.add(h1a);
+            datas.add(h1aa);
+            datas.add(h1aaa);
+            datas.add(h1aaaa);
             datas.add(h2);
+            datas.add(h2a);
+            datas.add(h2aa);
+            datas.add(h2aaa);
+            datas.add(h2aaaa);
             datas.add(h3);
-            datas.add(h4);
-            datas.add(h5);
-            datas.add(h6);
-            datas.add(h7);
-            datas.add(h8);
-            datas.add(h9);
-            datas.add(h10);
-            datas.add(h11);
-            datas.add(h12);
+            for (int i = 11; i < 60; i++) {
+                seconds g = new seconds("" + i);
+                datas.add(g);
+            }
 
             return datas;
         }
@@ -585,7 +587,7 @@ public class Dtr {
 
     public static String convert_to_00(String hour) {
         String converted = "";
-     
+
         if (hour.equals("12 AM")) {
             converted = "00";
         }
