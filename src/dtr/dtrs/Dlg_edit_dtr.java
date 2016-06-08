@@ -660,7 +660,7 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField6MouseClicked
 
     private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
-        init_hours_all(jTextField8);
+        init_undertime(jTextField8);
     }//GEN-LAST:event_jTextField8MouseClicked
 
     private void jTextField9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField9MouseClicked
@@ -756,6 +756,7 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         dtr_hours_am = Dtr.hours.seed_am();
         dtr_hours_pm = Dtr.hours.seed_pm();
         dtr_hours_all = Dtr.hours.seed_all();
+        dtr_undertime = Dtr.hours.seed_undertime();
         dtr_minutes = Dtr.minutes.seed();
         dtr_seconds = Dtr.seconds.seed();
     }
@@ -906,6 +907,33 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         });
     }
 
+    List<Dtr.hours> dtr_undertime = new ArrayList();
+
+    private void init_undertime(final JTextField tf) {
+
+        Object[][] obj = new Object[dtr_undertime.size()][1];
+        int i = 0;
+        for (Dtr.hours to : dtr_undertime) {
+            obj[i][0] = " " + to.hour;
+            i++;
+        }
+
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+        int width = 0;
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo combo = (Field.Combo) tf;
+                Dtr.hours to = dtr_undertime.get(data.selected_row);
+                combo.setText(to.hour);
+            }
+        });
+    }
+
     List<Dtr.minutes> dtr_minutes = new ArrayList();
 
     private void init_minutes(final JTextField tf) {
@@ -964,15 +992,30 @@ public class Dlg_edit_dtr extends javax.swing.JDialog {
         String adh = Dtr.convert_to_00(jTextField4.getText());
         String pah = Dtr.convert_to_00(jTextField5.getText());
         String pdh = Dtr.convert_to_00(jTextField6.getText());
-        String uh = Dtr.convert_to_00(jTextField8.getText());
-        
-        
+        String uh = jTextField8.getText();
+
         String am_arrival = aah + ":" + jTextField9.getText() + ":" + jTextField10.getText();
+        if (jTextField3.getText().isEmpty()) {
+            am_arrival = null;
+        }
         String am_departure = adh + ":" + jTextField11.getText() + ":" + jTextField12.getText();
+        if (jTextField4.getText().isEmpty()) {
+            am_departure = null;
+        }
         String pm_arrival = pah + ":" + jTextField13.getText() + ":" + jTextField14.getText();
+        if (jTextField5.getText().isEmpty()) {
+            pm_arrival = null;
+        }
         String pm_departure = pdh + ":" + jTextField15.getText() + ":" + jTextField16.getText();
+        if (jTextField6.getText().isEmpty()) {
+            pm_departure = null;
+        }
         String undertime_hour = uh;
         String undertime_minute = jTextField17.getText();
+        System.out.println("am_arrival: " + am_arrival);
+        System.out.println("am_departure: " + am_departure);
+        System.out.println("pm_arrival: " + pm_arrival);
+        System.out.println("pm_departure: " + pm_departure);
         if (callback != null) {
             callback.ok(new CloseDialog(this), new OutputData(am_arrival, am_departure, pm_arrival, pm_departure, undertime_hour, undertime_minute));
         }

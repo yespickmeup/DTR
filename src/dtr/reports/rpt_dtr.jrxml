@@ -203,6 +203,7 @@
 	<field name="um29" class="java.lang.String"/>
 	<field name="um30" class="java.lang.String"/>
 	<field name="um31" class="java.lang.String"/>
+	<field name="supervisor" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -1723,12 +1724,12 @@
 			<textField>
 				<reportElement uuid="59e91530-0df4-41a3-809f-7c16aa2edcc3" x="9" y="700" width="260" height="12"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9" isUnderline="true"/>
+					<font size="9" isBold="true" isUnderline="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{in_charged}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="9" y="165" width="261" height="573"/>
+				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="9" y="165" width="261" height="574"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>

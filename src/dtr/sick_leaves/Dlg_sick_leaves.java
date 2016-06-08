@@ -10,7 +10,9 @@ import com.jgoodies.binding.list.ArrayListModel;
 import dtr.employees.Employees;
 import dtr.holidays.Dlg_holidays;
 import dtr.sick_leaves.Sick_leaves.to_sick_leaves;
+import dtr.users.MyUser;
 import dtr.util.Alert;
+import dtr.util.DateUtils1;
 import dtr.util.Dlg_confirm_action;
 import dtr.util.TableRenderer;
 import java.awt.Dimension;
@@ -226,6 +228,8 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         tf_employee_name = new Field.Combo();
         jCheckBox4 = new javax.swing.JCheckBox();
+        jLabel10 = new javax.swing.JLabel();
+        jDateChooser4 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -265,7 +269,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Date:");
+        jLabel2.setText("Date From:");
 
         jDateChooser1.setDate(new Date());
         jDateChooser1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -365,6 +369,12 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         jCheckBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox4.setText("All");
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("To:");
+
+        jDateChooser4.setDate(new Date());
+        jDateChooser4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -373,66 +383,69 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(105, 105, 105))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox3)
-                                            .addComponent(jCheckBox4))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                                                .addGap(105, 105, 105))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(tf_employee_id1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel7))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tf_employee_name)
-                                    .addComponent(tf_reason))))
-                        .addGap(23, 23, 23))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(95, 95, 95)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jCheckBox1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCheckBox2)))
-                        .addGap(311, 311, 311))))
+                                .addComponent(jCheckBox2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(311, 311, 311))))
+                    .addComponent(jScrollPane3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox3)
+                                    .addComponent(jCheckBox4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                        .addGap(105, 105, 105))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(tf_employee_id1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel7))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_employee_name)
+                            .addComponent(tf_reason))))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,13 +460,17 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
                     .addComponent(tf_reason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jCheckBox1)
-                        .addComponent(jCheckBox2)))
+                        .addComponent(jCheckBox2))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -562,7 +579,9 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser jDateChooser4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -754,7 +773,10 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         Field.Combo combo = (Field.Combo) tf_employee_name;
         int id = 0;
         String reason = tf_reason.getText();
-        String date_of_leave = DateType.sf.format(jDateChooser1.getDate());
+
+        String date_of_leave_to = DateType.sf.format(jDateChooser4.getDate());
+        int count = DateUtils1.count_days(jDateChooser1.getDate(), jDateChooser4.getDate());
+        System.out.println("Days: " + count);
         int half_day_am = 0;
         if (jCheckBox1.isSelected()) {
             half_day_am = 1;
@@ -765,21 +787,43 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         }
         String employee_name = tf_employee_name.getText();
         String employee_id = combo.getId();
-        String date_added = DateType.datetime.format(new Date());
-        String user_id = "";
-        String user_screen_name = "";
-
-        to_sick_leaves to = new to_sick_leaves(id, reason, date_of_leave, half_day_am, half_day_pm, employee_name, employee_id, date_added, user_id, user_screen_name);
-        if (half_day_am == 0 && half_day_pm == 0) {
-            Alert.set(0, "Please Choose Interval");
+        if (employee_name.isEmpty()) {
+            Alert.set(0, "Select Employee");
             return;
         }
-        Sick_leaves.add_data(to);
-        tf_employee_name.setText("");
-        tf_reason.setText("");
-        tf_employee_name.grabFocus();
-        Alert.set(1, reason);
-        data_cols();
+        String date_added = DateType.datetime.format(new Date());
+        String user_id = MyUser.getUser_id();
+        String user_screen_name = MyUser.getUser_screen_name();
+        if (count == 0) {
+            String date_of_leave_from = DateType.sf.format(jDateChooser1.getDate());
+            to_sick_leaves to = new to_sick_leaves(id, reason, date_of_leave_from, half_day_am, half_day_pm, employee_name, employee_id, date_added, user_id, user_screen_name);
+            if (half_day_am == 0 && half_day_pm == 0) {
+                Alert.set(0, "Please Choose Interval");
+                return;
+            }
+            Sick_leaves.add_data(to);
+            tf_reason.setText("");
+            tf_employee_name.grabFocus();
+            Alert.set(1, reason);
+            data_cols();
+        }
+        if (count > 0) {
+            for (int i = 0; i < count + 1; i++) {
+                Date add = DateUtils1.add_day(jDateChooser1.getDate(), i);
+                String date_of_leave_from = DateType.sf.format(add);
+                to_sick_leaves to = new to_sick_leaves(id, reason, date_of_leave_from, half_day_am, half_day_pm, employee_name, employee_id, date_added, user_id, user_screen_name);
+                if (half_day_am == 0 && half_day_pm == 0) {
+                    Alert.set(0, "Please Choose Interval");
+                    return;
+                }
+                Sick_leaves.add_data(to);
+            }
+
+            tf_reason.setText("");
+            tf_employee_name.grabFocus();
+            Alert.set(1, reason);
+            data_cols();
+        }
     }
 
     private void select_sick_leaves() {
@@ -832,6 +876,10 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
         }
         String employee_name = tf_employee_name.getText();
         String employee_id = combo.getId();
+        if (employee_name.isEmpty()) {
+            Alert.set(0, "Select Employee");
+            return;
+        }
         String date_added = DateType.datetime.format(new Date());
         String user_id = "";
         String user_screen_name = "";
@@ -842,7 +890,7 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
             return;
         }
         Sick_leaves.update_data(to2);
-        tf_employee_name.setText("");
+
         tf_reason.setText("");
         tf_employee_name.grabFocus();
         Alert.set(2, reason);
@@ -866,7 +914,6 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
                 }
                 to_sick_leaves to = (to_sick_leaves) tbl_sick_leaves_ALM.get(row);
                 Sick_leaves.delete_data(to);
-                tf_employee_name.setText("");
                 tf_reason.setText("");
                 tf_employee_name.grabFocus();
                 Alert.set(3, "");

@@ -181,3 +181,9 @@ create table holiday_types(
 id int auto_increment primary key
 ,holiday_type varchar(255)
 );
+
+alter table departments add supervisor varchar(255);
+alter table employees add supervisor varchar(255);
+
+update departments set supervisor='';
+update employees set supervisor='';

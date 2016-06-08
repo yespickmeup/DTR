@@ -29,13 +29,15 @@ public class Departments {
         public final String date_added;
         public final String user_id;
         public final String user_screen_name;
+        public final String supervisor;
 
-        public to_departments(int id, String department, String date_added, String user_id, String user_screen_name) {
+        public to_departments(int id, String department, String date_added, String user_id, String user_screen_name, String supervisor) {
             this.id = id;
             this.department = department;
             this.date_added = date_added;
             this.user_id = user_id;
             this.user_screen_name = user_screen_name;
+            this.supervisor = supervisor;
         }
     }
 
@@ -47,11 +49,13 @@ public class Departments {
                     + ",date_added"
                     + ",user_id"
                     + ",user_screen_name"
+                    + ",supervisor"
                     + ")values("
                     + ":department"
                     + ",:date_added"
                     + ",:user_id"
                     + ",:user_screen_name"
+                    + ",:supervisor"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -59,6 +63,7 @@ public class Departments {
                     .setString("date_added", to_departments.date_added)
                     .setString("user_id", to_departments.user_id)
                     .setString("user_screen_name", to_departments.user_screen_name)
+                    .setString("supervisor", to_departments.supervisor)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -75,10 +80,11 @@ public class Departments {
         try {
             Connection conn = MyConnection.connect();
             String s0 = "update departments set "
-                    + "department= :department "
+                    + " department= :department "
                     + ",date_added= :date_added "
                     + ",user_id= :user_id "
                     + ",user_screen_name= :user_screen_name "
+                    + ",supervisor= :supervisor"
                     + " where id='" + to_departments.id + "' "
                     + " ";
 
@@ -87,10 +93,26 @@ public class Departments {
                     .setString("date_added", to_departments.date_added)
                     .setString("user_id", to_departments.user_id)
                     .setString("user_screen_name", to_departments.user_screen_name)
+                    .setString("supervisor", to_departments.supervisor)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
+
+            String s2 = "update employees set "
+                    + " supervisor= :supervisor "
+                    + " ,department= :department "
+                    + " where department_id='" + to_departments.id + "' "
+                    + " ";
+
+            s2 = SqlStringUtil.parse(s2)
+                    .setString("supervisor", to_departments.supervisor)
+                    .setString("department", to_departments.department)
+                    .ok();
+
+            PreparedStatement stmt2 = conn.prepareStatement(s2);
+            stmt2.execute();
+
             Lg.s(Departments.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -127,6 +149,7 @@ public class Departments {
                     + ",date_added"
                     + ",user_id"
                     + ",user_screen_name"
+                    + ",supervisor"
                     + " from departments"
                     + " " + where;
 
@@ -138,8 +161,8 @@ public class Departments {
                 String date_added = rs.getString(3);
                 String user_id = rs.getString(4);
                 String user_screen_name = rs.getString(5);
-
-                to_departments to = new to_departments(id, department, date_added, user_id, user_screen_name);
+                String supervisor = rs.getString(6);
+                to_departments to = new to_departments(id, department, date_added, user_id, user_screen_name, supervisor);
                 datas.add(to);
             }
             return datas;

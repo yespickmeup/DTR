@@ -244,11 +244,11 @@ public class Srpt_dtr {
         String um29;
         String um30;
         String um31;
-
+        String supervisor;
         public field() {
         }
         //<editor-fold defaultstate="collapsed" desc=" constructor ">
-        public field(String employee_id, String employee_name, String aa1, String aa2, String aa3, String aa4, String aa5, String aa6, String aa7, String aa8, String aa9, String aa10, String aa11, String aa12, String aa13, String aa14, String aa15, String aa16, String aa17, String aa18, String aa19, String aa20, String aa21, String aa22, String aa23, String aa24, String aa25, String aa26, String aa27, String aa28, String aa29, String aa30, String aa31, String pd1, String pd2, String pd3, String pd4, String pd5, String pd6, String pd7, String pd8, String pd9, String pd10, String pd11, String pd12, String pd13, String pd14, String pd15, String pd16, String pd17, String pd18, String pd19, String pd20, String pd21, String pd22, String pd23, String pd24, String pd25, String pd26, String pd27, String pd28, String pd29, String pd30, String pd31, String ad1, String ad2, String ad3, String ad4, String ad5, String ad6, String ad7, String ad8, String ad9, String ad10, String ad11, String ad12, String ad13, String ad14, String ad15, String ad16, String ad17, String ad18, String ad19, String ad20, String ad21, String ad22, String ad23, String ad24, String ad25, String ad26, String ad27, String ad28, String ad29, String ad30, String ad31, String pa1, String pa2, String pa3, String pa4, String pa5, String pa6, String pa7, String pa8, String pa9, String pa10, String pa11, String pa12, String pa13, String pa14, String pa15, String pa16, String pa17, String pa18, String pa19, String pa20, String pa21, String pa22, String pa23, String pa24, String pa25, String pa26, String pa27, String pa28, String pa29, String pa30, String pa31, String uh1, String uh2, String uh3, String uh4, String uh5, String uh6, String uh7, String uh8, String uh9, String uh10, String uh11, String uh12, String uh13, String uh14, String uh15, String uh16, String uh17, String uh18, String uh19, String uh20, String uh21, String uh22, String uh23, String uh24, String uh25, String uh26, String uh27, String uh28, String uh29, String uh30, String uh31, String um1, String um2, String um3, String um4, String um5, String um6, String um7, String um8, String um9, String um10, String um11, String um12, String um13, String um14, String um15, String um16, String um17, String um18, String um19, String um20, String um21, String um22, String um23, String um24, String um25, String um26, String um27, String um28, String um29, String um30, String um31) {
+        public field(String employee_id, String employee_name, String aa1, String aa2, String aa3, String aa4, String aa5, String aa6, String aa7, String aa8, String aa9, String aa10, String aa11, String aa12, String aa13, String aa14, String aa15, String aa16, String aa17, String aa18, String aa19, String aa20, String aa21, String aa22, String aa23, String aa24, String aa25, String aa26, String aa27, String aa28, String aa29, String aa30, String aa31, String pd1, String pd2, String pd3, String pd4, String pd5, String pd6, String pd7, String pd8, String pd9, String pd10, String pd11, String pd12, String pd13, String pd14, String pd15, String pd16, String pd17, String pd18, String pd19, String pd20, String pd21, String pd22, String pd23, String pd24, String pd25, String pd26, String pd27, String pd28, String pd29, String pd30, String pd31, String ad1, String ad2, String ad3, String ad4, String ad5, String ad6, String ad7, String ad8, String ad9, String ad10, String ad11, String ad12, String ad13, String ad14, String ad15, String ad16, String ad17, String ad18, String ad19, String ad20, String ad21, String ad22, String ad23, String ad24, String ad25, String ad26, String ad27, String ad28, String ad29, String ad30, String ad31, String pa1, String pa2, String pa3, String pa4, String pa5, String pa6, String pa7, String pa8, String pa9, String pa10, String pa11, String pa12, String pa13, String pa14, String pa15, String pa16, String pa17, String pa18, String pa19, String pa20, String pa21, String pa22, String pa23, String pa24, String pa25, String pa26, String pa27, String pa28, String pa29, String pa30, String pa31, String uh1, String uh2, String uh3, String uh4, String uh5, String uh6, String uh7, String uh8, String uh9, String uh10, String uh11, String uh12, String uh13, String uh14, String uh15, String uh16, String uh17, String uh18, String uh19, String uh20, String uh21, String uh22, String uh23, String uh24, String uh25, String uh26, String uh27, String uh28, String uh29, String uh30, String uh31, String um1, String um2, String um3, String um4, String um5, String um6, String um7, String um8, String um9, String um10, String um11, String um12, String um13, String um14, String um15, String um16, String um17, String um18, String um19, String um20, String um21, String um22, String um23, String um24, String um25, String um26, String um27, String um28, String um29, String um30, String um31,String supervisor) {
             this.employee_id = employee_id;
             this.employee_name = employee_name;
             this.aa1 = aa1;
@@ -437,10 +437,19 @@ public class Srpt_dtr {
             this.um29 = um29;
             this.um30 = um30;
             this.um31 = um31;
+            this.supervisor=supervisor;
         }
         //</editor-fold>
         //<editor-fold defaultstate="collapsed" desc=" getter and setter ">
 
+        public String getSupervisor() {
+            return supervisor;
+        }
+
+        public void setSupervisor(String supervisor) {
+            this.supervisor = supervisor;
+        }
+        
         public String getEmployee_id() {
             return employee_id;
         }

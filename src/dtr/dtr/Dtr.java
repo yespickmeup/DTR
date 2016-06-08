@@ -150,6 +150,42 @@ public class Dtr {
             return datas;
         }
 
+         public static List<hours> seed_undertime() {
+            List<hours> datas = new ArrayList();
+            hours h0 = new hours("");
+            hours h1 = new hours("00");
+            hours h2 = new hours("01");
+            hours h3 = new hours("02");
+            hours h4 = new hours("03");
+            hours h5 = new hours("04");
+            hours h6 = new hours("05");
+            hours h7 = new hours("06");
+            hours h8 = new hours("07");
+            hours h9 = new hours("08");
+            hours h10 = new hours("09");
+            hours h11 = new hours("10");
+            hours h12 = new hours("11");
+            hours h13 = new hours("12");
+           
+            datas.add(h0);
+            datas.add(h1);
+            datas.add(h2);
+            datas.add(h3);
+            datas.add(h4);
+            datas.add(h5);
+            datas.add(h6);
+            datas.add(h7);
+            datas.add(h8);
+            datas.add(h9);
+            datas.add(h10);
+            datas.add(h11);
+            datas.add(h12);
+
+            datas.add(h13);
+           
+            return datas;
+        }
+         
         public static List<hours> seed_all() {
             List<hours> datas = new ArrayList();
 

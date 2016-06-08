@@ -247,9 +247,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
-        tf_supervisor = new Field.Input();
-        jLabel14 = new javax.swing.JLabel();
-        jButton6 = new Button.Default();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_dtrs = new javax.swing.JTable();
@@ -360,18 +357,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             }
         });
 
-        tf_supervisor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Supervisor:");
-
-        jButton6.setText("Update");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -401,15 +386,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                 .addComponent(jTextField4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_supervisor, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -423,7 +400,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                     .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -434,13 +411,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_supervisor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -833,10 +804,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         setPeriod();
     }//GEN-LAST:event_jCheckBox6ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        update_supervisor();
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -849,7 +816,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -860,7 +826,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -887,7 +852,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel pnl_report;
     private javax.swing.JTable tbl_dtrs;
-    private javax.swing.JTextField tf_supervisor;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
@@ -899,13 +863,11 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         String where = " ";
         employees1 = Employees.ret_data(where);
 
-        List<Settings.to_settings> settings = Settings.ret_data("");
-        Settings.to_settings setting = settings.get(0);
-        tf_supervisor.setText(setting.supervisor);
+       
 
         //test
 //        Field.Combo period = (Field.Combo) jTextField3;
-//        period.setText("March 1 2016 - March 31 2016");
+//        period.setText("May 1 2016 - May 31 2016");
 //        employees = Employees.ret_data(" ");
 //        employee = employees.get(0);
 //        System.out.println("Emp ID: " + employee.id);
@@ -916,12 +878,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 //        init_report();
     }
 
-    private void update_supervisor() {
-        String supervisor = tf_supervisor.getText();
-        Settings.to_settings setting = new Settings.to_settings(1, supervisor);
-        Settings.update_data(setting);
-        Alert.set(2, "");
-    }
+   
 
     public void do_pass() {
 
@@ -2495,7 +2452,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             //</editor-fold>
                         }
                         //end of day loop
-                        Srpt_dtr.field field = new Srpt_dtr.field(employee_id, employee_name, aa1, aa2, aa3, aa4, aa5, aa6, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24, aa25, aa26, aa27, aa28, aa29, aa30, aa31, pd1, pd2, pd3, pd4, pd5, pd6, pd7, pd8, pd9, pd10, pd11, pd12, pd13, pd14, pd15, pd16, pd17, pd18, pd19, pd20, pd21, pd22, pd23, pd24, pd25, pd26, pd27, pd28, pd29, pd30, pd31, ad1, ad2, ad3, ad4, ad5, ad6, ad7, ad8, ad9, ad10, ad11, ad12, ad13, ad14, ad15, ad16, ad17, ad18, ad19, ad20, ad21, ad22, ad23, ad24, ad25, ad26, ad27, ad28, ad29, ad30, ad31, pa1, pa2, pa3, pa4, pa5, pa6, pa7, pa8, pa9, pa10, pa11, pa12, pa13, pa14, pa15, pa16, pa17, pa18, pa19, pa20, pa21, pa22, pa23, pa24, pa25, pa26, pa27, pa28, pa29, pa30, pa31, uh1, uh2, uh3, uh4, uh5, uh6, uh7, uh8, uh9, uh10, uh11, uh12, uh13, uh14, uh15, uh16, uh17, uh18, uh19, uh20, uh21, uh22, uh23, uh24, uh25, uh26, uh27, uh28, uh29, uh30, uh31, um1, um2, um3, um4, um5, um6, um7, um8, um9, um10, um11, um12, um13, um14, um15, um16, um17, um18, um19, um20, um21, um22, um23, um24, um25, um26, um27, um28, um29, um30, um31);
+                        Srpt_dtr.field field = new Srpt_dtr.field(employee_id, employee_name, aa1, aa2, aa3, aa4, aa5, aa6, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24, aa25, aa26, aa27, aa28, aa29, aa30, aa31, pd1, pd2, pd3, pd4, pd5, pd6, pd7, pd8, pd9, pd10, pd11, pd12, pd13, pd14, pd15, pd16, pd17, pd18, pd19, pd20, pd21, pd22, pd23, pd24, pd25, pd26, pd27, pd28, pd29, pd30, pd31, ad1, ad2, ad3, ad4, ad5, ad6, ad7, ad8, ad9, ad10, ad11, ad12, ad13, ad14, ad15, ad16, ad17, ad18, ad19, ad20, ad21, ad22, ad23, ad24, ad25, ad26, ad27, ad28, ad29, ad30, ad31, pa1, pa2, pa3, pa4, pa5, pa6, pa7, pa8, pa9, pa10, pa11, pa12, pa13, pa14, pa15, pa16, pa17, pa18, pa19, pa20, pa21, pa22, pa23, pa24, pa25, pa26, pa27, pa28, pa29, pa30, pa31, uh1, uh2, uh3, uh4, uh5, uh6, uh7, uh8, uh9, uh10, uh11, uh12, uh13, uh14, uh15, uh16, uh17, uh18, uh19, uh20, uh21, uh22, uh23, uh24, uh25, uh26, uh27, uh28, uh29, uh30, uh31, um1, um2, um3, um4, um5, um6, um7, um8, um9, um10, um11, um12, um13, um14, um15, um16, um17, um18, um19, um20, um21, um22, um23, um24, um25, um26, um27, um28, um29, um30, um31,emp.supervisor);
                         datas.add(field);
                         datas.add(field);
                     }
@@ -2520,7 +2477,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 String thirty = "30";
                 String thirty_one = "31";
                 String verified_by = "";
-                String in_charge = tf_supervisor.getText();
+                String in_charge = "";
                 String user_home = System.getProperty("user.home");
                 Srpt_dtr rpt = new Srpt_dtr(dtr_date, date_printed, regular_day_am, regular_day_pm, total_hours, total_minutes, two_nine, thirty, thirty_one, verified_by, in_charge, user_home);
                 rpt.fields.addAll(datas);
@@ -2590,7 +2547,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     List<Employees.to_employees> employees = new ArrayList();
     List<Employees.to_employees> employees1 = new ArrayList();
 
-    Employees.to_employees employee = new Employees.to_employees(0, "", "", "", "", "", "", "", "", "", "", "", "", "");
+    Employees.to_employees employee = new Employees.to_employees(0, "", "", "", "", "", "", "", "", "", "", "", "", "","");
 
     private void init_employees2(final JTextField tf) {
         String search = jTextField4.getText();
@@ -2738,6 +2695,12 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                             pm_departure = dtr.util.DateType.convert_slash_datetime5(dd);
                                         }
                                         d++;
+                                    }
+                                    if (d == 2) {
+                                        pm_departure = am_departure;
+                                        am_departure = "";
+                                        pm_arrival = "";
+
                                     }
                                     if (am_arrival.isEmpty()) {
                                         am_arrival = null;

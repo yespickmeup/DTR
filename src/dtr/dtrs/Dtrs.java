@@ -175,40 +175,53 @@ public class Dtrs {
         try {
             Connection conn = MyConnection.connect();
             conn.setAutoCommit(false);
+
+            String ar = null;
+            if (am_arrival != null) {
+                ar = to_dtrs.dtr_date + " " + am_arrival;
+            }
             String s0 = "update dtrs set "
-                    + " am_arrival= '" + (to_dtrs.dtr_date + " " + am_arrival) + "' "
+                    + " am_arrival= :am_arrival "
                     + " where id='" + to_dtrs.id + "' "
                     + " ";
-
+            s0 = SqlStringUtil.parse(s0).setString("am_arrival", ar).ok();
             PreparedStatement stmt = conn.prepareStatement(s0);
-            if (!am_arrival.equalsIgnoreCase("00:00:00")) {
-                stmt.addBatch(s0);
+            stmt.addBatch(s0);
+
+            String ad = null;
+            if (am_departure != null) {
+                ad = to_dtrs.dtr_date + " " + am_departure;
             }
 
             String s2 = "update dtrs set "
-                    + " am_departure= '" + (to_dtrs.dtr_date + " " + am_departure) + "' "
+                    + " am_departure= :am_departure "
                     + " where id='" + to_dtrs.id + "' "
                     + " ";
+            s2 = SqlStringUtil.parse(s2).setString("am_departure", ad).ok();
+            stmt.addBatch(s2);
 
-            if (!am_departure.equalsIgnoreCase("00:00:00")) {
-                stmt.addBatch(s2);
+            String pa = null;
+            if (pm_arrival != null) {
+                pa = to_dtrs.dtr_date + " " + pm_arrival;
             }
             String s3 = "update dtrs set "
-                    + " pm_arrival= '" + (to_dtrs.dtr_date + " " + pm_arrival) + "' "
+                    + " pm_arrival= :pm_arrival "
                     + " where id='" + (to_dtrs.id) + "' "
                     + " ";
+            s3 = SqlStringUtil.parse(s3).setString("pm_arrival", pa).ok();
+            stmt.addBatch(s3);
 
-            if (!pm_arrival.equalsIgnoreCase("00:00:00")) {
-                stmt.addBatch(s3);
+            String pd = null;
+            if (pm_departure != null) {
+                pd = to_dtrs.dtr_date + " " + pm_departure;
             }
             String s4 = "update dtrs set "
-                    + " pm_departure= '" + (to_dtrs.dtr_date + " " + pm_departure) + "' "
+                    + " pm_departure= :pm_departure "
                     + " where id='" + to_dtrs.id + "' "
                     + " ";
-
-            if (!pm_departure.equalsIgnoreCase("00:00:00")) {
-                stmt.addBatch(s4);
-            }
+            s4 = SqlStringUtil.parse(s4).setString("pm_departure", pd).ok();
+            stmt.addBatch(s4);
+           
 
             String s5 = "update dtrs set "
                     + " undertime_hours= '" + undertime_hour + "' "
