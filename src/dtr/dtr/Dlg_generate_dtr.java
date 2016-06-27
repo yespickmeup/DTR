@@ -16,8 +16,10 @@ import dtr.pnl.Extract;
 import static dtr.pnl.Extract.showExcelData;
 import dtr.reports.Srpt_dtr;
 import dtr.settings.Settings;
+import dtr.shifting.Employee_shifting_schedules;
 import dtr.shifting.Shiftings;
 import dtr.sick_leaves.Sick_leaves;
+import dtr.test.MyShifts;
 import dtr.util.Alert;
 import dtr.util.DateType;
 import dtr.util.Dlg_confirm_action;
@@ -863,22 +865,18 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         String where = " ";
         employees1 = Employees.ret_data(where);
 
-       
-
         //test
-//        Field.Combo period = (Field.Combo) jTextField3;
-//        period.setText("May 1 2016 - May 31 2016");
-//        employees = Employees.ret_data(" ");
-//        employee = employees.get(0);
-//        System.out.println("Emp ID: " + employee.id);
-//        System.out.println("Emp Name: " + employee.lname);
-//        emp.setText("JUCOM O., SUESA");
-//        emp.setId("1");
-//        data_cols_dtr();
-//        init_report();
+        Field.Combo period = (Field.Combo) jTextField3;
+        period.setText("May 1 2016 - May 31 2016");
+        employees = Employees.ret_data(" ");
+        employee = employees.get(0);
+        System.out.println("Emp ID: " + employee.id);
+        System.out.println("Emp Name: " + employee.lname);
+        emp.setText("JUCOM O., SUESA");
+        emp.setId("1");
+        data_cols_dtr();
+        init_report();
     }
-
-   
 
     public void do_pass() {
 
@@ -1290,18 +1288,19 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
                     for (Employees.to_employees emp : employees) {
                         String where2 = " where id='" + emp.shift_id + "' ";
-                        Shiftings.to_shiftings shift = new Shiftings.to_shiftings(0, "Regular", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 0, "", "", "", "");
-
+                        Employee_shifting_schedules.to_employee_shifting_schedules shift = new Employee_shifting_schedules.to_employee_shifting_schedules(0, "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                         //<editor-fold defaultstate="collapsed" desc=" retrieve leaves ">
                         String where3 = " where employee_id='" + emp.id + "' and Date(date_of_leave) between '" + DateType.sf.format(period_from) + "' and '" + DateType.sf.format(period_to) + "' ";
 
                         List<Sick_leaves.to_sick_leaves> leaves = Sick_leaves.ret_data(where3);
                         //</editor-fold>
+                        String where5 = " where emp_id='" + emp.id + "' ";
 
-                        if (!emp.shift_id.equalsIgnoreCase("0")) {
-                            List<Shiftings.to_shiftings> shifts = Shiftings.ret_data(where2);
+                        List<Employee_shifting_schedules.to_employee_shifting_schedules> shifts = Employee_shifting_schedules.ret_data2(where5);
+                        if (!shifts.isEmpty()) {
                             shift = shifts.get(0);
                         }
+
                         for (to_dtrs dtr : dtrs) {
                             if (dtr.employee_id.equalsIgnoreCase("" + emp.id)) {
                                 employee_dtrs.add(dtr);
@@ -1526,363 +1525,201 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (my_dtr.id != 0) {
                                 if (my_dtr.am_arrival != null) {
                                     aa = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.am_arrival);
+                                    String daily = dtr.util.DateType.convert_datetime_to_daily(my_dtr.dtr_date);
 
                                     if (shift.id != 0) {
                                         String hh1 = aa.substring(0, 2);
                                         String hh2 = aa.substring(3, 5);
                                         String hh3 = aa.substring(6, 8);
 
-                                        //<editor-fold defaultstate="collapsed" desc=" shift convertions ">
-                                        if (hh1.equalsIgnoreCase("00") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_12;
-                                        }
-                                        if (hh1.equalsIgnoreCase("01") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_1;
-                                        }
-                                        if (hh1.equalsIgnoreCase("02") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_2;
-                                        }
-                                        if (hh1.equalsIgnoreCase("03") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_3;
-                                        }
-                                        if (hh1.equalsIgnoreCase("04") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_4;
-                                        }
-                                        if (hh1.equalsIgnoreCase("05") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_5;
-                                        }
-                                        if (hh1.equalsIgnoreCase("06") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_6;
-                                        }
-                                        if (hh1.equalsIgnoreCase("07") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_7;
-                                        }
-                                        if (hh1.equalsIgnoreCase("08") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_8;
-                                        }
-                                        if (hh1.equalsIgnoreCase("09") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_9;
-                                        }
-                                        if (hh1.equalsIgnoreCase("10") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_10;
-                                        }
-                                        if (hh1.equalsIgnoreCase("11") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_11;
-                                        }
-                                        if (hh1.equalsIgnoreCase("12") && hh3.equalsIgnoreCase("PM")) {
-
-                                            hh1 = shift.pm_12;
-                                        }
-                                        if (hh1.equalsIgnoreCase("13") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_1;
-                                        }
-                                        if (hh1.equalsIgnoreCase("14") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_2;
-                                        }
-                                        if (hh1.equalsIgnoreCase("15") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_3;
-                                        }
-                                        if (hh1.equalsIgnoreCase("16") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm4;
-                                        }
-                                        if (hh1.equalsIgnoreCase("17") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_5;
-                                        }
-                                        if (hh1.equalsIgnoreCase("18") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_6;
-                                        }
-                                        if (hh1.equalsIgnoreCase("19") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_7;
-                                        }
-                                        if (hh1.equalsIgnoreCase("20") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_8;
-                                        }
-                                        if (hh1.equalsIgnoreCase("21") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_9;
-                                        }
-                                        if (hh1.equalsIgnoreCase("22") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_10;
-                                        }
-                                        if (hh1.equalsIgnoreCase("23") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_11;
-                                        }
-                                        //</editor-fold>
-                                        int ampm = FitIn.toInt(hh1);
-                                        if (ampm > 11 && ampm < 24) {
-                                            hh3 = "PM";
-                                        } else {
-                                            hh3 = "AM";
-                                        }
                                         aa = hh1 + ":" + hh2 + " " + hh3;
 
+                                        if (daily.equalsIgnoreCase("Monday")) {
+                                            if (!shift.mon_shift.equalsIgnoreCase("NOH")) {
+                                                aa = MyShifts.getNOH(aa, shift.mon_shift);
+                                            }
+                                        }
+                                        if (daily.equalsIgnoreCase("Tuesday")) {
+                                            if (!shift.tue_shift.equalsIgnoreCase("NOH")) {
+                                                aa = MyShifts.getNOH(aa, shift.tue_shift);
+                                            }
+
+                                        }
+                                        if (daily.equalsIgnoreCase("Wednesday")) {
+                                            if (!shift.wed_shift.equalsIgnoreCase("NOH")) {
+                                                aa = MyShifts.getNOH(aa, shift.wed_shift);
+                                            }
+                                        }
+                                        if (daily.equalsIgnoreCase("Thursday")) {
+                                            if (!shift.thu_shift.equalsIgnoreCase("NOH")) {
+                                                aa = MyShifts.getNOH(aa, shift.thu_shift);
+                                            }
+                                        }
+                                        if (daily.equalsIgnoreCase("Friday")) {
+                                            if (!shift.fri_shift.equalsIgnoreCase("NOH")) {
+                                                aa = MyShifts.getNOH(aa, shift.fri_shift);
+                                            }
+
+                                        }
+                                        if (daily.equalsIgnoreCase("Saturday")) {
+                                            if (!shift.sat_shift.equalsIgnoreCase("NOH")) {
+                                                aa = MyShifts.getNOH(aa, shift.sat_shift);
+                                            }
+                                        }
+                                        if (daily.equalsIgnoreCase("Sunday")) {
+                                            if (!shift.sun_shift.equalsIgnoreCase("NOH")) {
+                                                aa = MyShifts.getNOH(aa, shift.sun_shift);
+                                            }
+                                        }
                                     }
 
                                 }
                                 if (my_dtr.am_departure != null) {
                                     ad = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.am_departure);
+                                    String daily = dtr.util.DateType.convert_datetime_to_daily(my_dtr.dtr_date);
                                     if (shift.id != 0) {
                                         String hh1 = ad.substring(0, 2);
                                         String hh2 = ad.substring(3, 5);
                                         String hh3 = ad.substring(5, 8);
-                                        //<editor-fold defaultstate="collapsed" desc=" shift convertions ">
-                                        if (hh1.equalsIgnoreCase("00") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_12;
+
+                                        ad = hh1 + ":" + hh2 + "" + hh3;
+                                      
+                                        if (daily.equalsIgnoreCase("Monday")) {
+                                            if (!shift.mon_shift.equalsIgnoreCase("NOH")) {
+
+                                                ad = MyShifts.getNOH(ad, shift.mon_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("01") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_1;
+                                        if (daily.equalsIgnoreCase("Tuesday")) {
+                                            if (!shift.tue_shift.equalsIgnoreCase("NOH")) {
+                                                ad = MyShifts.getNOH(ad, shift.tue_shift);
+                                            }
+
                                         }
-                                        if (hh1.equalsIgnoreCase("02") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_2;
+                                        if (daily.equalsIgnoreCase("Wednesday")) {
+                                            if (!shift.wed_shift.equalsIgnoreCase("NOH")) {
+                                                ad = MyShifts.getNOH(ad, shift.wed_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("03") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_3;
+                                        if (daily.equalsIgnoreCase("Thursday")) {
+                                            if (!shift.thu_shift.equalsIgnoreCase("NOH")) {
+                                                ad = MyShifts.getNOH(ad, shift.thu_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("04") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_4;
+                                        if (daily.equalsIgnoreCase("Friday")) {
+                                            if (!shift.fri_shift.equalsIgnoreCase("NOH")) {
+                                                ad = MyShifts.getNOH(ad, shift.fri_shift);
+                                            }
+
                                         }
-                                        if (hh1.equalsIgnoreCase("05") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_5;
+                                        if (daily.equalsIgnoreCase("Saturday")) {
+                                            if (!shift.sat_shift.equalsIgnoreCase("NOH")) {
+                                                ad = MyShifts.getNOH(ad, shift.sat_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("06") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_6;
+                                        if (daily.equalsIgnoreCase("Sunday")) {
+                                            if (!shift.sun_shift.equalsIgnoreCase("NOH")) {
+                                                ad = MyShifts.getNOH(ad, shift.sun_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("07") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_7;
-                                        }
-                                        if (hh1.equalsIgnoreCase("08") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_8;
-                                        }
-                                        if (hh1.equalsIgnoreCase("09") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_9;
-                                        }
-                                        if (hh1.equalsIgnoreCase("10") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_10;
-                                        }
-                                        if (hh1.equalsIgnoreCase("11") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_11;
-                                        }
-                                        if (hh1.equalsIgnoreCase("12") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_12;
-                                        }
-                                        if (hh1.equalsIgnoreCase("13") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_1;
-                                        }
-                                        if (hh1.equalsIgnoreCase("14") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_2;
-                                        }
-                                        if (hh1.equalsIgnoreCase("15") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_3;
-                                        }
-                                        if (hh1.equalsIgnoreCase("16") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm4;
-                                        }
-                                        if (hh1.equalsIgnoreCase("17") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_5;
-                                        }
-                                        if (hh1.equalsIgnoreCase("18") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_6;
-                                        }
-                                        if (hh1.equalsIgnoreCase("19") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_7;
-                                        }
-                                        if (hh1.equalsIgnoreCase("20") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_8;
-                                        }
-                                        if (hh1.equalsIgnoreCase("21") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_9;
-                                        }
-                                        if (hh1.equalsIgnoreCase("22") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_10;
-                                        }
-                                        if (hh1.equalsIgnoreCase("23") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_11;
-                                        }
-                                        //</editor-fold>
-                                        int ampm = FitIn.toInt(hh1);
-                                        if (ampm > 11 && ampm < 24) {
-                                            hh3 = "PM";
-                                        } else {
-                                            hh3 = "AM";
-                                        }
-                                        ad = hh1 + ":" + hh2 + " " + hh3;
                                     }
                                 }
                                 if (my_dtr.pm_arrival != null) {
                                     pa = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.pm_arrival);
+                                    String daily = dtr.util.DateType.convert_datetime_to_daily(my_dtr.dtr_date);
                                     if (shift.id != 0) {
                                         String hh1 = pa.substring(0, 2);
                                         String hh2 = pa.substring(3, 5);
                                         String hh3 = pa.substring(5, 8);
-                                        //<editor-fold defaultstate="collapsed" desc=" shift convertions ">
-                                        if (hh1.equalsIgnoreCase("00") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_12;
+
+                                        pa = hh1 + ":" + hh2 + "" + hh3;
+
+                                        if (daily.equalsIgnoreCase("Monday")) {
+                                            if (!shift.mon_shift.equalsIgnoreCase("NOH")) {
+                                                pa = MyShifts.getNOH(pa, shift.mon_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("01") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_1;
+                                        if (daily.equalsIgnoreCase("Tuesday")) {
+                                            if (!shift.tue_shift.equalsIgnoreCase("NOH")) {
+                                                pa = MyShifts.getNOH(pa, shift.tue_shift);
+                                            }
+
                                         }
-                                        if (hh1.equalsIgnoreCase("02") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_2;
+                                        if (daily.equalsIgnoreCase("Wednesday")) {
+                                            if (!shift.wed_shift.equalsIgnoreCase("NOH")) {
+                                                pa = MyShifts.getNOH(pa, shift.wed_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("03") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_3;
+                                        if (daily.equalsIgnoreCase("Thursday")) {
+                                            if (!shift.thu_shift.equalsIgnoreCase("NOH")) {
+                                                pa = MyShifts.getNOH(pa, shift.thu_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("04") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_4;
+                                        if (daily.equalsIgnoreCase("Friday")) {
+                                            if (!shift.fri_shift.equalsIgnoreCase("NOH")) {
+                                                pa = MyShifts.getNOH(pa, shift.fri_shift);
+                                            }
+
                                         }
-                                        if (hh1.equalsIgnoreCase("05") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_5;
+                                        if (daily.equalsIgnoreCase("Saturday")) {
+                                            if (!shift.sat_shift.equalsIgnoreCase("NOH")) {
+                                                pa = MyShifts.getNOH(pa, shift.sat_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("06") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_6;
+                                        if (daily.equalsIgnoreCase("Sunday")) {
+                                            if (!shift.sun_shift.equalsIgnoreCase("NOH")) {
+                                                pa = MyShifts.getNOH(pa, shift.sun_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("07") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_7;
-                                        }
-                                        if (hh1.equalsIgnoreCase("08") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_8;
-                                        }
-                                        if (hh1.equalsIgnoreCase("09") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_9;
-                                        }
-                                        if (hh1.equalsIgnoreCase("10") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_10;
-                                        }
-                                        if (hh1.equalsIgnoreCase("11") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_11;
-                                        }
-                                        if (hh1.equalsIgnoreCase("12") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_12;
-                                        }
-                                        if (hh1.equalsIgnoreCase("13") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_1;
-                                        }
-                                        if (hh1.equalsIgnoreCase("14") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_2;
-                                        }
-                                        if (hh1.equalsIgnoreCase("15") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_3;
-                                        }
-                                        if (hh1.equalsIgnoreCase("16") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm4;
-                                        }
-                                        if (hh1.equalsIgnoreCase("17") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_5;
-                                        }
-                                        if (hh1.equalsIgnoreCase("18") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_6;
-                                        }
-                                        if (hh1.equalsIgnoreCase("19") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_7;
-                                        }
-                                        if (hh1.equalsIgnoreCase("20") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_8;
-                                        }
-                                        if (hh1.equalsIgnoreCase("21") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_9;
-                                        }
-                                        if (hh1.equalsIgnoreCase("22") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_10;
-                                        }
-                                        if (hh1.equalsIgnoreCase("23") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_11;
-                                        }
-                                        //</editor-fold>
-                                        int ampm = FitIn.toInt(hh1);
-                                        if (ampm > 11 && ampm < 24) {
-                                            hh3 = "PM";
-                                        } else {
-                                            hh3 = "AM";
-                                        }
-                                        pa = hh1 + ":" + hh2 + " " + hh3;
                                     }
                                 }
                                 if (my_dtr.pm_departure != null) {
                                     pd = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.pm_departure);
+                                    String daily = dtr.util.DateType.convert_datetime_to_daily(my_dtr.dtr_date);
                                     if (shift.id != 0) {
                                         String hh1 = pd.substring(0, 2);
                                         String hh2 = pd.substring(3, 5);
                                         String hh3 = pd.substring(5, 8);
-                                        //<editor-fold defaultstate="collapsed" desc=" shift convertions ">
-                                        if (hh1.equalsIgnoreCase("00") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_12;
+
+                                        pd = hh1 + ":" + hh2 + "" + hh3;
+
+                                        if (daily.equalsIgnoreCase("Monday")) {
+                                            if (!shift.mon_shift.equalsIgnoreCase("NOH")) {
+                                                pd = MyShifts.getNOH(pd, shift.mon_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("01") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_1;
+                                        if (daily.equalsIgnoreCase("Tuesday")) {
+                                            if (!shift.tue_shift.equalsIgnoreCase("NOH")) {
+                                                pd = MyShifts.getNOH(pd, shift.tue_shift);
+                                            }
+
                                         }
-                                        if (hh1.equalsIgnoreCase("02") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_2;
+                                        if (daily.equalsIgnoreCase("Wednesday")) {
+                                            if (!shift.wed_shift.equalsIgnoreCase("NOH")) {
+                                                pd = MyShifts.getNOH(pd, shift.wed_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("03") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_3;
+                                        if (daily.equalsIgnoreCase("Thursday")) {
+                                            if (!shift.thu_shift.equalsIgnoreCase("NOH")) {
+                                                pd = MyShifts.getNOH(pd, shift.thu_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("04") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_4;
+                                        if (daily.equalsIgnoreCase("Friday")) {
+                                            if (!shift.fri_shift.equalsIgnoreCase("NOH")) {
+                                                pd = MyShifts.getNOH(pd, shift.fri_shift);
+                                            }
+
                                         }
-                                        if (hh1.equalsIgnoreCase("05") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_5;
+                                        if (daily.equalsIgnoreCase("Saturday")) {
+                                            if (!shift.sat_shift.equalsIgnoreCase("NOH")) {
+                                                pd = MyShifts.getNOH(pd, shift.sat_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("06") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_6;
+                                        if (daily.equalsIgnoreCase("Sunday")) {
+                                            if (!shift.sun_shift.equalsIgnoreCase("NOH")) {
+                                                pd = MyShifts.getNOH(pd, shift.sun_shift);
+                                            }
                                         }
-                                        if (hh1.equalsIgnoreCase("07") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_7;
-                                        }
-                                        if (hh1.equalsIgnoreCase("08") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_8;
-                                        }
-                                        if (hh1.equalsIgnoreCase("09") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_9;
-                                        }
-                                        if (hh1.equalsIgnoreCase("10") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_10;
-                                        }
-                                        if (hh1.equalsIgnoreCase("11") && hh3.equalsIgnoreCase("AM")) {
-                                            hh1 = shift.am_11;
-                                        }
-                                        if (hh1.equalsIgnoreCase("12") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_12;
-                                        }
-                                        if (hh1.equalsIgnoreCase("13") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_1;
-                                        }
-                                        if (hh1.equalsIgnoreCase("14") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_2;
-                                        }
-                                        if (hh1.equalsIgnoreCase("15") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_3;
-                                        }
-                                        if (hh1.equalsIgnoreCase("16") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm4;
-                                        }
-                                        if (hh1.equalsIgnoreCase("17") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_5;
-                                        }
-                                        if (hh1.equalsIgnoreCase("18") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_6;
-                                        }
-                                        if (hh1.equalsIgnoreCase("19") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_7;
-                                        }
-                                        if (hh1.equalsIgnoreCase("20") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_8;
-                                        }
-                                        if (hh1.equalsIgnoreCase("21") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_9;
-                                        }
-                                        if (hh1.equalsIgnoreCase("22") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_10;
-                                        }
-                                        if (hh1.equalsIgnoreCase("23") && hh3.equalsIgnoreCase("PM")) {
-                                            hh1 = shift.pm_11;
-                                        }
-                                        //</editor-fold>
-                                        int ampm = FitIn.toInt(hh1);
-                                        if (ampm > 11 && ampm < 24) {
-                                            hh3 = "PM";
-                                        } else {
-                                            hh3 = "AM";
-                                        }
-                                        pd = hh1 + ":" + hh2 + " " + hh3;
                                     }
                                 }
                                 if (my_dtr.undertime_hours.equalsIgnoreCase("00")) {
@@ -2452,7 +2289,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             //</editor-fold>
                         }
                         //end of day loop
-                        Srpt_dtr.field field = new Srpt_dtr.field(employee_id, employee_name, aa1, aa2, aa3, aa4, aa5, aa6, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24, aa25, aa26, aa27, aa28, aa29, aa30, aa31, pd1, pd2, pd3, pd4, pd5, pd6, pd7, pd8, pd9, pd10, pd11, pd12, pd13, pd14, pd15, pd16, pd17, pd18, pd19, pd20, pd21, pd22, pd23, pd24, pd25, pd26, pd27, pd28, pd29, pd30, pd31, ad1, ad2, ad3, ad4, ad5, ad6, ad7, ad8, ad9, ad10, ad11, ad12, ad13, ad14, ad15, ad16, ad17, ad18, ad19, ad20, ad21, ad22, ad23, ad24, ad25, ad26, ad27, ad28, ad29, ad30, ad31, pa1, pa2, pa3, pa4, pa5, pa6, pa7, pa8, pa9, pa10, pa11, pa12, pa13, pa14, pa15, pa16, pa17, pa18, pa19, pa20, pa21, pa22, pa23, pa24, pa25, pa26, pa27, pa28, pa29, pa30, pa31, uh1, uh2, uh3, uh4, uh5, uh6, uh7, uh8, uh9, uh10, uh11, uh12, uh13, uh14, uh15, uh16, uh17, uh18, uh19, uh20, uh21, uh22, uh23, uh24, uh25, uh26, uh27, uh28, uh29, uh30, uh31, um1, um2, um3, um4, um5, um6, um7, um8, um9, um10, um11, um12, um13, um14, um15, um16, um17, um18, um19, um20, um21, um22, um23, um24, um25, um26, um27, um28, um29, um30, um31,emp.supervisor);
+                        Srpt_dtr.field field = new Srpt_dtr.field(employee_id, employee_name, aa1, aa2, aa3, aa4, aa5, aa6, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24, aa25, aa26, aa27, aa28, aa29, aa30, aa31, pd1, pd2, pd3, pd4, pd5, pd6, pd7, pd8, pd9, pd10, pd11, pd12, pd13, pd14, pd15, pd16, pd17, pd18, pd19, pd20, pd21, pd22, pd23, pd24, pd25, pd26, pd27, pd28, pd29, pd30, pd31, ad1, ad2, ad3, ad4, ad5, ad6, ad7, ad8, ad9, ad10, ad11, ad12, ad13, ad14, ad15, ad16, ad17, ad18, ad19, ad20, ad21, ad22, ad23, ad24, ad25, ad26, ad27, ad28, ad29, ad30, ad31, pa1, pa2, pa3, pa4, pa5, pa6, pa7, pa8, pa9, pa10, pa11, pa12, pa13, pa14, pa15, pa16, pa17, pa18, pa19, pa20, pa21, pa22, pa23, pa24, pa25, pa26, pa27, pa28, pa29, pa30, pa31, uh1, uh2, uh3, uh4, uh5, uh6, uh7, uh8, uh9, uh10, uh11, uh12, uh13, uh14, uh15, uh16, uh17, uh18, uh19, uh20, uh21, uh22, uh23, uh24, uh25, uh26, uh27, uh28, uh29, uh30, uh31, um1, um2, um3, um4, um5, um6, um7, um8, um9, um10, um11, um12, um13, um14, um15, um16, um17, um18, um19, um20, um21, um22, um23, um24, um25, um26, um27, um28, um29, um30, um31, emp.supervisor);
                         datas.add(field);
                         datas.add(field);
                     }
@@ -2547,7 +2384,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     List<Employees.to_employees> employees = new ArrayList();
     List<Employees.to_employees> employees1 = new ArrayList();
 
-    Employees.to_employees employee = new Employees.to_employees(0, "", "", "", "", "", "", "", "", "", "", "", "", "","");
+    Employees.to_employees employee = new Employees.to_employees(0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
     private void init_employees2(final JTextField tf) {
         String search = jTextField4.getText();

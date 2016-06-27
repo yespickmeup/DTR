@@ -208,6 +208,8 @@ public class Dlg_departments extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         tf_supervisor = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        tf_manager = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -286,6 +288,11 @@ public class Dlg_departments extends javax.swing.JDialog {
 
         tf_supervisor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Manager:");
+
+        tf_manager.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -293,6 +300,10 @@ public class Dlg_departments extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_manager))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -336,13 +347,17 @@ public class Dlg_departments extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_supervisor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_manager, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
@@ -409,12 +424,14 @@ public class Dlg_departments extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTable tbl_departments;
     private javax.swing.JTextField tf_department;
+    private javax.swing.JTextField tf_manager;
     private javax.swing.JTextField tf_supervisor;
     // End of variables declaration//GEN-END:variables
 
@@ -455,7 +472,7 @@ public class Dlg_departments extends javax.swing.JDialog {
         tbl_departments.setModel(tbl_departments_M);
         tbl_departments.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_departments.setRowHeight(25);
-        int[] tbl_widths_departments = {100, 150, 0, 0, 0};
+        int[] tbl_widths_departments = {100, 150, 150, 0, 0};
         for (int i = 0, n = tbl_widths_departments.length; i < n; i++) {
             if (i == 0) {
                 continue;
@@ -478,7 +495,7 @@ public class Dlg_departments extends javax.swing.JDialog {
     public static class TbldepartmentsModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Department", "Supervisor", "date_added", "user_id", "user_screen_name"
+            "Division", "Supervisor", "Manager", "user_id", "user_screen_name"
         };
 
         public TbldepartmentsModel(ListModel listmodel) {
@@ -510,7 +527,7 @@ public class Dlg_departments extends javax.swing.JDialog {
                 case 1:
                     return " " + tt.supervisor;
                 case 2:
-                    return tt.date_added;
+                    return " " + tt.manager;
                 case 3:
                     return tt.user_id;
                 default:
@@ -535,7 +552,8 @@ public class Dlg_departments extends javax.swing.JDialog {
         String user_id = "";//tf_user_id.getText();
         String user_screen_name = "";//tf_user_screen_name.getText();
         String supervisor = tf_supervisor.getText();
-        to_departments to = new to_departments(id, department, date_added, user_id, user_screen_name, supervisor);
+        String manager = tf_manager.getText();
+        to_departments to = new to_departments(id, department, date_added, user_id, user_screen_name, supervisor, manager);
         Departments.add_data(to);
         Alert.set(1, user_id);
         tf_department.setText("");
@@ -551,6 +569,7 @@ public class Dlg_departments extends javax.swing.JDialog {
         to_departments to = (to_departments) tbl_departments_ALM.get(row);
         tf_department.setText(to.department);
         tf_supervisor.setText(to.supervisor);
+        tf_manager.setText(to.manager);
 
     }
 
@@ -567,7 +586,8 @@ public class Dlg_departments extends javax.swing.JDialog {
         String user_id = to.user_id;
         String user_screen_name = to.user_screen_name;
         String supervisor = tf_supervisor.getText();
-        to_departments to1 = new to_departments(id, department, date_added, user_id, user_screen_name, supervisor);
+        String manager = tf_manager.getText();
+        to_departments to1 = new to_departments(id, department, date_added, user_id, user_screen_name, supervisor, manager);
         Departments.update_data(to1);
         Alert.set(2, user_id);
         tf_department.setText("");

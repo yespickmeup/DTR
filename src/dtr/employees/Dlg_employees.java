@@ -231,6 +231,8 @@ public class Dlg_employees extends javax.swing.JDialog {
         tf_department1 = new Field.Combo();
         jLabel14 = new javax.swing.JLabel();
         tf_supervisor = new Field.Input();
+        tf_manager = new Field.Input();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -393,6 +395,21 @@ public class Dlg_employees extends javax.swing.JDialog {
             }
         });
 
+        tf_manager.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_manager.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_managerMouseClicked(evt);
+            }
+        });
+        tf_manager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_managerActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setText("Manager:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -400,6 +417,15 @@ public class Dlg_employees extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_supervisor, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_manager)
+                        .addGap(24, 24, 24))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
@@ -442,27 +468,18 @@ public class Dlg_employees extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tf_contact_no, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_supervisor))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_department1))))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_department1))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(tf_address)
-                                        .addGap(1, 1, 1))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(tf_department, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(tf_address)
+                                    .addComponent(tf_department))
+                                .addGap(1, 1, 1)))
                         .addGap(23, 23, 23))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,11 +525,17 @@ public class Dlg_employees extends javax.swing.JDialog {
                     .addComponent(tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_supervisor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_department, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_manager, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_supervisor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -609,6 +632,14 @@ public class Dlg_employees extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_supervisorActionPerformed
 
+    private void tf_managerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_managerMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_managerMouseClicked
+
+    private void tf_managerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_managerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_managerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -625,6 +656,7 @@ public class Dlg_employees extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -645,6 +677,7 @@ public class Dlg_employees extends javax.swing.JDialog {
     private javax.swing.JTextField tf_employee_id;
     private javax.swing.JTextField tf_fname;
     private javax.swing.JTextField tf_lname;
+    private javax.swing.JTextField tf_manager;
     private javax.swing.JTextField tf_mi;
     private javax.swing.JTextField tf_supervisor;
     // End of variables declaration//GEN-END:variables
@@ -714,6 +747,7 @@ public class Dlg_employees extends javax.swing.JDialog {
                 combo.setText(to.department);
 
                 sup.setText(to.supervisor);
+                tf_manager.setText(to.manager);
             }
         });
     }
@@ -755,7 +789,7 @@ public class Dlg_employees extends javax.swing.JDialog {
         tbl_employees.setModel(tbl_employees_M);
         tbl_employees.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_employees.setRowHeight(25);
-        int[] tbl_widths_employees = {50, 100, 100, 150, 100, 0, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_employees = {50, 100, 100, 150, 150, 150, 0, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_employees.length; i < n; i++) {
             if (i == 2) {
                 continue;
@@ -778,7 +812,7 @@ public class Dlg_employees extends javax.swing.JDialog {
     public static class TblemployeesModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "ID", "ID No", "Name", "Department", "Shift", "contact_no", "address", "department", "department_id", "date_added", "user_id", "user_screen_name"
+            "ID", "ID No", "Name", "Department", "Manager", "Supervisor", "", "department", "department_id", "date_added", "user_id", "user_screen_name"
         };
 
         public TblemployeesModel(ListModel listmodel) {
@@ -812,9 +846,9 @@ public class Dlg_employees extends javax.swing.JDialog {
                 case 3:
                     return " " + tt.department;
                 case 4:
-                    return " " + tt.shift;
+                    return " " + tt.manager;
                 case 5:
-                    return tt.contact_no;
+                    return " " + tt.supervisor;
                 case 6:
                     return tt.address;
                 case 7:
@@ -864,8 +898,9 @@ public class Dlg_employees extends javax.swing.JDialog {
         String user_screen_name = "";// tf_user_screen_name.getText();
         String shift = sh.getText();
         String shift_id = sh.getId();
-        String supervisor=tf_supervisor.getText();
-        to_employees to = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name, shift, shift_id,supervisor);
+        String supervisor = tf_supervisor.getText();
+        String manager = tf_manager.getText();
+        to_employees to = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name, shift, shift_id, supervisor, manager);
         Employees.add_data(to);
         Alert.set(1, null);
         clear();
@@ -918,6 +953,7 @@ public class Dlg_employees extends javax.swing.JDialog {
             tf_address.setText(to.address);
             tf_department.setText(to.department);
             tf_supervisor.setText(to.supervisor);
+            tf_manager.setText(to.manager);
             combo.setId(to.department_id);
             sh.setText(to.shift);
             sh.setId(to.shift_id);
@@ -947,8 +983,9 @@ public class Dlg_employees extends javax.swing.JDialog {
         String user_screen_name = to.user_screen_name;
         String shift = sh.getText();
         String shift_id = sh.getId();
-        String supervisor=tf_supervisor.getText();
-        to_employees to1 = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name, shift, shift_id,supervisor);
+        String supervisor = tf_supervisor.getText();
+        String manager = tf_manager.getText();
+        to_employees to1 = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name, shift, shift_id, supervisor, manager);
         Employees.update_data(to1);
         Alert.set(2, null);
         clear();

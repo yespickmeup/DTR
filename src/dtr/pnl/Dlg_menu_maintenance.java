@@ -315,11 +315,11 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        ok("Departments", jLabel9);
+        ok("Divisions", jLabel9);
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
-        label("Departments", jLabel9);
+        label("Divisions", jLabel9);
     }//GEN-LAST:event_jLabel9MouseEntered
 
     /**
