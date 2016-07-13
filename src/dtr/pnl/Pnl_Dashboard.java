@@ -651,7 +651,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
                 if (data.stmt.equals("Holidays")) {
                     holidays();
                 }
-                if (data.stmt.equals("Sick Leaves")) {
+                if (data.stmt.equals("Leave")) {
                     sick_leaves();
                 }
                 if (data.stmt.equals("Shifting")) {
@@ -704,7 +704,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
 
     private void sick_leaves() {
         Dlg_sick_leaves dtc = new Dlg_sick_leaves();
-        MyFrame.set(dtc.getSurface(), jPanel1, "Sick Leaves");
+        MyFrame.set(dtc.getSurface(), jPanel1, "Leave");
     }
 
     private void shifting() {

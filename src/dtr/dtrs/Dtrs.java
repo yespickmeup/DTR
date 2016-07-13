@@ -5,6 +5,7 @@
  */
 package dtr.dtrs;
 
+import dtr.employee_shifts.Employee_shifts;
 import dtr.util.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -171,6 +172,78 @@ public class Dtrs {
         }
     }
 
+    public static void update_data(String id, String am_arrival, String am_departure) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update dtrs set "
+                    + " am_arrival= :am_arrival "
+                    + ",am_departure= :am_departure "
+                    + " where id='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("am_arrival", am_arrival)
+                    .setString("am_departure", am_departure)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Dtrs.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static void update_data2(String id, String am_arrival, String am_departure) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update dtrs set "
+                    + " pm_arrival= :pm_arrival "
+                    + ",pm_departure= :pm_departure "
+                    + " where id='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("pm_arrival", am_arrival)
+                    .setString("pm_departure", am_departure)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Dtrs.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+    public static void update_data3(String id, String hh, String mm) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update dtrs set "
+                    + " undertime_hours= :undertime_hours "
+                    + ",undertime_minutes= :undertime_minutes "
+                    + " where id='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("undertime_hours", hh)
+                    .setString("undertime_minutes", mm)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Dtrs.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    
     public static void update_data(to_dtrs to_dtrs, String am_arrival, String am_departure, String pm_arrival, String pm_departure, String undertime_hour, String undertime_minute) {
         try {
             Connection conn = MyConnection.connect();
@@ -221,7 +294,6 @@ public class Dtrs {
                     + " ";
             s4 = SqlStringUtil.parse(s4).setString("pm_departure", pd).ok();
             stmt.addBatch(s4);
-           
 
             String s5 = "update dtrs set "
                     + " undertime_hours= '" + undertime_hour + "' "
@@ -306,6 +378,7 @@ public class Dtrs {
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
+            List<Employee_shifts.to_employee_shifts> shifts = new ArrayList();
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String employee_id = rs.getString(2);
@@ -321,7 +394,14 @@ public class Dtrs {
                 String undertime_minutes = rs.getString(12);
                 String date_added = rs.getString(13);
                 String user_id = rs.getString(14);
-                String user_screen_name = rs.getString(15);
+                String user_screen_name = "ROH";
+
+                String where2 = " where emp_id='" + employee_id + "' and shift_date='" + dtr_date + "' ";
+                shifts = Employee_shifts.ret_data(where2);
+                if (!shifts.isEmpty()) {
+                    Employee_shifts.to_employee_shifts sh = shifts.get(0);
+                    user_screen_name = sh.shift;
+                }
 
                 to_dtrs to = new to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);
                 datas.add(to);

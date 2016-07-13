@@ -7,7 +7,7 @@ package dtr.dtr;
 
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
-import dtr.dtrs.Dlg_edit_dtr;
+import dtr.dtrs.Dlg_dtr_edit;
 import dtr.dtrs.Dtrs;
 import dtr.dtrs.Dtrs.to_dtrs;
 import dtr.employees.Employees;
@@ -15,9 +15,7 @@ import dtr.holidays.Holidays;
 import dtr.pnl.Extract;
 import static dtr.pnl.Extract.showExcelData;
 import dtr.reports.Srpt_dtr;
-import dtr.settings.Settings;
 import dtr.shifting.Employee_shifting_schedules;
-import dtr.shifting.Shiftings;
 import dtr.sick_leaves.Sick_leaves;
 import dtr.test.MyShifts;
 import dtr.util.Alert;
@@ -288,7 +286,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jLabel7.setText("Payroll Period:");
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setFocusable(false);
         jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField3MouseClicked(evt);
@@ -448,7 +445,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 922, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -459,7 +456,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -591,7 +588,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                         .addGap(313, 313, 313)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -645,7 +642,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -669,7 +666,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         );
         pnl_reportLayout.setVerticalGroup(
             pnl_reportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
+            .addGap(0, 554, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -731,7 +728,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
 
         pack();
@@ -866,16 +864,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         employees1 = Employees.ret_data(where);
 
         //test
-        Field.Combo period = (Field.Combo) jTextField3;
-        period.setText("May 1 2016 - May 31 2016");
-        employees = Employees.ret_data(" ");
-        employee = employees.get(0);
-        System.out.println("Emp ID: " + employee.id);
-        System.out.println("Emp Name: " + employee.lname);
-        emp.setText("JUCOM O., SUESA");
-        emp.setId("1");
-        data_cols_dtr();
-        init_report();
+//        employees = Employees.ret_data(" where id=12 ");
+//        employee = employees.get(0);
+//        System.out.println("Emp ID: " + employee.id);
+//        System.out.println("Emp Name: " + employee.lname);
+//        emp.setText("RUEL V. ARANAS");
+//        emp.setId("12");
+//        data_cols_dtr();
+
     }
 
     public void do_pass() {
@@ -1263,16 +1259,20 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 jProgressBar2.setIndeterminate(true);
 
                 String[] payroll_period = jTextField3.getText().split("-");
+
                 String pay_month = "";
                 String pay_year = "";
                 try {
                     Date period_from = dtr.util.DateType.month_date2.parse(payroll_period[0]);
+
                     String pr = payroll_period[1];
                     pr = pr.substring(1, pr.length());
+
                     Date period_to = dtr.util.DateType.month_date2.parse(pr);
 
                     int payroll_from_day = FitIn.toInt(DateType.d.format(period_from));
-                    int payroll_to_day = FitIn.toInt(DateType.d.format(period_to));
+                    int payroll_to_day = 31;//FitIn.toInt(DateType.d.format(period_to));
+
                     String payroll_month = "" + FitIn.toInt(DateType.m1.format(period_to));
                     String payroll_year = "" + FitIn.toInt(DateType.y.format(period_to));
                     pay_month = payroll_month;
@@ -1288,7 +1288,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
                     for (Employees.to_employees emp : employees) {
                         String where2 = " where id='" + emp.shift_id + "' ";
-                        Employee_shifting_schedules.to_employee_shifting_schedules shift = new Employee_shifting_schedules.to_employee_shifting_schedules(0, "", "", "", "", 0, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+
                         //<editor-fold defaultstate="collapsed" desc=" retrieve leaves ">
                         String where3 = " where employee_id='" + emp.id + "' and Date(date_of_leave) between '" + DateType.sf.format(period_from) + "' and '" + DateType.sf.format(period_to) + "' ";
 
@@ -1296,12 +1296,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         //</editor-fold>
                         String where5 = " where emp_id='" + emp.id + "' ";
 
-                        List<Employee_shifting_schedules.to_employee_shifting_schedules> shifts = Employee_shifting_schedules.ret_data2(where5);
-                        if (!shifts.isEmpty()) {
-                            shift = shifts.get(0);
-                        }
-
                         for (to_dtrs dtr : dtrs) {
+
                             if (dtr.employee_id.equalsIgnoreCase("" + emp.id)) {
                                 employee_dtrs.add(dtr);
                             }
@@ -1510,9 +1506,12 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             String what_day = DateType.day.format(loop_date);
 
                             to_dtrs my_dtr = new to_dtrs(0, "", "", "", "", "", "", "", "", "", "00", "00", "", "", "");
+
                             for (to_dtrs dtr : employee_dtrs) {
+
                                 if (str_date.equalsIgnoreCase(dtr.dtr_date)) {
                                     my_dtr = dtr;
+                                    break;
                                 }
                             }
 
@@ -1522,205 +1521,87 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             String pd = "";
                             String uh = "";
                             String um = "";
+
                             if (my_dtr.id != 0) {
+
                                 if (my_dtr.am_arrival != null) {
                                     aa = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.am_arrival);
+
                                     String daily = dtr.util.DateType.convert_datetime_to_daily(my_dtr.dtr_date);
+                                    String hh1 = aa.substring(0, 2);
+                                    String hh2 = aa.substring(3, 5);
+                                    String hh3 = aa.substring(6, 8);
+                                    aa = hh1 + ":" + hh2 + " " + hh3;
 
-                                    if (shift.id != 0) {
-                                        String hh1 = aa.substring(0, 2);
-                                        String hh2 = aa.substring(3, 5);
-                                        String hh3 = aa.substring(6, 8);
-
-                                        aa = hh1 + ":" + hh2 + " " + hh3;
-
-                                        if (daily.equalsIgnoreCase("Monday")) {
-                                            if (!shift.mon_shift.equalsIgnoreCase("NOH")) {
-                                                aa = MyShifts.getNOH(aa, shift.mon_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Tuesday")) {
-                                            if (!shift.tue_shift.equalsIgnoreCase("NOH")) {
-                                                aa = MyShifts.getNOH(aa, shift.tue_shift);
-                                            }
-
-                                        }
-                                        if (daily.equalsIgnoreCase("Wednesday")) {
-                                            if (!shift.wed_shift.equalsIgnoreCase("NOH")) {
-                                                aa = MyShifts.getNOH(aa, shift.wed_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Thursday")) {
-                                            if (!shift.thu_shift.equalsIgnoreCase("NOH")) {
-                                                aa = MyShifts.getNOH(aa, shift.thu_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Friday")) {
-                                            if (!shift.fri_shift.equalsIgnoreCase("NOH")) {
-                                                aa = MyShifts.getNOH(aa, shift.fri_shift);
-                                            }
-
-                                        }
-                                        if (daily.equalsIgnoreCase("Saturday")) {
-                                            if (!shift.sat_shift.equalsIgnoreCase("NOH")) {
-                                                aa = MyShifts.getNOH(aa, shift.sat_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Sunday")) {
-                                            if (!shift.sun_shift.equalsIgnoreCase("NOH")) {
-                                                aa = MyShifts.getNOH(aa, shift.sun_shift);
-                                            }
-                                        }
+                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
+                                        aa = MyShifts.getNOH(aa, my_dtr.user_screen_name);
                                     }
-
+                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF")) {
+                                        aa = "OFF";
+                                        ad = "OFF";
+                                        pa = "OFF";
+                                        pd = "OFF";
+                                    }
                                 }
+
                                 if (my_dtr.am_departure != null) {
                                     ad = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.am_departure);
                                     String daily = dtr.util.DateType.convert_datetime_to_daily(my_dtr.dtr_date);
-                                    if (shift.id != 0) {
-                                        String hh1 = ad.substring(0, 2);
-                                        String hh2 = ad.substring(3, 5);
-                                        String hh3 = ad.substring(5, 8);
 
-                                        ad = hh1 + ":" + hh2 + "" + hh3;
-                                      
-                                        if (daily.equalsIgnoreCase("Monday")) {
-                                            if (!shift.mon_shift.equalsIgnoreCase("NOH")) {
+                                    String hh1 = ad.substring(0, 2);
+                                    String hh2 = ad.substring(3, 5);
+                                    String hh3 = ad.substring(5, 8);
 
-                                                ad = MyShifts.getNOH(ad, shift.mon_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Tuesday")) {
-                                            if (!shift.tue_shift.equalsIgnoreCase("NOH")) {
-                                                ad = MyShifts.getNOH(ad, shift.tue_shift);
-                                            }
-
-                                        }
-                                        if (daily.equalsIgnoreCase("Wednesday")) {
-                                            if (!shift.wed_shift.equalsIgnoreCase("NOH")) {
-                                                ad = MyShifts.getNOH(ad, shift.wed_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Thursday")) {
-                                            if (!shift.thu_shift.equalsIgnoreCase("NOH")) {
-                                                ad = MyShifts.getNOH(ad, shift.thu_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Friday")) {
-                                            if (!shift.fri_shift.equalsIgnoreCase("NOH")) {
-                                                ad = MyShifts.getNOH(ad, shift.fri_shift);
-                                            }
-
-                                        }
-                                        if (daily.equalsIgnoreCase("Saturday")) {
-                                            if (!shift.sat_shift.equalsIgnoreCase("NOH")) {
-                                                ad = MyShifts.getNOH(ad, shift.sat_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Sunday")) {
-                                            if (!shift.sun_shift.equalsIgnoreCase("NOH")) {
-                                                ad = MyShifts.getNOH(ad, shift.sun_shift);
-                                            }
-                                        }
+                                    ad = hh1 + ":" + hh2 + "" + hh3;
+                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
+                                        ad = MyShifts.getNOH(ad, my_dtr.user_screen_name);
+                                    }
+                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF")) {
+                                        aa = "OFF";
+                                        ad = "OFF";
+                                        pa = "OFF";
+                                        pd = "OFF";
                                     }
                                 }
                                 if (my_dtr.pm_arrival != null) {
                                     pa = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.pm_arrival);
                                     String daily = dtr.util.DateType.convert_datetime_to_daily(my_dtr.dtr_date);
-                                    if (shift.id != 0) {
-                                        String hh1 = pa.substring(0, 2);
-                                        String hh2 = pa.substring(3, 5);
-                                        String hh3 = pa.substring(5, 8);
 
-                                        pa = hh1 + ":" + hh2 + "" + hh3;
+                                    String hh1 = pa.substring(0, 2);
+                                    String hh2 = pa.substring(3, 5);
+                                    String hh3 = pa.substring(5, 8);
 
-                                        if (daily.equalsIgnoreCase("Monday")) {
-                                            if (!shift.mon_shift.equalsIgnoreCase("NOH")) {
-                                                pa = MyShifts.getNOH(pa, shift.mon_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Tuesday")) {
-                                            if (!shift.tue_shift.equalsIgnoreCase("NOH")) {
-                                                pa = MyShifts.getNOH(pa, shift.tue_shift);
-                                            }
-
-                                        }
-                                        if (daily.equalsIgnoreCase("Wednesday")) {
-                                            if (!shift.wed_shift.equalsIgnoreCase("NOH")) {
-                                                pa = MyShifts.getNOH(pa, shift.wed_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Thursday")) {
-                                            if (!shift.thu_shift.equalsIgnoreCase("NOH")) {
-                                                pa = MyShifts.getNOH(pa, shift.thu_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Friday")) {
-                                            if (!shift.fri_shift.equalsIgnoreCase("NOH")) {
-                                                pa = MyShifts.getNOH(pa, shift.fri_shift);
-                                            }
-
-                                        }
-                                        if (daily.equalsIgnoreCase("Saturday")) {
-                                            if (!shift.sat_shift.equalsIgnoreCase("NOH")) {
-                                                pa = MyShifts.getNOH(pa, shift.sat_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Sunday")) {
-                                            if (!shift.sun_shift.equalsIgnoreCase("NOH")) {
-                                                pa = MyShifts.getNOH(pa, shift.sun_shift);
-                                            }
-                                        }
+                                    pa = hh1 + ":" + hh2 + "" + hh3;
+                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
+                                        pa = MyShifts.getNOH(pa, my_dtr.user_screen_name);
                                     }
+                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF")) {
+                                        aa = "OFF";
+                                        ad = "OFF";
+                                        pa = "OFF";
+                                        pd = "OFF";
+                                    }
+
                                 }
                                 if (my_dtr.pm_departure != null) {
                                     pd = dtr.util.DateType.convert_datetime_to_hour_minute(my_dtr.pm_departure);
                                     String daily = dtr.util.DateType.convert_datetime_to_daily(my_dtr.dtr_date);
-                                    if (shift.id != 0) {
-                                        String hh1 = pd.substring(0, 2);
-                                        String hh2 = pd.substring(3, 5);
-                                        String hh3 = pd.substring(5, 8);
 
-                                        pd = hh1 + ":" + hh2 + "" + hh3;
+                                    String hh1 = pd.substring(0, 2);
+                                    String hh2 = pd.substring(3, 5);
+                                    String hh3 = pd.substring(5, 8);
 
-                                        if (daily.equalsIgnoreCase("Monday")) {
-                                            if (!shift.mon_shift.equalsIgnoreCase("NOH")) {
-                                                pd = MyShifts.getNOH(pd, shift.mon_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Tuesday")) {
-                                            if (!shift.tue_shift.equalsIgnoreCase("NOH")) {
-                                                pd = MyShifts.getNOH(pd, shift.tue_shift);
-                                            }
-
-                                        }
-                                        if (daily.equalsIgnoreCase("Wednesday")) {
-                                            if (!shift.wed_shift.equalsIgnoreCase("NOH")) {
-                                                pd = MyShifts.getNOH(pd, shift.wed_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Thursday")) {
-                                            if (!shift.thu_shift.equalsIgnoreCase("NOH")) {
-                                                pd = MyShifts.getNOH(pd, shift.thu_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Friday")) {
-                                            if (!shift.fri_shift.equalsIgnoreCase("NOH")) {
-                                                pd = MyShifts.getNOH(pd, shift.fri_shift);
-                                            }
-
-                                        }
-                                        if (daily.equalsIgnoreCase("Saturday")) {
-                                            if (!shift.sat_shift.equalsIgnoreCase("NOH")) {
-                                                pd = MyShifts.getNOH(pd, shift.sat_shift);
-                                            }
-                                        }
-                                        if (daily.equalsIgnoreCase("Sunday")) {
-                                            if (!shift.sun_shift.equalsIgnoreCase("NOH")) {
-                                                pd = MyShifts.getNOH(pd, shift.sun_shift);
-                                            }
-                                        }
+                                    pd = hh1 + ":" + hh2 + "" + hh3;
+                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
+                                        pd = MyShifts.getNOH(pd, my_dtr.user_screen_name);
                                     }
+                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF")) {
+                                        aa = "OFF";
+                                        ad = "OFF";
+                                        pa = "OFF";
+                                        pd = "OFF";
+                                    }
+
                                 }
                                 if (my_dtr.undertime_hours.equalsIgnoreCase("00")) {
                                     uh = "";
@@ -2592,7 +2473,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         tbl_dtrs.setModel(tbl_dtrs_M);
         tbl_dtrs.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_dtrs.setRowHeight(25);
-        int[] tbl_widths_dtrs = {70, 50, 100, 60, 60, 60, 60, 50, 50, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_dtrs = {70, 50, 80, 70, 60, 60, 60, 60, 50, 50, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_dtrs.length; i < n; i++) {
             if (i == 2) {
                 continue;
@@ -2615,7 +2496,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     public static class TbldtrsModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Date", "No", "Employee", "AM-Arr", "AM-Dep", "PM-Arr", "PM-Dep", "", "", "pm_departure", "undertime_hours", "undertime_minutes", "date_added", "user_id", "user_screen_name"
+            "Date", "No", "Employee", "Shift", "AM-Arr", "AM-Dep", "PM-Arr", "PM-Dep", "", "", "undertime_hours", "undertime_minutes", "date_added", "user_id", "user_screen_name"
         };
 
         public TbldtrsModel(ListModel listmodel) {
@@ -2650,31 +2531,31 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 case 2:
                     return " " + tt.employee_name;
                 case 3:
+                    return " " + tt.user_screen_name;
+                case 4:
                     if (tt.am_arrival == null) {
                         return "";
                     }
                     return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.am_arrival);
-                case 4:
+                case 5:
                     if (tt.am_departure == null) {
                         return "";
                     }
                     return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.am_departure);
-                case 5:
+                case 6:
                     if (tt.pm_arrival == null) {
                         return "";
                     }
                     return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.pm_arrival);
-                case 6:
+                case 7:
                     if (tt.pm_departure == null) {
                         return "";
                     }
                     return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.pm_departure);
-                case 7:
-                    return " Update";
                 case 8:
-                    return " Delete";
+                    return " Update";
                 case 9:
-                    return tt.pm_departure;
+                    return " Delete";
                 case 10:
                     return tt.undertime_hours;
                 case 11:
@@ -2694,14 +2575,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         String from = dtr.util.DateType.convert_dash_date3(dtr_date[0]);
         String to = dtr_date[1].substring(1, dtr_date[1].length());
         to = dtr.util.DateType.convert_dash_date3(to);
-        Field.Combo employee = (Field.Combo) jTextField4;
+        Field.Combo employee1 = (Field.Combo) jTextField4;
         String where = " where department_name like '%" + "" + "%'  ";
 
         if (!jCheckBox2.isSelected()) {
             where = where + " and Date(dtr_date) between '" + from + "' and '" + to + "'";
         }
         if (!jCheckBox1.isSelected()) {
-            where = where + " and employee_id= '" + employee.getId() + "' ";
+            where = where + " and employee_id= '" + employee1.getId() + "' ";
         }
         where = where + " order by Date(dtr_date),employee_id asc ";
         System.out.println(where);
@@ -2717,27 +2598,28 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         }
         int col = tbl_dtrs.getSelectedColumn();
         final to_dtrs to = (to_dtrs) tbl_dtrs_ALM.get(row);
-        if (col == 7) {
+        if (col == 8) {
             //edit
             Window p = (Window) this;
-            Dlg_edit_dtr nd = Dlg_edit_dtr.create(p, true);
+            Dlg_dtr_edit nd = Dlg_dtr_edit.create(p, true);
             nd.setTitle("");
             nd.do_pass(to);
-            nd.setCallback(new Dlg_edit_dtr.Callback() {
+            nd.setCallback(new Dlg_dtr_edit.Callback() {
 
                 @Override
-                public void ok(CloseDialog closeDialog, Dlg_edit_dtr.OutputData data) {
-                    closeDialog.ok();
-                    Dtrs.update_data(to, data.am_arrival, data.am_departure, data.pm_arrival, data.pm_departure, data.undertime_hour, data.undertime_minute);
-                    Alert.set(2, "");
+                public void ok(CloseDialog closeDialog, Dlg_dtr_edit.OutputData data) {
+
                     data_cols_dtr();
 
+//                    Dtrs.update_data(to, data.am_arrival, data.am_departure, data.pm_arrival, data.pm_departure, data.undertime_hour, data.undertime_minute);
+//                    Alert.set(2, "");
+//                    data_cols_dtr();
                 }
             });
             nd.setLocationRelativeTo(this);
             nd.setVisible(true);
         }
-        if (col == 8) {
+        if (col == 9) {
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");

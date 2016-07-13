@@ -151,6 +151,22 @@ public class Sick_leaves {
         }
     }
 
+    public static void delete_data(String where) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "delete from sick_leaves  "
+                    + " "+where;
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Sick_leaves.class, "Successfully Deleted");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static List<to_sick_leaves> ret_data(String where) {
         List<to_sick_leaves> datas = new ArrayList();
 

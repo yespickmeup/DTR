@@ -20,6 +20,7 @@ import mijzcx.synapse.desk.utils.FitIn;
 public class DateType {
 
     public static SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+    public static SimpleDateFormat sf3 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss aa");
     public static SimpleDateFormat sf2 = new SimpleDateFormat("MM-dd-yyyy");
     public static SimpleDateFormat datetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public static SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss aa");
@@ -295,6 +296,7 @@ public class DateType {
         date = DateType.hour_minute3.format(d);
         return date;
     }
+
     public static String convert_datetime_to_daily(String datetime) {
         String date = "";
 

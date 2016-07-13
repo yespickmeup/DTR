@@ -542,6 +542,7 @@ public class Dlg_employee_shifitng_edit extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
+        dtr_hours.clear();
         String[] noh = {"08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 AM", "03:00 AM", "04:00 AM", "05:00 AM"};
         String[] ms = {"07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", "", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM"};
         String[] gs = {"11:00 PM", "12:00 AM", "01:00 AM", "02:00 AM", "", "03:00 AM", "04:00 AM", "05:00 AM", "06:00 AM", "07:00 AM"};

@@ -18,16 +18,15 @@ public class MyShifts {
 
     public static String getNOH(String time, String shift_type) {
         String[] noh = {"08:00 AM", "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 AM", "03:00 AM", "04:00 AM", "05:00 PM"};
-        String[] ms =  {"07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", ""         , "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM"};
-        String[] gs =  {"11:00 PM", "12:00 AM", "01:00 AM", "02:00 AM", ""         , "03:00 AM", "04:00 AM", "05:00 AM", "06:00 AM", "07:00 AM"};
-        String[] ss =  {"03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", ""         , "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM"};
-        
-        
+        String[] ms = {"07:00 AM", "08:00 AM", "09:00 AM", "10:00 AM", "", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM"};
+        String[] gs = {"11:00 PM", "12:00 AM", "01:00 AM", "02:00 AM", "", "03:00 AM", "04:00 AM", "05:00 AM", "06:00 AM", "07:00 AM"};
+        String[] ss = {"03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM", "11:00 PM"};
+
         String h1 = time.substring(0, 2);
         String h2 = time.substring(3, 5);
         String h3 = time.substring(6, 8);
         String my_noh = "";
-        if (shift_type.equalsIgnoreCase("MS")) {
+        if (shift_type.equalsIgnoreCase("MS") || shift_type.equalsIgnoreCase("MS(OT)")) {
             int index = -1;
             for (int i = 0; i < ms.length; i++) {
                 if (!ms[i].isEmpty()) {
@@ -58,7 +57,7 @@ public class MyShifts {
             return my_noh;
         }
 
-        if (shift_type.equalsIgnoreCase("GS")) {
+        if (shift_type.equalsIgnoreCase("GS") || shift_type.equalsIgnoreCase("OT")) {
             int index = -1;
             for (int i = 0; i < gs.length; i++) {
                 if (!gs[i].isEmpty()) {
@@ -89,7 +88,7 @@ public class MyShifts {
             return my_noh;
         }
 
-        if (shift_type.equalsIgnoreCase("SS")) {
+        if (shift_type.equalsIgnoreCase("SS") || shift_type.equalsIgnoreCase("SS(OT")) {
 
             int index = -1;
             for (int i = 0; i < ss.length; i++) {
@@ -117,7 +116,7 @@ public class MyShifts {
             } catch (Exception e) {
                 my_noh = h1 + ":" + h2 + " " + h3;
             }
-            System.out.println("my_noh"+my_noh);
+            System.out.println("my_noh" + my_noh);
             return my_noh;
         }
 
