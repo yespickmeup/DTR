@@ -655,7 +655,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
                     sick_leaves();
                 }
                 if (data.stmt.equals("Shifting")) {
-                    shifting();
+//                    shifting();
                 }
                 //</editor-fold>
                 //<editor-fold defaultstate="collapsed" desc=" maintenance ">

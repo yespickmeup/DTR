@@ -433,6 +433,11 @@ public class Dlg_dtr_edit_sick_leaves extends javax.swing.JDialog {
 
     private void ok() {
         String reason = tf_reason.getText();
+        if(reason.isEmpty()){
+            Alert.set(0, "Input Field!");
+            tf_reason.grabFocus();
+            return;
+        }
         int am = 0;
         if (jCheckBox1.isSelected()) {
             am = 1;

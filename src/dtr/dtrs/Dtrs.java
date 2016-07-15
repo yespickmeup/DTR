@@ -124,6 +124,147 @@ public class Dtrs {
         }
     }
 
+    public static void add_data(to_dtrs to_dtrs, String shift, String reason, int am, int pm) {
+        try {
+            Connection conn = MyConnection.connect();
+            conn.setAutoCommit(false);
+            String s0 = "insert into dtrs("
+                    + "employee_id"
+                    + ",employee_name"
+                    + ",department_id"
+                    + ",department_name"
+                    + ",dtr_date"
+                    + ",am_arrival"
+                    + ",am_departure"
+                    + ",pm_arrival"
+                    + ",pm_departure"
+                    + ",undertime_hours"
+                    + ",undertime_minutes"
+                    + ",date_added"
+                    + ",user_id"
+                    + ",user_screen_name"
+                    + ")values("
+                    + ":employee_id"
+                    + ",:employee_name"
+                    + ",:department_id"
+                    + ",:department_name"
+                    + ",:dtr_date"
+                    + ",:am_arrival"
+                    + ",:am_departure"
+                    + ",:pm_arrival"
+                    + ",:pm_departure"
+                    + ",:undertime_hours"
+                    + ",:undertime_minutes"
+                    + ",:date_added"
+                    + ",:user_id"
+                    + ",:user_screen_name"
+                    + ")";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("employee_id", to_dtrs.employee_id)
+                    .setString("employee_name", to_dtrs.employee_name)
+                    .setString("department_id", to_dtrs.department_id)
+                    .setString("department_name", to_dtrs.department_name)
+                    .setString("dtr_date", to_dtrs.dtr_date)
+                    .setString("am_arrival", to_dtrs.am_arrival)
+                    .setString("am_departure", to_dtrs.am_departure)
+                    .setString("pm_arrival", to_dtrs.pm_arrival)
+                    .setString("pm_departure", to_dtrs.pm_departure)
+                    .setString("undertime_hours", to_dtrs.undertime_hours)
+                    .setString("undertime_minutes", to_dtrs.undertime_minutes)
+                    .setString("date_added", to_dtrs.date_added)
+                    .setString("user_id", to_dtrs.user_id)
+                    .setString("user_screen_name", to_dtrs.user_screen_name)
+                    .ok();
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.addBatch(s0);
+
+            if (!shift.equalsIgnoreCase("ROH")) {
+                String s2 = "insert into employee_shifts("
+                        + "created_at"
+                        + ",updated_at"
+                        + ",created_by"
+                        + ",updated_by"
+                        + ",status"
+                        + ",emp_id"
+                        + ",emp_name"
+                        + ",shift"
+                        + ",shift_date"
+                        + ")values("
+                        + ":created_at"
+                        + ",:updated_at"
+                        + ",:created_by"
+                        + ",:updated_by"
+                        + ",:status"
+                        + ",:emp_id"
+                        + ",:emp_name"
+                        + ",:shift"
+                        + ",:shift_date"
+                        + ")";
+
+                s2 = SqlStringUtil.parse(s2)
+                        .setString("created_at", to_dtrs.date_added)
+                        .setString("updated_at", to_dtrs.date_added)
+                        .setString("created_by", to_dtrs.user_id)
+                        .setString("updated_by", to_dtrs.user_id)
+                        .setNumber("status", 1)
+                        .setString("emp_id", to_dtrs.employee_id)
+                        .setString("emp_name", to_dtrs.employee_name)
+                        .setString("shift", shift)
+                        .setString("shift_date", to_dtrs.dtr_date)
+                        .ok();
+
+                stmt.addBatch(s2);
+
+            }
+
+            if (!reason.isEmpty()) {
+                String s3 = "insert into sick_leaves("
+                        + "reason"
+                        + ",date_of_leave"
+                        + ",half_day_am"
+                        + ",half_day_pm"
+                        + ",employee_name"
+                        + ",employee_id"
+                        + ",date_added"
+                        + ",user_id"
+                        + ",user_screen_name"
+                        + ")values("
+                        + ":reason"
+                        + ",:date_of_leave"
+                        + ",:half_day_am"
+                        + ",:half_day_pm"
+                        + ",:employee_name"
+                        + ",:employee_id"
+                        + ",:date_added"
+                        + ",:user_id"
+                        + ",:user_screen_name"
+                        + ")";
+
+                s3 = SqlStringUtil.parse(s3)
+                        .setString("reason", reason)
+                        .setString("date_of_leave", to_dtrs.dtr_date)
+                        .setNumber("half_day_am", am)
+                        .setNumber("half_day_pm", pm)
+                        .setString("employee_name", to_dtrs.employee_name)
+                        .setString("employee_id", to_dtrs.employee_id)
+                        .setString("date_added", to_dtrs.date_added)
+                        .setString("user_id", to_dtrs.user_id)
+                        .setString("user_screen_name", to_dtrs.user_id)
+                        .ok();
+                stmt.addBatch(s3);
+            }
+
+            stmt.executeBatch();
+            conn.commit();
+            Lg.s(Dtrs.class, "Successfully Added");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static void update_data(to_dtrs to_dtrs) {
         try {
             Connection conn = MyConnection.connect();
@@ -219,6 +360,7 @@ public class Dtrs {
             MyConnection.close();
         }
     }
+
     public static void update_data3(String id, String hh, String mm) {
         try {
             Connection conn = MyConnection.connect();
@@ -243,7 +385,6 @@ public class Dtrs {
         }
     }
 
-    
     public static void update_data(to_dtrs to_dtrs, String am_arrival, String am_departure, String pm_arrival, String pm_departure, String undertime_hour, String undertime_minute) {
         try {
             Connection conn = MyConnection.connect();
@@ -378,7 +519,7 @@ public class Dtrs {
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
-            List<Employee_shifts.to_employee_shifts> shifts = new ArrayList();
+
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String employee_id = rs.getString(2);
@@ -396,11 +537,10 @@ public class Dtrs {
                 String user_id = rs.getString(14);
                 String user_screen_name = "ROH";
 
-                String where2 = " where emp_id='" + employee_id + "' and shift_date='" + dtr_date + "' ";
-                shifts = Employee_shifts.ret_data(where2);
-                if (!shifts.isEmpty()) {
-                    Employee_shifts.to_employee_shifts sh = shifts.get(0);
-                    user_screen_name = sh.shift;
+                String where2 = " where emp_id='" + employee_id + "' and shift_date='" + dtr_date + "' order by id desc  limit 1 ";
+                List<Employee_shifts.to_employee_shifts> shifts = Employee_shifts.ret_data(where2);
+                for (Employee_shifts.to_employee_shifts to : shifts) {
+                    user_screen_name = to.shift;
                 }
 
                 to_dtrs to = new to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);

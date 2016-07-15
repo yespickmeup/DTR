@@ -24,5 +24,3 @@ id int auto_increment primary key
 );
 
 
-undertime total
-add dtr

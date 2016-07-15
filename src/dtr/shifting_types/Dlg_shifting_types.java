@@ -18,7 +18,9 @@ import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JLabel;
@@ -199,18 +201,32 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_shifting_types = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        tf_shift_name = new Field.Input();
-        jLabel2 = new javax.swing.JLabel();
-        tf_shift_starts = new Field.Combo();
-        jLabel3 = new javax.swing.JLabel();
-        tf_shift_ends = new Field.Combo();
         jButton3 = new Button.Success();
         jButton2 = new Button.Default();
-        jTextField13 = new Field.Combo();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField14 = new Field.Combo();
+        jLabel6 = new javax.swing.JLabel();
+        tf_shift_starts1 = new Field.Input();
+        jLabel7 = new javax.swing.JLabel();
+        tf_shift_starts2 = new Field.Input();
+        tf_shift_starts3 = new Field.Input();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        tf_shift_starts4 = new Field.Input();
+        jLabel10 = new javax.swing.JLabel();
+        tf_shift_starts5 = new Field.Input();
+        jLabel11 = new javax.swing.JLabel();
+        tf_shift_starts6 = new Field.Input();
+        jLabel12 = new javax.swing.JLabel();
+        tf_shift_starts7 = new Field.Input();
+        jLabel13 = new javax.swing.JLabel();
+        tf_shift_starts8 = new Field.Input();
+        jLabel14 = new javax.swing.JLabel();
+        tf_shift_starts9 = new Field.Input();
+        jLabel15 = new javax.swing.JLabel();
+        tf_shift_starts10 = new Field.Input();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        tf_shift_name = new Field.Input();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -235,45 +251,6 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbl_shifting_types);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Shift Name:");
-
-        tf_shift_name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Starts:");
-
-        tf_shift_starts.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_shift_starts.setText("08 AM");
-        tf_shift_starts.setFocusable(false);
-        tf_shift_starts.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_shift_startsMouseClicked(evt);
-            }
-        });
-        tf_shift_starts.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_shift_startsActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Ends:");
-
-        tf_shift_ends.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tf_shift_ends.setText("05 PM");
-        tf_shift_ends.setFocusable(false);
-        tf_shift_ends.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tf_shift_endsMouseClicked(evt);
-            }
-        });
-        tf_shift_ends.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_shift_endsActionPerformed(evt);
-            }
-        });
-
         jButton3.setText("Save");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,32 +265,174 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
             }
         });
 
-        jTextField13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField13.setText("00");
-        jTextField13.setFocusable(false);
-        jTextField13.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("08:00 AM");
+
+        tf_shift_starts1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField13MouseClicked(evt);
+                tf_shift_starts1MouseClicked(evt);
             }
         });
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        tf_shift_starts1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                tf_shift_starts1ActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText(" :");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("09:00 AM");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText(" :");
-
-        jTextField14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField14.setText("00");
-        jTextField14.setFocusable(false);
-        jTextField14.addMouseListener(new java.awt.event.MouseAdapter() {
+        tf_shift_starts2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField14MouseClicked(evt);
+                tf_shift_starts2MouseClicked(evt);
+            }
+        });
+        tf_shift_starts2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts2ActionPerformed(evt);
+            }
+        });
+
+        tf_shift_starts3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_starts3MouseClicked(evt);
+            }
+        });
+        tf_shift_starts3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts3ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("10:00 AM");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("11:00 AM");
+
+        tf_shift_starts4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_starts4MouseClicked(evt);
+            }
+        });
+        tf_shift_starts4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts4ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("12:00 PM");
+
+        tf_shift_starts5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_starts5MouseClicked(evt);
+            }
+        });
+        tf_shift_starts5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts5ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("01:00 PM");
+
+        tf_shift_starts6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_starts6MouseClicked(evt);
+            }
+        });
+        tf_shift_starts6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts6ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("02:00 PM");
+
+        tf_shift_starts7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_starts7MouseClicked(evt);
+            }
+        });
+        tf_shift_starts7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts7ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setText("03:00 PM");
+
+        tf_shift_starts8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_starts8MouseClicked(evt);
+            }
+        });
+        tf_shift_starts8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts8ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setText("04:00 PM");
+
+        tf_shift_starts9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_starts9MouseClicked(evt);
+            }
+        });
+        tf_shift_starts9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts9ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setText("05:00 PM");
+
+        tf_shift_starts10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_starts10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_starts10MouseClicked(evt);
+            }
+        });
+        tf_shift_starts10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_starts10ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel16.setText("Regular:");
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel17.setText("Shift:");
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel18.setText("Name:");
+
+        tf_shift_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tf_shift_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_shift_nameMouseClicked(evt);
+            }
+        });
+        tf_shift_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_shift_nameActionPerformed(evt);
             }
         });
 
@@ -323,62 +442,123 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_shift_name))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_shift_starts, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_shift_ends, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(17, 17, 17))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(tf_shift_starts10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tf_shift_name, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_shift_starts1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_shift_starts10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_shift_name, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_shift_starts, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_shift_ends, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -395,22 +575,6 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tf_shift_startsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_startsMouseClicked
-        init_hours(tf_shift_starts);
-    }//GEN-LAST:event_tf_shift_startsMouseClicked
-
-    private void tf_shift_startsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_startsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_shift_startsActionPerformed
-
-    private void tf_shift_endsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_endsMouseClicked
-        init_hours(tf_shift_ends);
-    }//GEN-LAST:event_tf_shift_endsMouseClicked
-
-    private void tf_shift_endsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_endsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_shift_endsActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         save_shifting_types();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -423,17 +587,93 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
         select_shifting_types();
     }//GEN-LAST:event_tbl_shifting_typesMouseClicked
 
-    private void jTextField13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField13MouseClicked
-        init_minutes(jTextField13);
-    }//GEN-LAST:event_jTextField13MouseClicked
-
-    private void jTextField14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField14MouseClicked
-        init_minutes(jTextField14);
-    }//GEN-LAST:event_jTextField14MouseClicked
-
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void tf_shift_starts1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_tf_shift_starts1MouseClicked
+
+    private void tf_shift_starts1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts1ActionPerformed
+
+    private void tf_shift_starts2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts2MouseClicked
+
+    private void tf_shift_starts2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts2ActionPerformed
+
+    private void tf_shift_starts3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts3MouseClicked
+
+    private void tf_shift_starts3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts3ActionPerformed
+
+    private void tf_shift_starts4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts4MouseClicked
+
+    private void tf_shift_starts4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts4ActionPerformed
+
+    private void tf_shift_starts5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts5MouseClicked
+
+    private void tf_shift_starts5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts5ActionPerformed
+
+    private void tf_shift_starts6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts6MouseClicked
+
+    private void tf_shift_starts6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts6ActionPerformed
+
+    private void tf_shift_starts7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts7MouseClicked
+
+    private void tf_shift_starts7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts7ActionPerformed
+
+    private void tf_shift_starts8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts8MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts8MouseClicked
+
+    private void tf_shift_starts8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts8ActionPerformed
+
+    private void tf_shift_starts9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts9MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts9MouseClicked
+
+    private void tf_shift_starts9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts9ActionPerformed
+
+    private void tf_shift_starts10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_starts10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts10MouseClicked
+
+    private void tf_shift_starts10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_starts10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_starts10ActionPerformed
+
+    private void tf_shift_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_shift_nameMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_nameMouseClicked
+
+    private void tf_shift_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_shift_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_shift_nameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -442,19 +682,33 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTable tbl_shifting_types;
-    private javax.swing.JTextField tf_shift_ends;
     private javax.swing.JTextField tf_shift_name;
-    private javax.swing.JTextField tf_shift_starts;
+    private javax.swing.JTextField tf_shift_starts1;
+    private javax.swing.JTextField tf_shift_starts10;
+    private javax.swing.JTextField tf_shift_starts2;
+    private javax.swing.JTextField tf_shift_starts3;
+    private javax.swing.JTextField tf_shift_starts4;
+    private javax.swing.JTextField tf_shift_starts5;
+    private javax.swing.JTextField tf_shift_starts6;
+    private javax.swing.JTextField tf_shift_starts7;
+    private javax.swing.JTextField tf_shift_starts8;
+    private javax.swing.JTextField tf_shift_starts9;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
@@ -522,9 +776,9 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
         tbl_shifting_types.setModel(tbl_shifting_types_M);
         tbl_shifting_types.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_shifting_types.setRowHeight(25);
-        int[] tbl_widths_shifting_types = {100, 100, 100, 40, 50, 0, 0, 0, 0};
+        int[] tbl_widths_shifting_types = {80, 100, 0, 40, 50, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_shifting_types.length; i < n; i++) {
-            if (i == 0) {
+            if (i == 1) {
                 continue;
             }
             TableWidthUtilities.setColumnWidth(tbl_shifting_types, i, tbl_widths_shifting_types[i]);
@@ -610,14 +864,27 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
             String updated_by = MyUser.getUser_id();
             int status = 1;
             String shift_name = tf_shift_name.getText();
-            String shift_starts = tf_shift_starts.getText();
-            String shift_starts1 = shift_starts.substring(0, shift_starts.length() - 3);
-            String day1 = shift_starts.substring(3, shift_starts.length());
-            shift_starts = shift_starts1 + ":" + jTextField13.getText() + " " + day1;
-            String shift_ends = tf_shift_ends.getText();
-            String shift_ends1 = shift_ends.substring(0, shift_ends.length() - 3);
-            String day2 = shift_ends.substring(3, shift_ends.length());
-            shift_ends = shift_ends1 + ":" + jTextField14.getText() + " " + day2;
+            String shift_starts = "\"" + tf_shift_starts1.getText() + "\","
+                    + "\"" + tf_shift_starts2.getText() + "\","
+                    + "\"" + tf_shift_starts3.getText() + "\","
+                    + "\"" + tf_shift_starts4.getText() + "\","
+                    + "\"" + tf_shift_starts5.getText() + "\","
+                    + "\"" + tf_shift_starts6.getText() + "\","
+                    + "\"" + tf_shift_starts7.getText() + "\","
+                    + "\"" + tf_shift_starts8.getText() + "\","
+                    + "\"" + tf_shift_starts9.getText() + "\","
+                    + "\"" + tf_shift_starts10.getText() + "\"";
+
+            String shift_ends = "";
+            JTextField[] tfs = {tf_shift_starts1, tf_shift_starts2, tf_shift_starts3, tf_shift_starts4, tf_shift_starts5, tf_shift_starts6, tf_shift_starts7, tf_shift_starts8, tf_shift_starts9, tf_shift_starts10};
+            for (JTextField tf : tfs) {
+                if (check_format(tf) == 0) {
+                    Alert.set(0, "Check Format");
+                    tf.grabFocus();
+                    return;
+                }
+            }
+
             to_shifting_types to = new to_shifting_types(id, created_at, updated_at, created_by, updated_by, status, shift_name, shift_starts, shift_ends);
             Shifting_types.add_data(to);
             ret_shifting_types();
@@ -632,20 +899,53 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
             String updated_by = MyUser.getUser_id();
             int status = 1;
             String shift_name = tf_shift_name.getText();
-            String shift_starts = tf_shift_starts.getText();
-            String shift_starts1 = shift_starts.substring(0, shift_starts.length() - 3);
-            String day1 = shift_starts.substring(3, shift_starts.length());
-            shift_starts = shift_starts1 + ":" + jTextField13.getText() + " " + day1;
-            String shift_ends = tf_shift_ends.getText();
-            String shift_ends1 = shift_ends.substring(0, shift_ends.length() - 3);
-            String day2 = shift_ends.substring(3, shift_ends.length());
-            shift_ends = shift_ends1 + ":" + jTextField14.getText() + " " + day2;
+            String shift_starts = "\"" + tf_shift_starts1.getText() + "\","
+                    + "\"" + tf_shift_starts2.getText() + "\","
+                    + "\"" + tf_shift_starts3.getText() + "\","
+                    + "\"" + tf_shift_starts4.getText() + "\","
+                    + "\"" + tf_shift_starts5.getText() + "\","
+                    + "\"" + tf_shift_starts6.getText() + "\","
+                    + "\"" + tf_shift_starts7.getText() + "\","
+                    + "\"" + tf_shift_starts8.getText() + "\","
+                    + "\"" + tf_shift_starts9.getText() + "\","
+                    + "\"" + tf_shift_starts10.getText() + "\"";
 
+            String shift_ends = "";
+
+            JTextField[] tfs = {tf_shift_starts1, tf_shift_starts2, tf_shift_starts3, tf_shift_starts4, tf_shift_starts5, tf_shift_starts6, tf_shift_starts7, tf_shift_starts8, tf_shift_starts9, tf_shift_starts10};
+            for (JTextField tf : tfs) {
+                if (check_format(tf) == 0) {
+                    Alert.set(0, "Check Format");
+                    tf.grabFocus();
+                    return;
+                }
+            }
             to_shifting_types to1 = new to_shifting_types(id, created_at, updated_at, created_by, updated_by, status, shift_name, shift_starts, shift_ends);
             Shifting_types.update_data(to1);
             ret_shifting_types();
             Alert.set(2, "");
             clear_shifting_types();
+        }
+    }
+
+    private int check_format(JTextField tf) {
+        int ret = 0;
+        try {
+            if (!tf.getText().isEmpty()) {
+                String now = DateType.sf.format(new Date());
+                String text = tf.getText();
+                text = text.replace(" PM", ":00 PM");
+                text = text.replace(" AM", ":00 AM");
+                now = now + " " + text;
+                Date arival = DateType.datetime.parse(now);
+                ret = 1;
+            } else {
+                ret = 1;
+            }
+            return ret;
+        } catch (ParseException ex) {
+            System.out.println(ex);
+            return 0;
         }
     }
 
@@ -659,19 +959,19 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
         if (col == 3) {
             tf_shift_name.setText(to.shift_name);
             String shift_starts = to.shift_starts;
-            String shift_starts1 = shift_starts.substring(0, 2);
-            String shift_starts2 = shift_starts.substring(3, 5);
-            String day1 = shift_starts.substring(6, shift_starts.length());
+            String replaceAll = shift_starts.replaceAll("\"", "");
+            String[] data = replaceAll.split(",");
+            tf_shift_starts1.setText(data[0]);
+            tf_shift_starts2.setText(data[1]);
+            tf_shift_starts3.setText(data[2]);
+            tf_shift_starts4.setText(data[3]);
+            tf_shift_starts5.setText(data[4]);
 
-            tf_shift_starts.setText(shift_starts1 + " " + day1);
-            jTextField13.setText(shift_starts2);
-
-            String shift_ends = to.shift_ends;
-            String shift_ends1 = shift_ends.substring(0, 2);
-            String shift_ends2 = shift_ends.substring(3, 5);
-            String day3 = shift_ends.substring(6, shift_ends.length());
-            tf_shift_ends.setText(shift_ends1 + " " + day3);
-            jTextField14.setText(shift_ends2);
+            tf_shift_starts6.setText(data[5]);
+            tf_shift_starts7.setText(data[6]);
+            tf_shift_starts8.setText(data[7]);
+            tf_shift_starts9.setText(data[8]);
+            tf_shift_starts10.setText(data[9]);
         }
         if (col == 4) {
             Window p = (Window) this;
@@ -695,10 +995,19 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
 
     private void clear_shifting_types() {
         tf_shift_name.setText("");
-        tf_shift_starts.setText("08 AM");
-        tf_shift_ends.setText("05 PM");
+        tf_shift_starts1.setText("");
+        tf_shift_starts2.setText("");
+        tf_shift_starts3.setText("");
+        tf_shift_starts4.setText("");
+        tf_shift_starts5.setText("");
+        tf_shift_starts6.setText("");
+        tf_shift_starts7.setText("");
+        tf_shift_starts8.setText("");
+        tf_shift_starts9.setText("");
+        tf_shift_starts10.setText("");
         tbl_shifting_types.clearSelection();
         tf_shift_name.grabFocus();
+
     }
 //</editor-fold> 
 
@@ -728,5 +1037,4 @@ public class Dlg_shifting_types extends javax.swing.JDialog {
             }
         });
     }
-
 }

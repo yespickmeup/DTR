@@ -5,10 +5,9 @@
  */
 package dtr.dtrs;
 
-import dtr.employee_shifts.Employee_shifts;
+import dtr.shifting_types.Dlg_shifting_types;
 import dtr.shifting_types.Shifting_types;
-import dtr.sick_leaves.Sick_leaves;
-import dtr.users.MyUser;
+import dtr.sick_leaves.Sick_leave_reasons;
 import dtr.util.Alert;
 import dtr.util.DateType;
 import dtr.util.TableRenderer;
@@ -21,7 +20,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import mijzcx.synapse.desk.utils.CloseDialog;
@@ -34,7 +32,7 @@ import synsoftech.fields.Field;
  *
  * @author Guinness
  */
-public class Dlg_dtr_edit extends javax.swing.JDialog {
+public class Dlg_dtr_new extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_dtr_edit
@@ -56,37 +54,64 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
     }
 
     public static class OutputData {
+
+        public final String schedule_type;
+        public final String reason;
+        public final int am;
+        public final int pm;
+        public final String am_arrival;
+        public final String am_departure;
+        public final String pm_arrival;
+        public final String pm_departure;
+        public final String undertime_hour;
+        public final String undertime_mm;
+        public final String date;
+
+        public OutputData(String schedule_type, String reason, int am, int pm, String am_arrival, String am_departure, String pm_arrival, String pm_departure, String undertime_hour, String undertime_mm, String date) {
+            this.schedule_type = schedule_type;
+            this.reason = reason;
+            this.am = am;
+            this.pm = pm;
+            this.am_arrival = am_arrival;
+            this.am_departure = am_departure;
+            this.pm_arrival = pm_arrival;
+            this.pm_departure = pm_departure;
+            this.undertime_hour = undertime_hour;
+            this.undertime_mm = undertime_mm;
+            this.date = date;
+        }
+
     }
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_dtr_edit(java.awt.Frame parent, boolean modal) {
+    private Dlg_dtr_new(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_dtr_edit(java.awt.Dialog parent, boolean modal) {
+    private Dlg_dtr_new(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_dtr_edit() {
+    public Dlg_dtr_new() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_dtr_edit myRef;
+    private Dlg_dtr_new myRef;
 
-    private void setThisRef(Dlg_dtr_edit myRef) {
+    private void setThisRef(Dlg_dtr_new myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_dtr_edit> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_dtr_new> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -94,7 +119,7 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_dtr_edit create(java.awt.Window parent, boolean modal) {
+    public static Dlg_dtr_new create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -104,14 +129,14 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_dtr_edit create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_dtr_new create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_dtr_edit dialog = dialogContainer.get(parent);
+            Dlg_dtr_new dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_dtr_edit((java.awt.Frame) parent, false);
+                dialog = new Dlg_dtr_new((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -125,10 +150,10 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_dtr_edit dialog = dialogContainer.get(parent);
+            Dlg_dtr_new dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_dtr_edit((java.awt.Dialog) parent, false);
+                dialog = new Dlg_dtr_new((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -155,7 +180,7 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_dtr_edit dialog = Dlg_dtr_edit.create(new javax.swing.JFrame(), true);
+        Dlg_dtr_new dialog = Dlg_dtr_new.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
     }
@@ -199,7 +224,6 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
         jTextField2 = new Field.Input();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new Field.Input();
         jLabel8 = new javax.swing.JLabel();
         jTextField8 = new Field.Combo();
         jLabel9 = new javax.swing.JLabel();
@@ -219,16 +243,14 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
         jLabel23 = new javax.swing.JLabel();
         jTextField17 = new Field.Input();
         jLabel13 = new javax.swing.JLabel();
-        jButton3 = new Button.Default();
-        jButton4 = new Button.Default();
-        jButton6 = new Button.Default();
-        jButton7 = new Button.Default();
-        jButton8 = new Button.Default();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jTextField16 = new Field.Input();
-        jTextField18 = new Field.Input();
-        jLabel20 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        tf_reason = new Field.Combo();
+        jLabel4 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jButton2 = new Button.Success();
         jButton5 = new Button.Default();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -250,9 +272,6 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Date:");
-
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField7.setFocusable(false);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Schedule:");
@@ -336,56 +355,40 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Type:");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/icons/edit45.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/icons/edit45.png"))); // NOI18N
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/icons/edit45.png"))); // NOI18N
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/icons/edit45.png"))); // NOI18N
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/icons/edit45.png"))); // NOI18N
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Sick Leave:");
+        jLabel18.setText("Leave:");
         jLabel18.setOpaque(true);
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel19.setText("AM:");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Reason:");
 
-        jTextField16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField16.setFocusable(false);
+        tf_reason.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_reason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_reasonActionPerformed(evt);
+            }
+        });
 
-        jTextField18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField18.setFocusable(false);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Interval:");
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("Pm:");
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox1.setSelected(true);
+        jCheckBox1.setText("AM");
+
+        jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox2.setSelected(true);
+        jCheckBox2.setText("PM");
+
+        jDateChooser1.setDate(new Date());
+        jDateChooser1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jButton2.setText("Ok");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/icons/cogwheels4 (3).png"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -401,19 +404,25 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(jCheckBox2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tf_reason, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,18 +441,14 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                                             .addComponent(jTextField2)
-                                            .addComponent(jTextField7)))
+                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(20, 20, 20)
                                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -451,11 +456,9 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -463,9 +466,7 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextField11))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -473,10 +474,11 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel17)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(jTextField13))))
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(43, 43, 43))
         );
         jPanel1Layout.setVerticalGroup(
@@ -491,61 +493,59 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_reason, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBox1))))
                 .addGap(5, 5, 5)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
@@ -583,28 +583,16 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jTextField17MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        create_shift();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void tf_reasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_reasonActionPerformed
+        init_reasons(tf_reason);
+    }//GEN-LAST:event_tf_reasonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        create_sick_leaves();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        update_am();
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        update_pm();
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        update_undertime();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ok();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        shifting_types();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -613,12 +601,11 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -627,12 +614,12 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -643,85 +630,20 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField tf_reason;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
         ret_shifting_types();
     }
-
-    List<Shifting_types.to_shifting_types> shift_types = new ArrayList();
-
-    private void ret_shifting_types() {
-        shift_types.clear();
-        shift_types = Shifting_types.ret_data("");
-    }
     int my_id = 0;
 
-    public void do_pass(Dtrs.to_dtrs to) {
-        my_id = to.id;
-        jTextField1.setText(to.employee_id);
-        jTextField2.setText(to.employee_name);
-        jTextField7.setText(DateType.convert_jan_1_2013_sf(to.dtr_date));
-        jTextField15.setText(to.undertime_hours);
-        jTextField17.setText(to.undertime_minutes);
-
-        try {
-            if (to.am_arrival != null) {
-                Date aa = DateType.datetime.parse(to.am_arrival);
-                jTextField10.setText(DateType.time3.format(aa));
-            }
-            if (to.am_departure != null) {
-                Date aa = DateType.datetime.parse(to.am_departure);
-                jTextField11.setText(DateType.time3.format(aa));
-            }
-            if (to.pm_arrival != null) {
-                Date aa = DateType.datetime.parse(to.pm_arrival);
-                jTextField12.setText(DateType.time3.format(aa));
-            }
-
-            if (to.pm_departure != null) {
-                Date aa = DateType.datetime.parse(to.pm_departure);
-
-                jTextField13.setText(DateType.time3.format(aa));
-            }
-
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_dtr_edit.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        Date d = new Date();
-        try {
-            d = DateType.month_date.parse(jTextField7.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_dtr_edit.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String shift_date = DateType.sf.format(d);
-        String emp_id = jTextField1.getText();
-        String where = " where emp_id='" + emp_id + "' and shift_date='" + shift_date + "'  order by id desc  limit 1 ";
-        List<Employee_shifts.to_employee_shifts> shifts = Employee_shifts.ret_data(where);
-        for (Employee_shifts.to_employee_shifts to1 : shifts) {
-
-            jTextField8.setText(to1.shift);
-        }
-
-        String where2 = " where employee_id='" + emp_id + "' and date_of_leave='" + shift_date + "'";
-        List<Sick_leaves.to_sick_leaves> datas = Sick_leaves.ret_data(where2);
-        if (!datas.isEmpty()) {
-            Sick_leaves.to_sick_leaves leave = datas.get(0);
-
-            if (leave.half_day_am == 1) {
-                jTextField16.setText(leave.reason);
-            }
-            if (leave.half_day_pm == 1) {
-                jTextField18.setText(leave.reason);
-            }
-        }
+    public void do_pass(String emp_id, String emp_name) {
+        jTextField1.setText(emp_id);
+        jTextField2.setText(emp_name);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -741,6 +663,13 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
         });
     }
     // </editor-fold>
+    
+    
+    List<Shifting_types.to_shifting_types> shift_types = new ArrayList();
+    private void ret_shifting_types() {
+        shift_types.clear();
+        shift_types = Shifting_types.ret_data("");
+    }
 
     private void init_types(final JTextField tf) {
 
@@ -749,6 +678,7 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
         Shifting_types.shifts s_noh = new Shifting_types.shifts("ROH", noh);
         dtr_hours.add(s_noh);
         for (Shifting_types.to_shifting_types to : shift_types) {
+
             if (to.shift_starts.equalsIgnoreCase("\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"")) {
                 String[] shift = {""};
                 Shifting_types.shifts s_ms = new Shifting_types.shifts(to.shift_name, shift);
@@ -758,6 +688,7 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
                 Shifting_types.shifts s_ms = new Shifting_types.shifts(to.shift_name, shift);
                 dtr_hours.add(s_ms);
             }
+
         }
 
         Object[][] obj = new Object[dtr_hours.size()][1];
@@ -779,146 +710,62 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
                 Shifting_types.shifts to = dtr_hours.get(data.selected_row);
                 combo.setText(to.name);
                 combo.setId("" + Arrays.asList(to.time));
-
+                System.out.println(Arrays.asList(to.time));
             }
         });
     }
 
-    private void create_shift() {
-        String shift1 = jTextField8.getText();
-        if (shift1.equalsIgnoreCase("ROH")) {
-            Date d = new Date();
-            try {
-                d = DateType.month_date.parse(jTextField7.getText());
-            } catch (ParseException ex) {
-                Logger.getLogger(Dlg_dtr_edit.class.getName()).log(Level.SEVERE, null, ex);
+    List<Sick_leave_reasons.to_sick_leave_reasons> reasons = new ArrayList();
+
+    private void init_reasons(final JTextField tf) {
+        String reason = tf_reason.getText();
+        String where = " where reason like '%" + reason + "%' ";
+        reasons = Sick_leave_reasons.ret_data(where);
+        if (reasons.isEmpty()) {
+            Sick_leave_reasons.to_sick_leave_reasons rea = new Sick_leave_reasons.to_sick_leave_reasons(0, reason);
+            if (!reason.isEmpty()) {
+                Sick_leave_reasons.add_data(rea);
+                init_reasons(tf_reason);
             }
-            String shift_date = DateType.sf.format(d);
-            String emp_id = jTextField1.getText();
-            String where = " where emp_id='" + emp_id + "' and shift_date='" + shift_date + "' ";
-            Employee_shifts.delete_data(where);
 
         } else {
-            int id = 0;
-            String created_at = DateType.now();
-            String updated_at = DateType.now();
-            String created_by = MyUser.getUser_id();
-            String updated_by = MyUser.getUser_id();
-            int status = 1;
-            String emp_id = jTextField1.getText();
-            String emp_name = jTextField2.getText();
-            String shift = jTextField8.getText();
-            Date d = new Date();
-            try {
-                d = DateType.month_date.parse(jTextField7.getText());
-            } catch (ParseException ex) {
-                Logger.getLogger(Dlg_dtr_edit.class.getName()).log(Level.SEVERE, null, ex);
+            Object[][] obj = new Object[reasons.size()][1];
+            int i = 0;
+            for (Sick_leave_reasons.to_sick_leave_reasons to : reasons) {
+                obj[i][0] = " " + to.reason;
+                i++;
             }
-            String shift_date = DateType.sf.format(d);
-            Employee_shifts.to_employee_shifts sh = new Employee_shifts.to_employee_shifts(id, created_at, updated_at, created_by, updated_by, status, emp_id, emp_name, shift1, shift_date);
-            Employee_shifts.add_data(sh);
-            Alert.set(2, "");
-            ok();
+            JLabel[] labels = {};
+            int[] tbl_widths_customers = {tf.getWidth()};
+
+            String[] col_names = {"Name"};
+            TableRenderer tr = new TableRenderer();
+            TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+            tr.setCallback(new TableRenderer.Callback() {
+                @Override
+                public void ok(TableRenderer.OutputData data) {
+                    Field.Combo combo = (Field.Combo) tf;
+                    Sick_leave_reasons.to_sick_leave_reasons to = reasons.get(data.selected_row);
+                    combo.setId("" + to.id);
+                    combo.setText(to.reason);
+                }
+            });
         }
     }
 
-    private void create_sick_leaves() {
-        final String employee_id = jTextField1.getText();
-        Date d = new Date();
-        try {
-            d = DateType.month_date.parse(jTextField7.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_dtr_edit.class.getName()).log(Level.SEVERE, null, ex);
+    private void ok() {
+        String schedule_type = jTextField8.getText();
+        String reason = tf_reason.getText();
+        int am = 0;
+        if (jCheckBox1.isSelected()) {
+            am = 1;
         }
-        final String shift_date = DateType.sf.format(d);
-
-        String where = " where employee_id='" + employee_id + "' and date_of_leave='" + shift_date + "'";
-        final List<Sick_leaves.to_sick_leaves> datas = Sick_leaves.ret_data(where);
-
-        Window p = (Window) this;
-        Dlg_dtr_edit_sick_leaves nd = Dlg_dtr_edit_sick_leaves.create(p, true);
-        nd.setTitle("");
-        nd.do_pass(datas);
-        nd.setCallback(new Dlg_dtr_edit_sick_leaves.Callback() {
-
-            @Override
-            public void ok(CloseDialog closeDialog, Dlg_dtr_edit_sick_leaves.OutputData data) {
-                closeDialog.ok();
-
-                if (datas.isEmpty()) {
-                    int id = 0;
-                    String reason = data.reason;
-                    String date_of_leave = shift_date;
-                    int half_day_am = data.am;
-                    int half_day_pm = data.pm;
-                    String employee_name = jTextField2.getText();
-
-                    String date_added = DateType.now();
-                    String user_id = MyUser.getUser_id();
-                    String user_screen_name = MyUser.getUser_screen_name();
-                    Sick_leaves.to_sick_leaves leave = new Sick_leaves.to_sick_leaves(id, reason, date_of_leave, half_day_am, half_day_pm, employee_name, employee_id, date_added, user_id, user_screen_name);
-                    Sick_leaves.add_data(leave);
-                    Alert.set(1, reason);
-                } else {
-                    Sick_leaves.to_sick_leaves l = datas.get(0);
-                    int id = l.id;
-                    String reason = data.reason;
-                    String date_of_leave = shift_date;
-                    int half_day_am = data.am;
-                    int half_day_pm = data.pm;
-                    String employee_name = jTextField2.getText();
-
-                    String date_added = DateType.now();
-                    String user_id = MyUser.getUser_id();
-                    String user_screen_name = MyUser.getUser_screen_name();
-                    Sick_leaves.to_sick_leaves leave = new Sick_leaves.to_sick_leaves(id, reason, date_of_leave, half_day_am, half_day_pm, employee_name, employee_id, date_added, user_id, user_screen_name);
-                    Sick_leaves.update_data(leave);
-                    Alert.set(2, reason);
-                }
-                if (data.am == 1) {
-                    jTextField16.setText(data.reason);
-                } else {
-                    jTextField16.setText("");
-                }
-                if (data.pm == 1) {
-                    jTextField18.setText(data.reason);
-                } else {
-                    jTextField18.setText("");
-                }
-            }
-
-            @Override
-            public void delete(CloseDialog closeDialog, Dlg_dtr_edit_sick_leaves.OutputData data) {
-                closeDialog.ok();
-                Sick_leaves.to_sick_leaves l = datas.get(0);
-                String where = " where id ='" + l.id + "'";
-                Sick_leaves.delete_data(where);
-                Alert.set(3, "");
-                jTextField16.setText("");
-                jTextField18.setText("");
-            }
-
-        });
-        nd.setLocationRelativeTo(this);
-        nd.setVisible(true);
-
-    }
-
-    private void update_am() {
-
-        Date d = new Date();
-        try {
-            d = DateType.month_date.parse(jTextField7.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_dtr_edit.class.getName()).log(Level.SEVERE, null, ex);
+        int pm = 0;
+        if (jCheckBox2.isSelected()) {
+            pm = 1;
         }
-        final String shift_date = DateType.sf.format(d);
-
         String am_arrival = jTextField10.getText();
         String am_departure = jTextField11.getText();
-
-        am_arrival = shift_date + " " + am_arrival;
-        am_departure = shift_date + " " + am_departure;
 
         try {
             if (!jTextField10.getText().isEmpty()) {
@@ -947,33 +794,14 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
             return;
         }
 
-        Dtrs.update_data("" + my_id, am_arrival, am_departure);
-        Alert.set(1, "Wrong Format!");
-        ok();
-    }
-
-    private void update_pm() {
-
-        Date d = new Date();
-        try {
-            d = DateType.month_date.parse(jTextField7.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_dtr_edit.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        final String shift_date = DateType.sf.format(d);
-
-        String am_arrival = jTextField12.getText();
-        String am_departure = jTextField13.getText();
-
-        am_arrival = shift_date + " " + am_arrival;
-        am_departure = shift_date + " " + am_departure;
-
+        String pm_arrival = jTextField12.getText();
+        String pm_departure = jTextField13.getText();
         try {
             if (!jTextField12.getText().isEmpty()) {
-                Date arival = DateType.sf3.parse(am_arrival);
-                am_arrival = DateType.datetime.format(arival);
+                Date arival = DateType.sf3.parse(pm_arrival);
+                pm_arrival = DateType.datetime.format(arival);
             } else {
-                am_arrival = null;
+                pm_arrival = null;
             }
 
         } catch (ParseException ex) {
@@ -984,10 +812,10 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
 
         try {
             if (!jTextField13.getText().isEmpty()) {
-                Date arival = DateType.sf3.parse(am_departure);
-                am_departure = DateType.datetime.format(arival);
+                Date arival = DateType.sf3.parse(pm_departure);
+                pm_departure = DateType.datetime.format(arival);
             } else {
-                am_departure = null;
+                pm_departure = null;
             }
         } catch (ParseException ex) {
             Alert.set(0, "Wrong Format!");
@@ -995,29 +823,34 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
             return;
         }
 
-        Dtrs.update_data2("" + my_id, am_arrival, am_departure);
-        Alert.set(1, "Wrong Format!");
-        ok();
-    }
+        String undertime_hour = jTextField15.getText();
+        String undertime_mm = jTextField17.getText();
 
-    private void update_undertime() {
-
-        Date d = new Date();
-        try {
-            d = DateType.month_date.parse(jTextField7.getText());
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_dtr_edit.class.getName()).log(Level.SEVERE, null, ex);
+        String date = DateType.sf.format(jDateChooser1.getDate());
+        String where = " where employee_id='" + jTextField1.getText() + "' and Date(dtr_date)='" + date + "'";
+        List<Dtrs.to_dtrs> datas = Dtrs.ret_data(where);
+        if (!datas.isEmpty()) {
+            Alert.set(0, "Date to Dtr already Exist!");
+            return;
         }
-        final String shift_date = DateType.sf.format(d);
-
-        Dtrs.update_data3("" + my_id, jTextField15.getText(), jTextField17.getText());
-        Alert.set(1, "Wrong Format!");
-        ok();
-    }
-
-    private void ok() {
         if (callback != null) {
-            callback.ok(new CloseDialog(this), new OutputData());
+            callback.ok(new CloseDialog(this), new OutputData(schedule_type, reason, am, pm, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hour, undertime_mm, date));
         }
+    }
+
+    private void shifting_types() {
+        Window p = (Window) this;
+        Dlg_shifting_types nd = Dlg_shifting_types.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_shifting_types.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_shifting_types.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
     }
 }
