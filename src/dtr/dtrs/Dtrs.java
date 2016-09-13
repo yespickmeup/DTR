@@ -6,6 +6,7 @@
 package dtr.dtrs;
 
 import dtr.employee_shifts.Employee_shifts;
+import dtr.sick_leaves.Sick_leaves;
 import dtr.util.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -538,11 +539,17 @@ public class Dtrs {
                 String user_screen_name = "ROH";
 
                 String where2 = " where emp_id='" + employee_id + "' and shift_date='" + dtr_date + "' order by id desc  limit 1 ";
+                String where3 = " where employee_id='" + employee_id + "' and date_of_leave='" + dtr_date + "' order by id desc  limit 1 ";
+                List<Sick_leaves.to_sick_leaves> leave = Sick_leaves.ret_data(where3);
+                user_id="";
+                for (Sick_leaves.to_sick_leaves to : leave) {
+                    user_id = to.reason;
+                }
                 List<Employee_shifts.to_employee_shifts> shifts = Employee_shifts.ret_data(where2);
                 for (Employee_shifts.to_employee_shifts to : shifts) {
                     user_screen_name = to.shift;
                 }
-
+                  
                 to_dtrs to = new to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);
                 datas.add(to);
             }

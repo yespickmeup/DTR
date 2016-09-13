@@ -821,7 +821,7 @@ public class Dlg_dtr_edit extends javax.swing.JDialog {
             ok();
         }
     }
-
+    
     private void create_sick_leaves() {
         final String employee_id = jTextField1.getText();
         Date d = new Date();

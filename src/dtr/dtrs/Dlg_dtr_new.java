@@ -638,6 +638,9 @@ public class Dlg_dtr_new extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         ret_shifting_types();
+//        jLabel4.setVisible(false);
+//        jCheckBox1.setVisible(false);
+//        jCheckBox2.setVisible(false);
     }
     int my_id = 0;
 

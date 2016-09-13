@@ -332,7 +332,7 @@ public class Dlg_dtr_edit_sick_leaves extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+      disposed();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -352,9 +352,11 @@ public class Dlg_dtr_edit_sick_leaves extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
+//        jCheckBox1.setVisible(false);
+//        jCheckBox2.setVisible(false);
+//        jLabel3.setVisible(false);
     }
-   
-    
+
     public void do_pass(List<Sick_leaves.to_sick_leaves> datas) {
 
         if (!datas.isEmpty()) {
@@ -369,7 +371,7 @@ public class Dlg_dtr_edit_sick_leaves extends javax.swing.JDialog {
             if (leave.half_day_pm == 1) {
                 jCheckBox2.setSelected(true);
             }
-        }else{
+        } else {
             jButton2.setVisible(false);
         }
 
@@ -433,7 +435,7 @@ public class Dlg_dtr_edit_sick_leaves extends javax.swing.JDialog {
 
     private void ok() {
         String reason = tf_reason.getText();
-        if(reason.isEmpty()){
+        if (reason.isEmpty()) {
             Alert.set(0, "Input Field!");
             tf_reason.grabFocus();
             return;

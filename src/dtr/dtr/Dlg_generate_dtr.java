@@ -12,14 +12,15 @@ import dtr.dtrs.Dlg_dtr_new;
 import dtr.dtrs.Dtrs;
 import dtr.dtrs.Dtrs.to_dtrs;
 import dtr.employees.Employees;
+import dtr.holidays.Dlg_holidays;
 import dtr.holidays.Holidays;
 import dtr.pnl.Extract;
 import static dtr.pnl.Extract.showExcelData;
 import dtr.reports.Srpt_dtr;
 import dtr.shifting_types.Shifting_types;
+import dtr.sick_leaves.Dlg_sick_leaves;
 import dtr.sick_leaves.Sick_leaves;
 import static dtr.test.AddTime.sumTimes;
-import dtr.test.MyShifts;
 import dtr.users.MyUser;
 import dtr.util.Alert;
 import dtr.util.DateType;
@@ -251,6 +252,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
         jButton6 = new Button.Default();
+        jButton7 = new Button.Default();
+        jButton8 = new Button.Default();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_dtrs = new javax.swing.JTable();
@@ -368,6 +371,20 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             }
         });
 
+        jButton7.setText("Leave");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Holidays");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -380,7 +397,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         .addGap(6, 6, 6)
                         .addComponent(jCheckBox3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox4))
+                        .addComponent(jCheckBox4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 704, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -398,8 +416,12 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)))
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -408,7 +430,10 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -738,14 +763,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1087, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -825,6 +850,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         new_dtr();
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        leave();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        holdaiys();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -838,6 +871,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -1212,19 +1247,19 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                     }
                     i++;
                 }
-                String where = " where Date(dtr_date) between '" + from + "' and '" + to + "' ";
-                List<Dtrs.to_dtrs> records = Dtrs.ret_data(where);
-                if (records.isEmpty()) {
-                    loadData_dtr(dtrs);
-                    jButton1.setEnabled(true);
-                    jButton3.setEnabled(true);
-                    jLabel3.setText("" + tbl_dtr_ALM.size());
-                    jProgressBar1.setString("Finished...");
-                    jProgressBar1.setIndeterminate(false);
-                } else {
-                    System.out.println("Size to Delete: " + dtrs.size());
-                    delete_dtr(where, dtrs);
-                }
+//                String where = " where Date(dtr_date) between '" + from + "' and '" + to + "' ";
+//                List<Dtrs.to_dtrs> records = Dtrs.ret_data(where);
+//                if (records.isEmpty()) {
+                loadData_dtr(dtrs);
+                jButton1.setEnabled(true);
+                jButton3.setEnabled(true);
+                jLabel3.setText("" + tbl_dtr_ALM.size());
+                jProgressBar1.setString("Finished...");
+                jProgressBar1.setIndeterminate(false);
+//                } else {
+//                    System.out.println("Size to Delete: " + dtrs.size());
+//                    delete_dtr(where, dtrs);
+//                }
 
             }
         });
@@ -1586,9 +1621,9 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     String hh3 = aa.substring(6, 8);
                                     aa = hh1 + ":" + hh2 + " " + hh3;
 
-                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
-                                        aa = MyShifts.getNOH(aa, my_dtr.user_screen_name, dtr_hours);
-                                    }
+//                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
+//                                        aa = MyShifts.getNOH(aa, my_dtr.user_screen_name, dtr_hours);
+//                                    }
                                     if (my_dtr.user_screen_name.equalsIgnoreCase("OFF") || my_dtr.user_screen_name.equalsIgnoreCase("OB")) {
                                         aa = "OFF";
                                         ad = "OFF";
@@ -1606,10 +1641,11 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     String hh3 = ad.substring(5, 8);
 
                                     ad = hh1 + ":" + hh2 + "" + hh3;
-                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
-                                        ad = MyShifts.getNOH(ad, my_dtr.user_screen_name, dtr_hours);
-                                    }
-                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF")|| my_dtr.user_screen_name.equalsIgnoreCase("OB")) {
+
+//                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
+//                                        ad = MyShifts.getNOH(ad, my_dtr.user_screen_name, dtr_hours);
+//                                    }
+                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF") || my_dtr.user_screen_name.equalsIgnoreCase("OB")) {
                                         aa = "OFF";
                                         ad = "OFF";
                                         pa = "OFF";
@@ -1625,10 +1661,10 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     String hh3 = pa.substring(5, 8);
 
                                     pa = hh1 + ":" + hh2 + "" + hh3;
-                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
-                                        pa = MyShifts.getNOH(pa, my_dtr.user_screen_name, dtr_hours);
-                                    }
-                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF")|| my_dtr.user_screen_name.equalsIgnoreCase("OB")) {
+//                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
+//                                        pa = MyShifts.getNOH(pa, my_dtr.user_screen_name, dtr_hours);
+//                                    }
+                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF") || my_dtr.user_screen_name.equalsIgnoreCase("OB")) {
                                         aa = "OFF";
                                         ad = "OFF";
                                         pa = "OFF";
@@ -1645,16 +1681,15 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     String hh3 = pd.substring(5, 8);
 
                                     pd = hh1 + ":" + hh2 + "" + hh3;
-                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
-                                        pd = MyShifts.getNOH(pd, my_dtr.user_screen_name, dtr_hours);
-                                    }
-                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF")|| my_dtr.user_screen_name.equalsIgnoreCase("OB")) {
+//                                    if (!my_dtr.user_screen_name.equalsIgnoreCase("ROH")) {
+//                                        pd = MyShifts.getNOH(pd, my_dtr.user_screen_name, dtr_hours);
+//                                    }
+                                    if (my_dtr.user_screen_name.equalsIgnoreCase("OFF") || my_dtr.user_screen_name.equalsIgnoreCase("OB")) {
                                         aa = "OFF";
                                         ad = "OFF";
                                         pa = "OFF";
                                         pd = "OFF";
                                     }
-
                                 }
                                 if (my_dtr.undertime_hours.equalsIgnoreCase("00") || my_dtr.undertime_hours.isEmpty() || my_dtr.undertime_hours.equalsIgnoreCase("0")) {
                                     uh = "";
@@ -1666,20 +1701,21 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                 } else {
                                     um = FitIn.fmt_woc("" + my_dtr.undertime_minutes);
                                 }
-
                             }
+
                             for (Sick_leaves.to_sick_leaves leave : leaves) {
                                 if (str_date.equalsIgnoreCase(leave.date_of_leave)) {
                                     if (leave.half_day_am == 1) {
-                                        aa = "Sick Leave";
-                                        ad = "Sick Leave";
+                                        aa = leave.reason;
+                                        ad = "";
                                     }
                                     if (leave.half_day_pm == 1) {
-                                        pa = "Sick Leave";
-                                        pd = "Sick Leave";
+                                        pa = "";
+                                        pd = "";
                                     }
                                 }
                             }
+
                             for (Holidays.to_holidays holiday : holidays) {
                                 if (str_date.equalsIgnoreCase(holiday.date_of_holiday)) {
                                     if (holiday.half_day_am == 1) {
@@ -1692,17 +1728,34 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     }
                                 }
                             }
-                            //<editor-fold defaultstate="collapsed" desc=" days ">
 
+                            //<editor-fold defaultstate="collapsed" desc=" days ">
                             if (i == 1) {
                                 //<editor-fold defaultstate="collapsed" desc=" 1 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa1 = what_day;
-                                    ad1 = what_day;
-                                    pa1 = what_day;
-                                    pd1 = what_day;
-                                    uh1 = uh;
-                                    um1 = um;
+
+                                    aa1 = day(aa, what_day);
+                                    ad1 = day(ad, what_day);
+                                    pa1 = day(pa, what_day);
+                                    pd1 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa1 = aa;
+                                        ad1 = ad;
+                                        pa1 = pa;
+                                        pd1 = pd;
+                                        uh1 = uh;
+                                        um1 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa1 = what_day;
+                                        ad1 = "";
+                                        pa1 = "";
+                                        pd1 = "";
+                                        uh1 = "";
+                                        um1 = "";
+                                    }
+
                                 } else {
                                     aa1 = aa;
                                     ad1 = ad;
@@ -1717,12 +1770,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 2) {
                                 //<editor-fold defaultstate="collapsed" desc=" 2 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa2 = what_day;
-                                    ad2 = what_day;
-                                    pa2 = what_day;
-                                    pd2 = what_day;
-                                    uh2 = uh;
-                                    um2 = um;
+                                    aa2 = day(aa, what_day);
+                                    ad2 = day(ad, what_day);
+                                    pa2 = day(pa, what_day);
+                                    pd2 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa2 = aa;
+                                        ad2 = ad;
+                                        pa2 = pa;
+                                        pd2 = pd;
+                                        uh2 = uh;
+                                        um2 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa2 = what_day;
+                                        ad2 = "";
+                                        pa2 = "";
+                                        pd2 = "";
+                                        uh2 = "";
+                                        um2 = "";
+                                    }
                                 } else {
                                     aa2 = aa;
                                     ad2 = ad;
@@ -1736,12 +1804,28 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 3) {
                                 //<editor-fold defaultstate="collapsed" desc=" 3 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa3 = what_day;
-                                    ad3 = what_day;
-                                    pa3 = what_day;
-                                    pd3 = what_day;
-                                    uh3 = uh;
-                                    um3 = um;
+                                    aa3 = day(aa, what_day);
+                                    ad3 = day(ad, what_day);
+                                    pa3 = day(pa, what_day);
+                                    pd3 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa3 = aa;
+                                        ad3 = ad;
+                                        pa3 = pa;
+                                        pd3 = pd;
+                                        uh3 = uh;
+                                        um3 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa3 = what_day;
+                                        ad3 = "";
+                                        pa3 = "";
+                                        pd3 = "";
+                                        uh3 = "";
+                                        um13 = "";
+                                    }
+
                                 } else {
                                     aa3 = aa;
                                     ad3 = ad;
@@ -1756,12 +1840,28 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 4) {
                                 //<editor-fold defaultstate="collapsed" desc=" 4 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa4 = what_day;
-                                    ad4 = what_day;
-                                    pa4 = what_day;
-                                    pd4 = what_day;
-                                    uh4 = uh;
-                                    um4 = um;
+                                    aa4 = day(aa, what_day);
+                                    ad4 = day(ad, what_day);
+                                    pa4 = day(pa, what_day);
+                                    pd4 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa4 = aa;
+                                        ad4 = ad;
+                                        pa4 = pa;
+                                        pd4 = pd;
+                                        uh4 = uh;
+                                        um4 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa4 = what_day;
+                                        ad4 = "";
+                                        pa4 = "";
+                                        pd4 = "";
+                                        uh4 = "";
+                                        um4 = "";
+                                    }
+
                                 } else {
                                     aa4 = aa;
                                     ad4 = ad;
@@ -1776,12 +1876,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 5) {
                                 //<editor-fold defaultstate="collapsed" desc=" 5 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa5 = what_day;
-                                    ad5 = what_day;
-                                    pa5 = what_day;
-                                    pd5 = what_day;
-                                    uh5 = uh;
-                                    um5 = um;
+                                    aa5 = day(aa, what_day);
+                                    ad5 = day(ad, what_day);
+                                    pa5 = day(pa, what_day);
+                                    pd5 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa5 = aa;
+                                        ad5 = ad;
+                                        pa5 = pa;
+                                        pd5 = pd;
+                                        uh5 = uh;
+                                        um5 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa5 = what_day;
+                                        ad5 = "";
+                                        pa5 = "";
+                                        pd5 = "";
+                                        uh5 = "";
+                                        um5 = "";
+                                    }
                                 } else {
                                     aa5 = aa;
                                     ad5 = ad;
@@ -1796,12 +1911,29 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 6) {
                                 //<editor-fold defaultstate="collapsed" desc=" 6 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa6 = what_day;
-                                    ad6 = what_day;
-                                    pa6 = what_day;
-                                    pd6 = what_day;
+                                    aa6 = day(aa, what_day);
+                                    ad6 = day(ad, what_day);
+                                    pa6 = day(pa, what_day);
+                                    pd6 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa6 = aa;
+                                        ad6 = ad;
+                                        pa6 = pa;
+                                        pd6 = pd;
+                                        uh6 = uh;
+                                        um6 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa6 = what_day;
+                                        ad6 = "";
+                                        pa6 = "";
+                                        pd6 = "";
+                                        uh6 = "";
+                                        um6 = "";
+                                    }
                                     uh66 = uh;
-                                    um6 = um;
+
                                 } else {
                                     aa6 = aa;
                                     ad6 = ad;
@@ -1816,12 +1948,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 7) {
                                 //<editor-fold defaultstate="collapsed" desc=" 7 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa7 = what_day;
-                                    ad7 = what_day;
-                                    pa7 = what_day;
-                                    pd7 = what_day;
-                                    uh7 = uh;
-                                    um7 = um;
+                                    aa7 = day(aa, what_day);
+                                    ad7 = day(ad, what_day);
+                                    pa7 = day(pa, what_day);
+                                    pd7 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa7 = aa;
+                                        ad7 = ad;
+                                        pa7 = pa;
+                                        pd7 = pd;
+                                        uh7 = uh;
+                                        um7 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa7 = what_day;
+                                        ad7 = "";
+                                        pa7 = "";
+                                        pd7 = "";
+                                        uh7 = "";
+                                        um7 = "";
+                                    }
                                 } else {
                                     aa7 = aa;
                                     ad7 = ad;
@@ -1836,12 +1983,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 8) {
                                 //<editor-fold defaultstate="collapsed" desc=" 8 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa8 = what_day;
-                                    ad8 = what_day;
-                                    pa8 = what_day;
-                                    pd8 = what_day;
-                                    uh8 = "";
-                                    um8 = "";
+                                    aa8 = day(aa, what_day);
+                                    ad8 = day(ad, what_day);
+                                    pa8 = day(pa, what_day);
+                                    pd8 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa8 = aa;
+                                        ad8 = ad;
+                                        pa8 = pa;
+                                        pd8 = pd;
+                                        uh8 = uh;
+                                        um8 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa8 = what_day;
+                                        ad8 = "";
+                                        pa8 = "";
+                                        pd8 = "";
+                                        uh8 = "";
+                                        um8 = "";
+                                    }
                                 } else {
                                     aa8 = aa;
                                     ad8 = ad;
@@ -1850,18 +2012,34 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     uh8 = uh;
                                     um8 = um;
                                 }
-                                //</editor-fold>
 
+                                //</editor-fold>
                             }
                             if (i == 9) {
                                 //<editor-fold defaultstate="collapsed" desc=" 9 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa9 = what_day;
-                                    ad9 = what_day;
-                                    pa9 = what_day;
-                                    pd9 = what_day;
-                                    uh9 = uh;
-                                    um9 = um;
+                                    aa9 = day(aa, what_day);
+
+                                    ad9 = day(ad, what_day);
+                                    pa9 = day(pa, what_day);
+                                    pd9 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa9 = aa;
+                                        ad9 = ad;
+                                        pa9 = pa;
+                                        pd9 = pd;
+                                        uh9 = uh;
+                                        um9 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa9 = what_day;
+                                        ad9 = "";
+                                        pa9 = "";
+                                        pd9 = "";
+                                        uh9 = "";
+                                        um9 = "";
+                                    }
                                 } else {
                                     aa9 = aa;
                                     ad9 = ad;
@@ -1869,19 +2047,35 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     pd9 = pd;
                                     uh9 = uh;
                                     um9 = um;
-                                }
-                                //</editor-fold>
 
+                                }
+
+                                //</editor-fold>
                             }
                             if (i == 10) {
                                 //<editor-fold defaultstate="collapsed" desc=" 10 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa10 = what_day;
-                                    ad10 = what_day;
-                                    pa10 = what_day;
-                                    pd10 = what_day;
-                                    uh10 = uh;
-                                    um10 = um;
+                                    aa10 = day(aa, what_day);
+                                    ad10 = day(ad, what_day);
+                                    pa10 = day(pa, what_day);
+                                    pd10 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa10 = aa;
+                                        ad10 = ad;
+                                        pa10 = pa;
+                                        pd10 = pd;
+                                        uh10 = uh;
+                                        um10 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa10 = what_day;
+                                        ad10 = "";
+                                        pa10 = "";
+                                        pd10 = "";
+                                        uh10 = "";
+                                        um10 = "";
+                                    }
                                 } else {
                                     aa10 = aa;
                                     ad10 = ad;
@@ -1896,12 +2090,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 11) {
                                 //<editor-fold defaultstate="collapsed" desc=" 11 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa11 = what_day;
-                                    ad11 = what_day;
-                                    pa11 = what_day;
-                                    pd11 = what_day;
-                                    uh11 = uh;
-                                    um11 = um;
+                                    aa11 = day(aa, what_day);
+                                    ad11 = day(ad, what_day);
+                                    pa11 = day(pa, what_day);
+                                    pd11 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa11 = aa;
+                                        ad11 = ad;
+                                        pa11 = pa;
+                                        pd11 = pd;
+                                        uh11 = uh;
+                                        um11 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa11 = what_day;
+                                        ad11 = "";
+                                        pa11 = "";
+                                        pd11 = "";
+                                        uh11 = "";
+                                        um11 = "";
+                                    }
                                 } else {
                                     aa11 = aa;
                                     ad11 = ad;
@@ -1916,12 +2125,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 12) {
                                 //<editor-fold defaultstate="collapsed" desc=" 12 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa12 = what_day;
-                                    ad12 = what_day;
-                                    pa12 = what_day;
-                                    pd12 = what_day;
-                                    uh12 = uh;
-                                    um12 = um;
+                                    aa12 = day(aa, what_day);
+                                    ad12 = day(ad, what_day);
+                                    pa12 = day(pa, what_day);
+                                    pd12 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa12 = aa;
+                                        ad12 = ad;
+                                        pa12 = pa;
+                                        pd12 = pd;
+                                        uh12 = uh;
+                                        um12 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa12 = what_day;
+                                        ad12 = "";
+                                        pa12 = "";
+                                        pd12 = "";
+                                        uh12 = "";
+                                        um12 = "";
+                                    }
                                 } else {
                                     aa12 = aa;
                                     ad12 = ad;
@@ -1936,12 +2160,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 13) {
                                 //<editor-fold defaultstate="collapsed" desc=" 13 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa13 = what_day;
-                                    ad13 = what_day;
-                                    pa13 = what_day;
-                                    pd13 = what_day;
-                                    uh13 = uh;
-                                    um13 = um;
+                                    aa13 = day(aa, what_day);
+                                    ad13 = day(ad, what_day);
+                                    pa13 = day(pa, what_day);
+                                    pd13 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa13 = aa;
+                                        ad13 = ad;
+                                        pa13 = pa;
+                                        pd13 = pd;
+                                        uh13 = uh;
+                                        um13 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa13 = what_day;
+                                        ad13 = "";
+                                        pa13 = "";
+                                        pd13 = "";
+                                        uh13 = "";
+                                        um13 = "";
+                                    }
                                 } else {
                                     aa13 = aa;
                                     ad13 = ad;
@@ -1956,12 +2195,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 14) {
                                 //<editor-fold defaultstate="collapsed" desc=" 14 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa14 = what_day;
-                                    ad14 = what_day;
-                                    pa14 = what_day;
-                                    pd14 = what_day;
-                                    uh14 = uh;
-                                    um14 = um;
+                                    aa14 = day(aa, what_day);
+                                    ad14 = day(ad, what_day);
+                                    pa14 = day(pa, what_day);
+                                    pd14 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa14 = aa;
+                                        ad14 = ad;
+                                        pa14 = pa;
+                                        pd14 = pd;
+                                        uh14 = uh;
+                                        um14 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa14 = what_day;
+                                        ad14 = "";
+                                        pa14 = "";
+                                        pd14 = "";
+                                        uh14 = "";
+                                        um14 = "";
+                                    }
                                 } else {
                                     aa14 = aa;
                                     ad14 = ad;
@@ -1976,12 +2230,27 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 15) {
                                 //<editor-fold defaultstate="collapsed" desc=" 15 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa15 = what_day;
-                                    ad15 = what_day;
-                                    pa15 = what_day;
-                                    pd15 = what_day;
-                                    uh15 = uh;
-                                    um15 = um;
+                                    aa15 = day(aa, what_day);
+                                    ad15 = day(ad, what_day);
+                                    pa5 = day(pa, what_day);
+                                    pd15 = day(pd, what_day);
+
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa15 = aa;
+                                        ad15 = ad;
+                                        pa15 = pa;
+                                        pd15 = pd;
+                                        uh15 = uh;
+                                        um15 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa15 = what_day;
+                                        ad15 = "";
+                                        pa15 = "";
+                                        pd15 = "";
+                                        uh15 = "";
+                                        um15 = "";
+                                    }
                                 } else {
                                     aa15 = aa;
                                     ad15 = ad;
@@ -1996,12 +2265,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 16) {
                                 //<editor-fold defaultstate="collapsed" desc=" 16 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa16 = what_day;
-                                    ad16 = what_day;
-                                    pa16 = what_day;
-                                    pd16 = what_day;
-                                    uh16 = uh;
-                                    um16 = um;
+                                    aa16 = day(aa, what_day);
+                                    ad16 = day(ad, what_day);
+                                    pa16 = day(pa, what_day);
+                                    pd16 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa16 = aa;
+                                        ad16 = ad;
+                                        pa16 = pa;
+                                        pd16 = pd;
+                                        uh16 = uh;
+                                        um16 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa16 = what_day;
+                                        ad16 = "";
+                                        pa16 = "";
+                                        pd16 = "";
+                                        uh16 = "";
+                                        um16 = "";
+                                    }
                                 } else {
                                     aa16 = aa;
                                     ad16 = ad;
@@ -2016,12 +2299,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 17) {
                                 //<editor-fold defaultstate="collapsed" desc=" 17 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa17 = what_day;
-                                    ad17 = what_day;
-                                    pa17 = what_day;
-                                    pd17 = what_day;
-                                    uh17 = uh;
-                                    um17 = um;
+                                    aa17 = day(aa, what_day);
+                                    ad17 = day(ad, what_day);
+                                    pa17 = day(pa, what_day);
+                                    pd17 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa17 = aa;
+                                        ad17 = ad;
+                                        pa17 = pa;
+                                        pd17 = pd;
+                                        uh17 = uh;
+                                        um17 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa17 = what_day;
+                                        ad17 = "";
+                                        pa17 = "";
+                                        pd17 = "";
+                                        uh17 = "";
+                                        um17 = "";
+                                    }
                                 } else {
                                     aa17 = aa;
                                     ad17 = ad;
@@ -2036,12 +2333,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 18) {
                                 //<editor-fold defaultstate="collapsed" desc=" 18 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa18 = what_day;
-                                    ad18 = what_day;
-                                    pa18 = what_day;
-                                    pd18 = what_day;
-                                    uh18 = uh;
-                                    um18 = um;
+                                    aa18 = day(aa, what_day);
+                                    ad18 = day(ad, what_day);
+                                    pa18 = day(pa, what_day);
+                                    pd18 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa18 = aa;
+                                        ad18 = ad;
+                                        pa18 = pa;
+                                        pd18 = pd;
+                                        uh18 = uh;
+                                        um18 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa18 = what_day;
+                                        ad18 = "";
+                                        pa18 = "";
+                                        pd18 = "";
+                                        uh18 = "";
+                                        um18 = "";
+                                    }
                                 } else {
                                     aa18 = aa;
                                     ad18 = ad;
@@ -2056,12 +2367,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 19) {
                                 //<editor-fold defaultstate="collapsed" desc=" 19 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa19 = what_day;
-                                    ad19 = what_day;
-                                    pa19 = what_day;
-                                    pd19 = what_day;
-                                    uh19 = uh;
-                                    um19 = um;
+                                    aa19 = day(aa, what_day);
+                                    ad19 = day(ad, what_day);
+                                    pa19 = day(pa, what_day);
+                                    pd19 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa19 = aa;
+                                        ad19 = ad;
+                                        pa19 = pa;
+                                        pd19 = pd;
+                                        uh19 = uh;
+                                        um19 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa19 = what_day;
+                                        ad19 = "";
+                                        pa19 = "";
+                                        pd19 = "";
+                                        uh19 = "";
+                                        um19 = "";
+                                    }
                                 } else {
                                     aa19 = aa;
                                     ad19 = ad;
@@ -2076,12 +2401,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 20) {
                                 //<editor-fold defaultstate="collapsed" desc=" 20 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa20 = what_day;
-                                    ad20 = what_day;
-                                    pa20 = what_day;
-                                    pd20 = what_day;
-                                    uh20 = uh;
-                                    um20 = um;
+                                    aa20 = day(aa, what_day);
+                                    ad20 = day(ad, what_day);
+                                    pa20 = day(pa, what_day);
+                                    pd20 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa20 = aa;
+                                        ad20 = ad;
+                                        pa20 = pa;
+                                        pd20 = pd;
+                                        uh20 = uh;
+                                        um20 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa20 = what_day;
+                                        ad20 = "";
+                                        pa20 = "";
+                                        pd20 = "";
+                                        uh20 = "";
+                                        um20 = "";
+                                    }
                                 } else {
                                     aa20 = aa;
                                     ad20 = ad;
@@ -2096,12 +2435,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 21) {
                                 //<editor-fold defaultstate="collapsed" desc=" 21 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa21 = what_day;
-                                    ad21 = what_day;
-                                    pa21 = what_day;
-                                    pd21 = what_day;
-                                    uh21 = uh;
-                                    um21 = um;
+                                    aa21 = day(aa, what_day);
+                                    ad21 = day(ad, what_day);
+                                    pa21 = day(pa, what_day);
+                                    pd21 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa21 = aa;
+                                        ad21 = ad;
+                                        pa21 = pa;
+                                        pd21 = pd;
+                                        uh21 = uh;
+                                        um21 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa21 = what_day;
+                                        ad21 = "";
+                                        pa21 = "";
+                                        pd21 = "";
+                                        uh21 = "";
+                                        um21 = "";
+                                    }
                                 } else {
                                     aa21 = aa;
                                     ad21 = ad;
@@ -2116,12 +2469,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 22) {
                                 //<editor-fold defaultstate="collapsed" desc=" 22 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa22 = what_day;
-                                    ad22 = what_day;
-                                    pa22 = what_day;
-                                    pd22 = what_day;
-                                    uh22 = uh;
-                                    um22 = um;
+                                    aa22 = day(aa, what_day);
+                                    ad22 = day(ad, what_day);
+                                    pa22 = day(pa, what_day);
+                                    pd22 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa22 = aa;
+                                        ad22 = ad;
+                                        pa22 = pa;
+                                        pd22 = pd;
+                                        uh22 = uh;
+                                        um22 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa22 = what_day;
+                                        ad22 = "";
+                                        pa22 = "";
+                                        pd22 = "";
+                                        uh22 = "";
+                                        um22 = "";
+                                    }
                                 } else {
                                     aa22 = aa;
                                     ad22 = ad;
@@ -2136,12 +2503,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 23) {
                                 //<editor-fold defaultstate="collapsed" desc=" 23 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa23 = what_day;
-                                    ad23 = what_day;
-                                    pa23 = what_day;
-                                    pd23 = what_day;
-                                    uh23 = uh;
-                                    um23 = um;
+                                    aa23 = day(aa, what_day);
+                                    ad23 = day(ad, what_day);
+                                    pa23 = day(pa, what_day);
+                                    pd23 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa23 = aa;
+                                        ad23 = ad;
+                                        pa23 = pa;
+                                        pd23 = pd;
+                                        uh23 = uh;
+                                        um23 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa23 = what_day;
+                                        ad23 = "";
+                                        pa23 = "";
+                                        pd23 = "";
+                                        uh23 = "";
+                                        um23 = "";
+                                    }
                                 } else {
                                     aa23 = aa;
                                     ad23 = ad;
@@ -2156,12 +2537,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 24) {
                                 //<editor-fold defaultstate="collapsed" desc=" 24 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa24 = what_day;
-                                    ad24 = what_day;
-                                    pa24 = what_day;
-                                    pd24 = what_day;
-                                    uh24 = uh;
-                                    um24 = um;
+                                    aa24 = day(aa, what_day);
+                                    ad24 = day(ad, what_day);
+                                    pa24 = day(pa, what_day);
+                                    pd24 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa24 = aa;
+                                        ad24 = ad;
+                                        pa24 = pa;
+                                        pd24 = pd;
+                                        uh24 = uh;
+                                        um24 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa24 = what_day;
+                                        ad24 = "";
+                                        pa24 = "";
+                                        pd24 = "";
+                                        uh24 = "";
+                                        um24 = "";
+                                    }
                                 } else {
                                     aa24 = aa;
                                     ad24 = ad;
@@ -2176,12 +2571,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 25) {
                                 //<editor-fold defaultstate="collapsed" desc=" 25 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa25 = what_day;
-                                    ad25 = what_day;
-                                    pa25 = what_day;
-                                    pd25 = what_day;
-                                    uh25 = uh;
-                                    um25 = um;
+                                    aa25 = day(aa, what_day);
+                                    ad25 = day(ad, what_day);
+                                    pa25 = day(pa, what_day);
+                                    pd25 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa25 = aa;
+                                        ad25 = ad;
+                                        pa25 = pa;
+                                        pd25 = pd;
+                                        uh25 = uh;
+                                        um25 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa25 = what_day;
+                                        ad25 = "";
+                                        pa25 = "";
+                                        pd25 = "";
+                                        uh25 = "";
+                                        um25 = "";
+                                    }
                                 } else {
                                     aa25 = aa;
                                     ad25 = ad;
@@ -2196,12 +2605,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 26) {
                                 //<editor-fold defaultstate="collapsed" desc=" 26 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa26 = what_day;
-                                    ad26 = what_day;
-                                    pa26 = what_day;
-                                    pd26 = what_day;
-                                    uh26 = uh;
-                                    um26 = um;
+                                    aa26 = day(aa, what_day);
+                                    ad26 = day(ad, what_day);
+                                    pa26 = day(pa, what_day);
+                                    pd26 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa26 = aa;
+                                        ad26 = ad;
+                                        pa26 = pa;
+                                        pd26 = pd;
+                                        uh26 = uh;
+                                        um26 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa26 = what_day;
+                                        ad26 = "";
+                                        pa26 = "";
+                                        pd26 = "";
+                                        uh26 = "";
+                                        um26 = "";
+                                    }
                                 } else {
                                     aa26 = aa;
                                     ad26 = ad;
@@ -2216,12 +2639,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 27) {
                                 //<editor-fold defaultstate="collapsed" desc=" 27 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa27 = what_day;
-                                    ad27 = what_day;
-                                    pa27 = what_day;
-                                    pd27 = what_day;
-                                    uh27 = uh;
-                                    um27 = um;
+                                    aa27 = day(aa, what_day);
+                                    ad27 = day(ad, what_day);
+                                    pa27 = day(pa, what_day);
+                                    pd27 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa27 = aa;
+                                        ad27 = ad;
+                                        pa27 = pa;
+                                        pd27 = pd;
+                                        uh27 = uh;
+                                        um27 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa27 = what_day;
+                                        ad27 = "";
+                                        pa27 = "";
+                                        pd27 = "";
+                                        uh27 = "";
+                                        um27 = "";
+                                    }
                                 } else {
                                     aa27 = aa;
                                     ad27 = ad;
@@ -2236,12 +2673,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 28) {
                                 //<editor-fold defaultstate="collapsed" desc=" 28 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa28 = what_day;
-                                    ad28 = what_day;
-                                    pa28 = what_day;
-                                    pd28 = what_day;
-                                    uh28 = uh;
-                                    um28 = um;
+                                    aa28 = day(aa, what_day);
+                                    ad28 = day(ad, what_day);
+                                    pa28 = day(pa, what_day);
+                                    pd28 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa28 = aa;
+                                        ad28 = ad;
+                                        pa28 = pa;
+                                        pd28 = pd;
+                                        uh28 = uh;
+                                        um28 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa28 = what_day;
+                                        ad28 = "";
+                                        pa28 = "";
+                                        pd28 = "";
+                                        uh28 = "";
+                                        um28 = "";
+                                    }
                                 } else {
                                     aa28 = aa;
                                     ad28 = ad;
@@ -2256,12 +2707,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 29) {
                                 //<editor-fold defaultstate="collapsed" desc=" 29 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa29 = what_day;
-                                    ad29 = what_day;
-                                    pa29 = what_day;
-                                    pd29 = what_day;
-                                    uh29 = uh;
-                                    um29 = um;
+                                    aa29 = day(aa, what_day);
+                                    ad29 = day(ad, what_day);
+                                    pa29 = day(pa, what_day);
+                                    pd29 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa29 = aa;
+                                        ad29 = ad;
+                                        pa29 = pa;
+                                        pd29 = pd;
+                                        uh29 = uh;
+                                        um29 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa29 = what_day;
+                                        ad29 = "";
+                                        pa29 = "";
+                                        pd29 = "";
+                                        uh29 = "";
+                                        um29 = "";
+                                    }
                                 } else {
                                     aa29 = aa;
                                     ad29 = ad;
@@ -2276,12 +2741,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 30) {
                                 //<editor-fold defaultstate="collapsed" desc=" 30 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa30 = what_day;
-                                    ad30 = what_day;
-                                    pa30 = what_day;
-                                    pd30 = what_day;
-                                    uh30 = uh;
-                                    um30 = um;
+                                    aa30 = day(aa, what_day);
+                                    ad30 = day(ad, what_day);
+                                    pa30 = day(pa, what_day);
+                                    pd30 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa30 = aa;
+                                        ad30 = ad;
+                                        pa30 = pa;
+                                        pd30 = pd;
+                                        uh30 = uh;
+                                        um30 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa30 = what_day;
+                                        ad30 = "";
+                                        pa30 = "";
+                                        pd30 = "";
+                                        uh30 = "";
+                                        um30 = "";
+                                    }
                                 } else {
                                     aa30 = aa;
                                     ad30 = ad;
@@ -2296,12 +2775,26 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (i == 31) {
                                 //<editor-fold defaultstate="collapsed" desc=" 31 ">
                                 if (what_day.equalsIgnoreCase("Saturday") || what_day.equalsIgnoreCase("Sunday")) {
-                                    aa31 = what_day;
-                                    ad31 = what_day;
-                                    pa31 = what_day;
-                                    pd31 = what_day;
-                                    uh31 = uh;
-                                    um31 = um;
+                                    aa31 = day(aa, what_day);
+                                    ad31 = day(ad, what_day);
+                                    pa31 = day(pa, what_day);
+                                    pd31 = day(pd, what_day);
+                                    if (!aa.isEmpty() || !ad.isEmpty() || !pa.isEmpty() || !pd.isEmpty()) {
+                                        aa31 = aa;
+                                        ad31 = ad;
+                                        pa31 = pa;
+                                        pd31 = pd;
+                                        uh31 = uh;
+                                        um31 = um;
+                                    }
+                                    if (aa.isEmpty() && ad.isEmpty() && pa.isEmpty() && pd.isEmpty()) {
+                                        aa31 = what_day;
+                                        ad31 = "";
+                                        pa31 = "";
+                                        pd31 = "";
+                                        uh31 = "";
+                                        um31 = "";
+                                    }
                                 } else {
                                     aa31 = aa;
                                     ad31 = ad;
@@ -2316,7 +2809,6 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             //</editor-fold>
                         }
                         //end of day loop
-
                         String[] total = sumTimes(times).split(":");
                         Srpt_dtr.field field = new Srpt_dtr.field(employee_id, employee_name, aa1, aa2, aa3, aa4, aa5, aa6, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24, aa25, aa26, aa27, aa28, aa29, aa30, aa31, pd1, pd2, pd3, pd4, pd5, pd6, pd7, pd8, pd9, pd10, pd11, pd12, pd13, pd14, pd15, pd16, pd17, pd18, pd19, pd20, pd21, pd22, pd23, pd24, pd25, pd26, pd27, pd28, pd29, pd30, pd31, ad1, ad2, ad3, ad4, ad5, ad6, ad7, ad8, ad9, ad10, ad11, ad12, ad13, ad14, ad15, ad16, ad17, ad18, ad19, ad20, ad21, ad22, ad23, ad24, ad25, ad26, ad27, ad28, ad29, ad30, ad31, pa1, pa2, pa3, pa4, pa5, pa6, pa7, pa8, pa9, pa10, pa11, pa12, pa13, pa14, pa15, pa16, pa17, pa18, pa19, pa20, pa21, pa22, pa23, pa24, pa25, pa26, pa27, pa28, pa29, pa30, pa31, uh1, uh2, uh3, uh4, uh5, uh6, uh7, uh8, uh9, uh10, uh11, uh12, uh13, uh14, uh15, uh16, uh17, uh18, uh19, uh20, uh21, uh22, uh23, uh24, uh25, uh26, uh27, uh28, uh29, uh30, uh31, um1, um2, um3, um4, um5, um6, um7, um8, um9, um10, um11, um12, um13, um14, um15, um16, um17, um18, um19, um20, um21, um22, um23, um24, um25, um26, um27, um28, um29, um30, um31, emp.supervisor, total[0], total[1], uh66);
                         datas.add(field);
@@ -2358,6 +2850,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         });
         t.start();
 
+    }
+
+    private String day(String aa, String what_day) {
+        if (aa.isEmpty()) {
+            return what_day;
+        } else {
+            return aa;
+        }
     }
 
     private void report_sales_items(final Srpt_dtr to, String jrxml_name) {
@@ -2624,7 +3124,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         tbl_dtrs.setModel(tbl_dtrs_M);
         tbl_dtrs.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_dtrs.setRowHeight(25);
-        int[] tbl_widths_dtrs = {70, 50, 80, 70, 60, 60, 60, 60, 50, 50, 50, 50, 0, 0, 0};
+        int[] tbl_widths_dtrs = {70, 50, 80, 70, 70, 60, 60, 60, 60, 50, 50, 50, 50, 0, 0};
         for (int i = 0, n = tbl_widths_dtrs.length; i < n; i++) {
             if (i == 2) {
                 continue;
@@ -2647,7 +3147,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     public static class TbldtrsModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Date", "No", "Employee", "Shift", "AM-Arr", "AM-Dep", "PM-Arr", "PM-Dep", "U-Hour", "U-Min.", "", "", "date_added", "user_id", "user_screen_name"
+            "Date", "No", "Employee", "Leave", "Shift", "AM-Arr", "AM-Dep", "PM-Arr", "PM-Dep", "U-Hour", "U-Min.", "", "", "user_id", "user_screen_name"
         };
 
         public TbldtrsModel(ListModel listmodel) {
@@ -2682,45 +3182,45 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 case 2:
                     return " " + tt.employee_name;
                 case 3:
-                    return " " + tt.user_screen_name;
+                    return " " + tt.user_id;
                 case 4:
+                    return " " + tt.user_screen_name;
+                case 5:
                     if (tt.am_arrival == null) {
                         return "";
                     }
                     return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.am_arrival);
-                case 5:
+                case 6:
                     if (tt.am_departure == null) {
                         return "";
                     }
                     return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.am_departure);
-                case 6:
+                case 7:
                     if (tt.pm_arrival == null) {
                         return "";
                     }
                     return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.pm_arrival);
-                case 7:
+                case 8:
                     if (tt.pm_departure == null) {
                         return "";
                     }
                     return " " + dtr.util.DateType.convert_datetime_to_hour_minute(tt.pm_departure);
-                case 8:
+                case 9:
                     if (FitIn.toDouble(tt.undertime_hours) == 0) {
                         return " ";
                     } else {
                         return " " + FitIn.fmt_woc(tt.undertime_hours);
                     }
-                case 9:
+                case 10:
                     if (FitIn.toDouble(tt.undertime_minutes) == 0) {
                         return " ";
                     } else {
                         return " " + FitIn.fmt_woc(tt.undertime_minutes);
                     }
-                case 10:
-                    return " Update";
                 case 11:
-                    return " Delete";
+                    return " Update";
                 case 12:
-                    return tt.date_added;
+                    return " Delete";
                 case 13:
                     return tt.user_id;
                 default:
@@ -2735,8 +3235,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         String to = dtr_date[1].substring(1, dtr_date[1].length());
         to = dtr.util.DateType.convert_dash_date3(to);
         Field.Combo employee1 = (Field.Combo) jTextField4;
-        String where = " where department_name like '%" + "" + "%'  ";
-
+        String where = " where id<>0  ";
+        
         if (!jCheckBox2.isSelected()) {
             where = where + " and Date(dtr_date) between '" + from + "' and '" + to + "'";
         }
@@ -2757,7 +3257,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         }
         int col = tbl_dtrs.getSelectedColumn();
         final to_dtrs to = (to_dtrs) tbl_dtrs_ALM.get(row);
-        if (col == 10) {
+        if (col == 11) {
             //edit
             Window p = (Window) this;
             Dlg_dtr_edit nd = Dlg_dtr_edit.create(p, true);
@@ -2778,7 +3278,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             nd.setLocationRelativeTo(this);
             nd.setVisible(true);
         }
-        if (col == 11) {
+        if (col == 12) {
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -2838,6 +3338,40 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
                 Alert.set(1, "");
                 data_cols_dtr();
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void leave() {
+        Window p = (Window) this;
+        Dlg_sick_leaves nd = Dlg_sick_leaves.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_sick_leaves.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_sick_leaves.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+
+    private void holdaiys() {
+        Window p = (Window) this;
+        Dlg_holidays nd = Dlg_holidays.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_holidays.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_holidays.OutputData data) {
+                closeDialog.ok();
+
             }
         });
         nd.setLocationRelativeTo(this);
