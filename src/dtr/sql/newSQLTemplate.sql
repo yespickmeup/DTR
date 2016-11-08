@@ -193,5 +193,7 @@ update employees set supervisor='';
 anha siguro Dong. Ang shifting namo is MS(Morning Shift) for 7:00am - 3:00pm; SS(Swing Shift) for 3:00pm - GS(Graveyard Shift)11:00pm then 11:00pm - 7:00am 
 then we also have the ROH for 8:00 - 5:00 (NOH) (normal office hours) normal office sched
 
-Dapat mo appear ang division where they belong unya ang supervisor nila dapat ang port manager namo. ako ra man gud nang gibutang temporarily ang division manager para lang ang mo appear si Sarah R. Mijares
-kay if butangan nako ug name sa division nila, ila ra man pod name ang mogawas sa supervisor
+MS  - 07:00am - 03:00pm
+SS  - 03:00pm - 11:00pm
+GS  - 11:00pm - 07:00am
+NOH - 08:00am - 05:00pm

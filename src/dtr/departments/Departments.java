@@ -30,14 +30,16 @@ public class Departments {
         public final String user_id;
         public final String user_screen_name;
         public final String supervisor;
+        public final String manager;
 
-        public to_departments(int id, String department, String date_added, String user_id, String user_screen_name, String supervisor) {
+        public to_departments(int id, String department, String date_added, String user_id, String user_screen_name, String supervisor, String manager) {
             this.id = id;
             this.department = department;
             this.date_added = date_added;
             this.user_id = user_id;
             this.user_screen_name = user_screen_name;
             this.supervisor = supervisor;
+            this.manager = manager;
         }
     }
 
@@ -50,12 +52,14 @@ public class Departments {
                     + ",user_id"
                     + ",user_screen_name"
                     + ",supervisor"
+                    + ",manager"
                     + ")values("
                     + ":department"
                     + ",:date_added"
                     + ",:user_id"
                     + ",:user_screen_name"
                     + ",:supervisor"
+                    + ",:manager"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -64,6 +68,7 @@ public class Departments {
                     .setString("user_id", to_departments.user_id)
                     .setString("user_screen_name", to_departments.user_screen_name)
                     .setString("supervisor", to_departments.supervisor)
+                    .setString("manager", to_departments.manager)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -85,6 +90,7 @@ public class Departments {
                     + ",user_id= :user_id "
                     + ",user_screen_name= :user_screen_name "
                     + ",supervisor= :supervisor"
+                    + ",manager= :manager"
                     + " where id='" + to_departments.id + "' "
                     + " ";
 
@@ -94,6 +100,7 @@ public class Departments {
                     .setString("user_id", to_departments.user_id)
                     .setString("user_screen_name", to_departments.user_screen_name)
                     .setString("supervisor", to_departments.supervisor)
+                    .setString("manager", to_departments.manager)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -150,6 +157,7 @@ public class Departments {
                     + ",user_id"
                     + ",user_screen_name"
                     + ",supervisor"
+                    + ",manager"
                     + " from departments"
                     + " " + where;
 
@@ -162,7 +170,8 @@ public class Departments {
                 String user_id = rs.getString(4);
                 String user_screen_name = rs.getString(5);
                 String supervisor = rs.getString(6);
-                to_departments to = new to_departments(id, department, date_added, user_id, user_screen_name, supervisor);
+                String manager=rs.getString(7);
+                to_departments to = new to_departments(id, department, date_added, user_id, user_screen_name, supervisor,manager);
                 datas.add(to);
             }
             return datas;

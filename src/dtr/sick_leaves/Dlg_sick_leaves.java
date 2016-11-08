@@ -601,7 +601,9 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         init_tbl_sick_leaves(tbl_sick_leaves);
-
+//        jLabel3.setVisible(false);
+//        jCheckBox1.setVisible(false);
+//        jCheckBox2.setVisible(false);
     }
 
     public void do_pass() {
@@ -908,16 +910,18 @@ public class Dlg_sick_leaves extends javax.swing.JDialog {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
                 closeDialog.ok();
-                int row = tbl_sick_leaves.getSelectedRow();
-                if (row < 0) {
-                    return;
+
+                int[] rows = tbl_sick_leaves.getSelectedRows();
+                for (int i : rows) {
+                    to_sick_leaves to = (to_sick_leaves) tbl_sick_leaves_ALM.get(i);
+                    Sick_leaves.delete_data(to);
+
                 }
-                to_sick_leaves to = (to_sick_leaves) tbl_sick_leaves_ALM.get(row);
-                Sick_leaves.delete_data(to);
                 tf_reason.setText("");
                 tf_employee_name.grabFocus();
                 Alert.set(3, "");
                 data_cols();
+
             }
         });
         nd.setLocationRelativeTo(this);

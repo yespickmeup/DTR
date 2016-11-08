@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="64b07076-e8e6-408c-a537-169568e03f44">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="745"/>
+	<property name="ireport.y" value="144"/>
 	<parameter name="dtr_date" class="java.lang.String"/>
 	<parameter name="date_printed" class="java.lang.String"/>
 	<parameter name="regular_day_am" class="java.lang.String"/>
@@ -204,6 +204,9 @@
 	<field name="um30" class="java.lang.String"/>
 	<field name="um31" class="java.lang.String"/>
 	<field name="supervisor" class="java.lang.String"/>
+	<field name="total_hh" class="java.lang.String"/>
+	<field name="total_mm" class="java.lang.String"/>
+	<field name="uh66" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -1685,7 +1688,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{total_hours}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{total_hh}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0">
 				<reportElement uuid="79c30b25-f766-4da9-9513-1e54c8615b84" x="230" y="566" width="40" height="12"/>
@@ -1698,7 +1701,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{total_minutes}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{total_mm}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="59e91530-0df4-41a3-809f-7c16aa2edcc3" x="10" y="664" width="260" height="12"/>
@@ -1729,7 +1732,7 @@
 				<textFieldExpression><![CDATA[$F{supervisor}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="9" y="165" width="261" height="574"/>
+				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="9" y="165" width="261" height="389"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -2771,7 +2774,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{uh6}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{uh66}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="5c0b1e87-c2fb-4c98-8733-1e03336427b0" x="190" y="230" width="40" height="12"/>

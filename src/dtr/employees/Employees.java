@@ -39,8 +39,8 @@ public class Employees {
         public final String shift;
         public final String shift_id;
         public final String supervisor;
-
-        public to_employees(int id, String employee_id, String fname, String mi, String lname, String contact_no, String address, String department, String department_id, String date_added, String user_id, String user_screen_name, String shift, String shift_id, String supervisor) {
+        public final String manager;
+        public to_employees(int id, String employee_id, String fname, String mi, String lname, String contact_no, String address, String department, String department_id, String date_added, String user_id, String user_screen_name, String shift, String shift_id, String supervisor,String manager) {
             this.id = id;
             this.employee_id = employee_id;
             this.fname = fname;
@@ -56,6 +56,7 @@ public class Employees {
             this.shift = shift;
             this.shift_id = shift_id;
             this.supervisor = supervisor;
+            this.manager=manager;
         }
     }
 
@@ -77,6 +78,7 @@ public class Employees {
                     + ",shift"
                     + ",shift_id"
                     + ",supervisor"
+                    + ",manager"
                     + ")values("
                     + ":employee_id"
                     + ",:fname"
@@ -92,6 +94,7 @@ public class Employees {
                     + ",:shift"
                     + ",:shift_id"
                     + ",:supervisor"
+                    + ",:manager"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -109,6 +112,7 @@ public class Employees {
                     .setString("shift", to_employees.shift)
                     .setString("shift_id", to_employees.shift_id)
                     .setString("supervisor", to_employees.supervisor)
+                    .setString("manager",to_employees.manager)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -139,6 +143,7 @@ public class Employees {
                     + ",shift= :shift"
                     + ",shift_id= :shift_id"
                     + ",supervisor= :supervisor"
+                    + ",manager= :manager"
                     + " where id='" + to_employees.id + "' "
                     + " ";
 
@@ -157,6 +162,7 @@ public class Employees {
                     .setString("shift", to_employees.shift)
                     .setString("shift_id", to_employees.shift_id)
                     .setString("supervisor", to_employees.supervisor)
+                    .setString("manager",to_employees.manager)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -229,6 +235,7 @@ public class Employees {
                     + ",shift"
                     + ",shift_id"
                     + ",supervisor"
+                    + ",manager"
                     + " from employees"
                     + " " + where;
 
@@ -250,7 +257,8 @@ public class Employees {
                 String shift = rs.getString(13);
                 String shift_id = rs.getString(14);
                 String supervisor=rs.getString(15);
-                to_employees to = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name, shift, shift_id,supervisor);
+                String manager=rs.getString(16);
+                to_employees to = new to_employees(id, employee_id, fname, mi, lname, contact_no, address, department, department_id, date_added, user_id, user_screen_name, shift, shift_id,supervisor,manager);
                 datas.add(to);
             }
             return datas;

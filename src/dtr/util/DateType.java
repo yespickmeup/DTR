@@ -20,6 +20,7 @@ import mijzcx.synapse.desk.utils.FitIn;
 public class DateType {
 
     public static SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+    public static SimpleDateFormat sf3 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss aa");
     public static SimpleDateFormat sf2 = new SimpleDateFormat("MM-dd-yyyy");
     public static SimpleDateFormat datetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public static SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss aa");
@@ -48,6 +49,7 @@ public class DateType {
     public static SimpleDateFormat second = new SimpleDateFormat("ss");
     public static SimpleDateFormat time3 = new SimpleDateFormat("hh:mm:ss aa");
     public static SimpleDateFormat backup = new SimpleDateFormat("MM_dd_yyyy_HH_mm_ss");
+    public static SimpleDateFormat daily = new SimpleDateFormat("EEEEEEEEEEE");
 
     public static void main(String[] args) {
         System.out.println(sf1.format(new Date()));
@@ -292,6 +294,23 @@ public class DateType {
                     log(Level.SEVERE, null, ex);
         }
         date = DateType.hour_minute3.format(d);
+        return date;
+    }
+
+    public static String convert_datetime_to_daily(String datetime) {
+        String date = "";
+
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.sf.format(new Date());
+        }
+        try {
+            d = DateType.sf.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        date = DateType.daily.format(d);
         return date;
     }
 
