@@ -252,6 +252,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -306,6 +307,16 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(jMenuItem1);
+
+        jMenuItem2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/icons/delete30.png"))); // NOI18N
+        jMenuItem2.setText("Delete");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -901,6 +912,10 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         multi_shift_update();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       multiple_delete();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -935,6 +950,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -3683,6 +3699,37 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             nd.setLocationRelativeTo(this);
             nd.setVisible(true);
         }
+    }
+
+    private void multiple_delete() {
+        List<to_dtrs> dtrs = tbl_dtrs_ALM;
+        final List<to_dtrs> selected = new ArrayList();
+        for (to_dtrs to : dtrs) {
+            if (to.selected) {
+                selected.add(to);
+            }
+        }
+        if (!selected.isEmpty()) {
+
+            Window p = (Window) this;
+            Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+            nd.setTitle("");
+            nd.setCallback(new Dlg_confirm_action.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+                    closeDialog.ok();
+                    for (to_dtrs to : selected) {
+                        Dtrs.delete_data(to);
+                    }
+                    Alert.set(3, "");
+                    data_cols_dtr();
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
+
     }
 
     private void popup(MouseEvent evt) {
