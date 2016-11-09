@@ -7,8 +7,9 @@ package dtr.dtr;
 
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
-import dtr.dtrs.Dlg_dtr_edit;
-import dtr.dtrs.Dlg_dtr_new;
+import dtr.dtrs.Dlg_dtr_add;
+import dtr.dtrs.Dlg_dtr_edit2;
+import dtr.dtrs.Dlg_dtr_select_shift;
 import dtr.dtrs.Dtrs;
 import dtr.dtrs.Dtrs.to_dtrs;
 import dtr.employees.Employees;
@@ -21,17 +22,21 @@ import dtr.shifting_types.Shifting_types;
 import dtr.sick_leaves.Dlg_sick_leaves;
 import dtr.sick_leaves.Sick_leaves;
 import static dtr.test.AddTime.sumTimes;
-import dtr.users.MyUser;
 import dtr.util.Alert;
 import dtr.util.DateType;
 import dtr.util.Dlg_confirm_action;
 import dtr.util.Dlg_confirm_action2;
 import dtr.util.TableRenderer;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -45,6 +50,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -53,6 +60,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.JasperUtil;
@@ -69,6 +81,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.jfree.ui.Align;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
 
@@ -237,6 +250,8 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -281,6 +296,16 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         jPanel4 = new javax.swing.JPanel();
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabel6 = new javax.swing.JLabel();
+
+        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dtr/icons/clock154.png"))); // NOI18N
+        jMenuItem1.setText("Select Shift");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -472,6 +497,12 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         tbl_dtrs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_dtrsMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbl_dtrsMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbl_dtrsMouseReleased(evt);
             }
         });
         jScrollPane2.setViewportView(tbl_dtrs);
@@ -858,6 +889,18 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         holdaiys();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void tbl_dtrsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_dtrsMousePressed
+        popup(evt);
+    }//GEN-LAST:event_tbl_dtrsMousePressed
+
+    private void tbl_dtrsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_dtrsMouseReleased
+        popup(evt);
+    }//GEN-LAST:event_tbl_dtrsMouseReleased
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        multi_shift_update();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -891,12 +934,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1580,7 +1625,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             Date loop_date = DateType.sf.parse(str_date);
                             String what_day = DateType.day.format(loop_date);
 
-                            to_dtrs my_dtr = new to_dtrs(0, "", "", "", "", "", "", "", "", "", "00", "00", "", "", "");
+                            to_dtrs my_dtr = new to_dtrs(0, "", "", "", "", "", "", "", "", "", "00", "00", "", "", "", false, "");
 
                             for (to_dtrs dtr : employee_dtrs) {
 
@@ -3094,7 +3139,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     String user_id = "";
                                     String user_screen_name = "";
                                     if (!dtr_date2.isEmpty()) {
-                                        Dtrs.to_dtrs dtrrs = new Dtrs.to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date2, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);
+                                        Dtrs.to_dtrs dtrrs = new Dtrs.to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date2, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name, false, "");
                                         my_dtr.add(dtrrs);
                                     }
                                 }
@@ -3118,13 +3163,13 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     public static ArrayListModel tbl_dtrs_ALM;
     public static TbldtrsModel tbl_dtrs_M;
 
-    public static void init_tbl_dtrs(JTable tbl_dtrs) {
+    public void init_tbl_dtrs(JTable tbl_dtrs) {
         tbl_dtrs_ALM = new ArrayListModel();
         tbl_dtrs_M = new TbldtrsModel(tbl_dtrs_ALM);
         tbl_dtrs.setModel(tbl_dtrs_M);
         tbl_dtrs.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_dtrs.setRowHeight(25);
-        int[] tbl_widths_dtrs = {70, 50, 80, 70, 70, 60, 60, 60, 60, 50, 50, 50, 50, 0, 0};
+        int[] tbl_widths_dtrs = {70, 50, 80, 70, 70, 60, 60, 60, 60, 50, 50, 50, 50, 40, 0};
         for (int i = 0, n = tbl_widths_dtrs.length; i < n; i++) {
             if (i == 2) {
                 continue;
@@ -3137,6 +3182,113 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         tbl_dtrs.getTableHeader().setFont(new java.awt.Font("Arial", 0, 12));
         tbl_dtrs.setRowHeight(25);
         tbl_dtrs.setFont(new java.awt.Font("Arial", 0, 12));
+
+        TableColumn tc = tbl_dtrs.getColumnModel().getColumn(13);
+        tc.setCellEditor(tbl_dtrs.getDefaultEditor(Boolean.class));
+        tc.setCellRenderer(tbl_dtrs.getDefaultRenderer(Boolean.class));
+        tc.setHeaderRenderer(new CheckBoxHeader(new MyItemListener()));
+    }
+
+    public class MyItemListener implements ItemListener {
+
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            Object source = e.getSource();
+            if (source instanceof AbstractButton == false) {
+                return;
+            }
+            boolean checked = e.getStateChange() == ItemEvent.SELECTED;
+            for (int x = 0, y = tbl_dtrs.getRowCount(); x < y; x++) {
+                tbl_dtrs.setValueAt(checked, x, 0);
+            }
+        }
+    }
+
+    class CheckBoxHeader extends JCheckBox
+            implements TableCellRenderer, MouseListener {
+
+        protected CheckBoxHeader rendererComponent;
+        protected int column;
+        protected boolean mousePressed = false;
+
+        public CheckBoxHeader(ItemListener itemListener) {
+            rendererComponent = this;
+            rendererComponent.addItemListener(itemListener);
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(
+                JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            if (table != null) {
+                JTableHeader header = table.getTableHeader();
+                if (header != null) {
+                    rendererComponent.setForeground(header.getForeground());
+                    rendererComponent.setBackground(new java.awt.Color(204, 204, 204));
+                    rendererComponent.setHorizontalAlignment(Align.CENTER);
+                    rendererComponent.setOpaque(true);
+                    header.addMouseListener(rendererComponent);
+                }
+            }
+            setColumn(column);
+            rendererComponent.setText("");
+            setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+            return rendererComponent;
+        }
+
+        protected void setColumn(int column) {
+            this.column = column;
+        }
+
+        public int getColumn() {
+            return column;
+        }
+
+        protected void handleClickEvent(MouseEvent e) {
+            if (mousePressed) {
+                mousePressed = false;
+                JTableHeader header = (JTableHeader) (e.getSource());
+                JTable tableView = header.getTable();
+                TableColumnModel columnModel = tableView.getColumnModel();
+                int viewColumn = columnModel.getColumnIndexAtX(e.getX());
+                int column1 = tableView.convertColumnIndexToModel(viewColumn);
+                if (viewColumn == this.column && e.getClickCount() == 1 && column1 != -1) {
+                    doClick();
+                }
+            }
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            handleClickEvent(e);
+            ((JTableHeader) e.getSource()).repaint();
+            List<to_dtrs> datas = tbl_dtrs_ALM;
+            boolean selected = false;
+            if (this.isSelected()) {
+                selected = true;
+            }
+            for (to_dtrs to : datas) {
+                to.setSelected(selected);
+            }
+            e.consume();
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            mousePressed = true;
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
     }
 
     public static void loadData_dtrs(List<to_dtrs> acc) {
@@ -3147,7 +3299,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
     public static class TbldtrsModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Date", "No", "Employee", "Leave", "Shift", "AM-Arr", "AM-Dep", "PM-Arr", "PM-Dep", "U-Hour", "U-Min.", "", "", "user_id", "user_screen_name"
+            "Date", "No", "Employee", "Leave", "Shift", "AM-Arr", "AM-Dep", "PM-Arr", "PM-Dep", "U-Hour", "U-Min.", "", "", "", "user_screen_name"
         };
 
         public TbldtrsModel(ListModel listmodel) {
@@ -3164,7 +3316,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
         @Override
         public Class getColumnClass(int col) {
-            if (col == 1000) {
+            if (col == 13) {
                 return Boolean.class;
             }
             return Object.class;
@@ -3184,7 +3336,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 case 3:
                     return " " + tt.user_id;
                 case 4:
-                    return " " + tt.user_screen_name;
+                    return " " + tt.shift;
                 case 5:
                     if (tt.am_arrival == null) {
                         return "";
@@ -3222,7 +3374,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                 case 12:
                     return " Delete";
                 case 13:
-                    return tt.user_id;
+                    return tt.selected;
                 default:
                     return tt.user_screen_name;
             }
@@ -3236,7 +3388,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         to = dtr.util.DateType.convert_dash_date3(to);
         Field.Combo employee1 = (Field.Combo) jTextField4;
         String where = " where id<>0  ";
-        
+
         if (!jCheckBox2.isSelected()) {
             where = where + " and Date(dtr_date) between '" + from + "' and '" + to + "'";
         }
@@ -3244,7 +3396,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             where = where + " and employee_id= '" + employee1.getId() + "' ";
         }
         where = where + " order by Date(dtr_date),employee_id asc ";
-        System.out.println(where);
+
         List<to_dtrs> datas = Dtrs.ret_data(where);
         loadData_dtrs(datas);
     }
@@ -3257,19 +3409,82 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         }
         int col = tbl_dtrs.getSelectedColumn();
         final to_dtrs to = (to_dtrs) tbl_dtrs_ALM.get(row);
+        if (col == 4) {
+            Window p = (Window) this;
+            Dlg_dtr_select_shift nd = Dlg_dtr_select_shift.create(p, true);
+            nd.setTitle("");
+            nd.do_pass(to.shift);
+            nd.setCallback(new Dlg_dtr_select_shift.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_dtr_select_shift.OutputData data) {
+                    closeDialog.ok();
+
+                    int adjustment_selected = 0;
+                    int index = 0;
+                    List<String> indexes = new ArrayList();
+                    for (String s : data.adjustment) {
+                        if (s.equals("1")) {
+                            adjustment_selected++;
+                            indexes.add("" + index);
+                        }
+                        index++;
+                    }
+                    if (adjustment_selected != 0) {
+                        List<String> logs = new ArrayList();
+                        if (to.am_arrival != null) {
+                            logs.add(to.am_arrival);
+                        }
+                        if (to.am_departure != null) {
+                            logs.add(to.am_departure);
+                        }
+                        if (to.pm_arrival != null) {
+                            logs.add(to.pm_arrival);
+                        }
+                        if (to.pm_departure != null) {
+                            logs.add(to.pm_departure);
+                        }
+
+                        if (adjustment_selected == logs.size()) {
+                            String[] ex = {null, null, null, null};
+
+                            for (String s : indexes) {
+
+                                int i = 0;
+                                for (String log : logs) {
+                                    ex[FitIn.toInt(s)] = log;
+                                    logs.remove(i);
+                                    i++;
+                                    break;
+                                }
+                            }
+
+                            Dtrs.update_data5("" + to.id, ex[0], ex[1], ex[2], ex[3], data.shift);
+                            data_cols_dtr();
+                            Alert.set(2, "");
+                        }
+
+                    } else {
+                        Dtrs.update_shift("" + to.id, data.shift);
+                        data_cols_dtr();
+                        Alert.set(2, "");
+                    }
+
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
         if (col == 11) {
             //edit
             Window p = (Window) this;
-            Dlg_dtr_edit nd = Dlg_dtr_edit.create(p, true);
+            Dlg_dtr_edit2 nd = Dlg_dtr_edit2.create(p, true);
             nd.setTitle("");
             nd.do_pass(to);
-            nd.setCallback(new Dlg_dtr_edit.Callback() {
-
+            nd.setCallback(new Dlg_dtr_edit2.Callback() {
                 @Override
-                public void ok(CloseDialog closeDialog, Dlg_dtr_edit.OutputData data) {
-
+                public void ok(CloseDialog closeDialog, Dlg_dtr_edit2.OutputData data) {
                     data_cols_dtr();
-
 //                    Dtrs.update_data(to, data.am_arrival, data.am_departure, data.pm_arrival, data.pm_departure, data.undertime_hour, data.undertime_minute);
 //                    Alert.set(2, "");
 //                    data_cols_dtr();
@@ -3295,6 +3510,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             nd.setLocationRelativeTo(this);
             nd.setVisible(true);
         }
+        if (col == 13) {
+            if (to.selected) {
+                to.setSelected(false);
+            } else {
+                to.setSelected(true);
+            }
+            tbl_dtrs_M.fireTableDataChanged();
+        }
     }
 
     private void new_dtr() {
@@ -3307,34 +3530,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
             return;
         }
         Window p = (Window) this;
-        Dlg_dtr_new nd = Dlg_dtr_new.create(p, true);
+        Dlg_dtr_add nd = Dlg_dtr_add.create(p, true);
         nd.setTitle("");
         nd.do_pass(emp_id, emp_name);
-        nd.setCallback(new Dlg_dtr_new.Callback() {
+        nd.setCallback(new Dlg_dtr_add.Callback() {
 
             @Override
-            public void ok(CloseDialog closeDialog, Dlg_dtr_new.OutputData data) {
+            public void ok(CloseDialog closeDialog, Dlg_dtr_add.OutputData data) {
                 closeDialog.ok();
-                List<Employees.to_employees> datas = Employees.ret_data(" where id='" + emp_id + "' limit 1");
-                Employees.to_employees employee = datas.get(0);
-                int id = 0;
-                String employee_id = emp_id;
-                String employee_name = emp_name;
-                String department_id = employee.department_id;
-                String department_name = employee.department_id;
-                String dtr_date = data.date;
-                String am_arrival = data.am_arrival;
-                String am_departure = data.am_departure;
-                String pm_arrival = data.pm_arrival;
-                String pm_departure = data.pm_departure;
-                String undertime_hours = data.undertime_hour;
-                String undertime_minutes = data.undertime_mm;
-                String date_added = DateType.now();
-                String user_id = MyUser.getUser_id();
-                String user_screen_name = MyUser.getUser_screen_name();
-
-                Dtrs.to_dtrs dtr = new to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);
-                Dtrs.add_data(dtr, data.schedule_type, data.reason, data.am, data.pm);
 
                 Alert.set(1, "");
                 data_cols_dtr();
@@ -3376,5 +3579,115 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
         });
         nd.setLocationRelativeTo(this);
         nd.setVisible(true);
+    }
+
+    private void multi_shift_update() {
+
+        List<to_dtrs> dtrs = tbl_dtrs_ALM;
+        final List<to_dtrs> selected = new ArrayList();
+        for (to_dtrs to : dtrs) {
+            if (to.selected) {
+                selected.add(to);
+            }
+        }
+        if (!selected.isEmpty()) {
+            Window p = (Window) this;
+            Dlg_dtr_select_shift nd = Dlg_dtr_select_shift.create(p, true);
+            nd.setTitle("");
+            nd.setCallback(new Dlg_dtr_select_shift.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_dtr_select_shift.OutputData data) {
+                    closeDialog.ok();
+                    int adjustment_selected = 0;
+                    int index = 0;
+                    List<String> indexes = new ArrayList();
+                    for (String s : data.adjustment) {
+                        if (s.equals("1")) {
+                            adjustment_selected++;
+                            indexes.add("" + index);
+                        }
+                        index++;
+                    }
+                    System.out.println("adjustment_selected: " + adjustment_selected);
+                    for (to_dtrs to : selected) {
+
+                        if (adjustment_selected != 0) {
+                            List<String> logs = new ArrayList();
+                            if (to.am_arrival != null) {
+                                logs.add(to.am_arrival);
+                            }
+                            if (to.am_departure != null) {
+                                logs.add(to.am_departure);
+                            }
+                            if (to.pm_arrival != null) {
+                                logs.add(to.pm_arrival);
+                            }
+                            if (to.pm_departure != null) {
+                                logs.add(to.pm_departure);
+                            }
+
+                            if (adjustment_selected == logs.size()) {
+                                String[] ex = {null, null, null, null};
+
+                                for (String s : indexes) {
+
+                                    int i = 0;
+                                    for (String log : logs) {
+                                        ex[FitIn.toInt(s)] = log;
+                                        logs.remove(i);
+                                        i++;
+                                        break;
+                                    }
+                                }
+
+                                Dtrs.update_data5("" + to.id, ex[0], ex[1], ex[2], ex[3], data.shift);
+
+                            }
+
+                        } else {
+                            Dtrs.update_shift("" + to.id, data.shift);
+
+                        }
+                    }
+                    data_cols_dtr();
+                    Alert.set(2, "");
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
+    }
+
+    private void multi_log_update() {
+
+        List<to_dtrs> dtrs = tbl_dtrs_ALM;
+        final List<to_dtrs> selected = new ArrayList();
+        for (to_dtrs to : dtrs) {
+            if (to.selected) {
+                selected.add(to);
+            }
+        }
+        if (!selected.isEmpty()) {
+            Window p = (Window) this;
+            Dlg_dtr_select_shift nd = Dlg_dtr_select_shift.create(p, true);
+            nd.setTitle("");
+            nd.setCallback(new Dlg_dtr_select_shift.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_dtr_select_shift.OutputData data) {
+                    closeDialog.ok();
+
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
+    }
+
+    private void popup(MouseEvent evt) {
+        if (evt.isPopupTrigger()) {
+            jPopupMenu1.show(jScrollPane2, evt.getX(), evt.getY());
+        }
     }
 }

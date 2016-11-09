@@ -41,8 +41,10 @@ public class Dtrs {
         public final String date_added;
         public final String user_id;
         public final String user_screen_name;
+        public boolean selected;
+        public final String shift;
 
-        public to_dtrs(int id, String employee_id, String employee_name, String department_id, String department_name, String dtr_date, String am_arrival, String am_departure, String pm_arrival, String pm_departure, String undertime_hours, String undertime_minutes, String date_added, String user_id, String user_screen_name) {
+        public to_dtrs(int id, String employee_id, String employee_name, String department_id, String department_name, String dtr_date, String am_arrival, String am_departure, String pm_arrival, String pm_departure, String undertime_hours, String undertime_minutes, String date_added, String user_id, String user_screen_name, boolean selected, String shift) {
             this.id = id;
             this.employee_id = employee_id;
             this.employee_name = employee_name;
@@ -58,7 +60,18 @@ public class Dtrs {
             this.date_added = date_added;
             this.user_id = user_id;
             this.user_screen_name = user_screen_name;
+            this.selected = selected;
+            this.shift = shift;
         }
+
+        public boolean isSelected() {
+            return selected;
+        }
+
+        public void setSelected(boolean selected) {
+            this.selected = selected;
+        }
+
     }
 
     public static void add_data(List<to_dtrs> to_dtrs1) {
@@ -80,6 +93,7 @@ public class Dtrs {
                         + ",date_added"
                         + ",user_id"
                         + ",user_screen_name"
+                        + ",shift"
                         + ")values("
                         + ":employee_id"
                         + ",:employee_name"
@@ -95,6 +109,7 @@ public class Dtrs {
                         + ",:date_added"
                         + ",:user_id"
                         + ",:user_screen_name"
+                        + ",:shift"
                         + ")";
 
                 s0 = SqlStringUtil.parse(s0)
@@ -112,6 +127,7 @@ public class Dtrs {
                         .setString("date_added", to_dtrs.date_added)
                         .setString("user_id", to_dtrs.user_id)
                         .setString("user_screen_name", to_dtrs.user_screen_name)
+                        .setString("shift", to_dtrs.shift)
                         .ok();
                 PreparedStatement stmt = conn.prepareStatement(s0);
                 stmt.execute();
@@ -266,6 +282,74 @@ public class Dtrs {
         }
     }
 
+    public static void add_data2(to_dtrs to_dtrs) {
+        try {
+            Connection conn = MyConnection.connect();
+            conn.setAutoCommit(false);
+            String s0 = "insert into dtrs("
+                    + "employee_id"
+                    + ",employee_name"
+                    + ",department_id"
+                    + ",department_name"
+                    + ",dtr_date"
+                    + ",am_arrival"
+                    + ",am_departure"
+                    + ",pm_arrival"
+                    + ",pm_departure"
+                    + ",undertime_hours"
+                    + ",undertime_minutes"
+                    + ",date_added"
+                    + ",user_id"
+                    + ",user_screen_name"
+                    + ",shift"
+                    + ")values("
+                    + ":employee_id"
+                    + ",:employee_name"
+                    + ",:department_id"
+                    + ",:department_name"
+                    + ",:dtr_date"
+                    + ",:am_arrival"
+                    + ",:am_departure"
+                    + ",:pm_arrival"
+                    + ",:pm_departure"
+                    + ",:undertime_hours"
+                    + ",:undertime_minutes"
+                    + ",:date_added"
+                    + ",:user_id"
+                    + ",:user_screen_name"
+                    + ",:shift"
+                    + ")";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("employee_id", to_dtrs.employee_id)
+                    .setString("employee_name", to_dtrs.employee_name)
+                    .setString("department_id", to_dtrs.department_id)
+                    .setString("department_name", to_dtrs.department_name)
+                    .setString("dtr_date", to_dtrs.dtr_date)
+                    .setString("am_arrival", to_dtrs.am_arrival)
+                    .setString("am_departure", to_dtrs.am_departure)
+                    .setString("pm_arrival", to_dtrs.pm_arrival)
+                    .setString("pm_departure", to_dtrs.pm_departure)
+                    .setString("undertime_hours", to_dtrs.undertime_hours)
+                    .setString("undertime_minutes", to_dtrs.undertime_minutes)
+                    .setString("date_added", to_dtrs.date_added)
+                    .setString("user_id", to_dtrs.user_id)
+                    .setString("user_screen_name", to_dtrs.user_screen_name)
+                    .setString("shift", to_dtrs.shift)
+                    .ok();
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.addBatch(s0);
+
+            stmt.executeBatch();
+            conn.commit();
+            Lg.s(Dtrs.class, "Successfully Added");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static void update_data(to_dtrs to_dtrs) {
         try {
             Connection conn = MyConnection.connect();
@@ -378,6 +462,115 @@ public class Dtrs {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
+            Lg.s(Dtrs.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static void update_data4(String id, String am_arrival, String am_departure, String pm_arrival, String pm_departure, String hh, String mm) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update dtrs set "
+                    + " am_arrival= :am_arrival "
+                    + ",am_departure= :am_departure "
+                    + ",pm_arrival= :pm_arrival "
+                    + ",pm_departure= :pm_departure "
+                    + ",undertime_hours= :undertime_hours "
+                    + ",undertime_minutes= :undertime_minutes "
+                    + " where id='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("am_arrival", am_arrival)
+                    .setString("am_departure", am_departure)
+                    .setString("pm_arrival", pm_arrival)
+                    .setString("pm_departure", pm_departure)
+                    .setString("undertime_hours", hh)
+                    .setString("undertime_minutes", mm)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Dtrs.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static void update_data5(String id, String am_arrival, String am_departure, String pm_arrival, String pm_departure, String shift) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update dtrs set "
+                    + " am_arrival= :am_arrival "
+                    + ",am_departure= :am_departure "
+                    + ",pm_arrival= :pm_arrival "
+                    + ",pm_departure= :pm_departure "
+                    + ",shift= :shift "
+                    + " where id='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("am_arrival", am_arrival)
+                    .setString("am_departure", am_departure)
+                    .setString("pm_arrival", pm_arrival)
+                    .setString("pm_departure", pm_departure)
+                    .setString("shift", shift)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Dtrs.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static void update_shift(String id, String shift) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update dtrs set "
+                    + " shift= :shift "
+                    + " where id='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("shift", shift)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Dtrs.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static void update_shift2(List<to_dtrs> to_dtrs1, String shift) {
+        try {
+            Connection conn = MyConnection.connect();
+            for (to_dtrs to_dtrs : to_dtrs1) {
+                String s0 = "update dtrs set "
+                        + " shift= :shift "
+                        + " where id='" + to_dtrs.id + "' "
+                        + " ";
+
+                s0 = SqlStringUtil.parse(s0)
+                        .setString("shift", shift)
+                        .ok();
+
+                PreparedStatement stmt = conn.prepareStatement(s0);
+                stmt.execute();
+            }
+
             Lg.s(Dtrs.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -515,6 +708,7 @@ public class Dtrs {
                     + ",date_added"
                     + ",user_id"
                     + ",user_screen_name"
+                    + ",shift"
                     + " from dtrs"
                     + " " + where;
 
@@ -536,21 +730,24 @@ public class Dtrs {
                 String undertime_minutes = rs.getString(12);
                 String date_added = rs.getString(13);
                 String user_id = rs.getString(14);
-                String user_screen_name = "ROH";
 
-                String where2 = " where emp_id='" + employee_id + "' and shift_date='" + dtr_date + "' order by id desc  limit 1 ";
-                String where3 = " where employee_id='" + employee_id + "' and date_of_leave='" + dtr_date + "' order by id desc  limit 1 ";
+                String user_screen_name = rs.getString(15);
+                String shift = rs.getString(16);
+//                String where2 = " where emp_id='" + employee_id + "' and shift_date='" + dtr_date + "' order by id desc  limit 1 ";
+                String where3 = " where employee_id='" + employee_id + "' and Date(date_of_leave)='" + dtr_date + "' order by id desc  limit 1 ";
+//                System.out.println(where3);
                 List<Sick_leaves.to_sick_leaves> leave = Sick_leaves.ret_data(where3);
-                user_id="";
+                user_id = "";
                 for (Sick_leaves.to_sick_leaves to : leave) {
+//                    System.out.println("Leave: "+to.date_of_leave+ ", reason = "+to.reason);
                     user_id = to.reason;
                 }
-                List<Employee_shifts.to_employee_shifts> shifts = Employee_shifts.ret_data(where2);
-                for (Employee_shifts.to_employee_shifts to : shifts) {
-                    user_screen_name = to.shift;
-                }
-                  
-                to_dtrs to = new to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);
+
+//                List<Employee_shifts.to_employee_shifts> shifts = Employee_shifts.ret_data(where2);
+//                for (Employee_shifts.to_employee_shifts to : shifts) {
+//                    user_screen_name = to.shift;
+//                }
+                to_dtrs to = new to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name, false, shift);
                 datas.add(to);
             }
             return datas;

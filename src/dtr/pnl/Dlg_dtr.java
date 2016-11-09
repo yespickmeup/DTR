@@ -937,7 +937,7 @@ public class Dlg_dtr extends javax.swing.JDialog {
                         String user_id = "";
                         String user_screen_name = "";
 
-                        Dtrs.to_dtrs dtrrs = new Dtrs.to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);
+                        Dtrs.to_dtrs dtrrs = new Dtrs.to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name,false,"");
                         my_dtr.add(dtrrs);
                     }
 
@@ -1110,7 +1110,7 @@ public class Dlg_dtr extends javax.swing.JDialog {
                     String date_added = to.date_added;
                     String user_id = to.user_id;
                     String user_screen_name = to.user_screen_name;
-                    to_dtrs to2 = new to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name);
+                    to_dtrs to2 = new to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name,false,"");
                     Dtrs.update_data(to2);
                     data_cols();
                     Alert.set(2, user_id);
