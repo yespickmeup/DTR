@@ -138,13 +138,16 @@ public class Extract {
 //                    }
                     record[record_size] = data;
 //                    System.out.print(data + " | ");
-                    record_size++;
+                    if (record_size != 7) {
+                        record_size++;
+                    }
+
                 }
 //                Date d=getRoundedDate(FitIn.toDouble(record[3]));
 //                String da=DateType.sf.format(d);
 
                 Extract.field t = new Extract.field(record[0], record[1], record[2], record[3], record[4], record[5], record[6], record[7]);
-
+              
                 if (record[0] != null) {
                     datas.add(t);
 //                    System.out.println("");

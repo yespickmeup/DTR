@@ -45,6 +45,7 @@ public class DateType {
     public static SimpleDateFormat hour_minute2 = new SimpleDateFormat("HH:mm aa");
     public static SimpleDateFormat hour_minute3 = new SimpleDateFormat("hh:mm aa");
     public static SimpleDateFormat hour = new SimpleDateFormat("HH");
+    public static SimpleDateFormat aa = new SimpleDateFormat("aa");
     public static SimpleDateFormat minute = new SimpleDateFormat("mm");
     public static SimpleDateFormat second = new SimpleDateFormat("ss");
     public static SimpleDateFormat time3 = new SimpleDateFormat("hh:mm:ss aa");

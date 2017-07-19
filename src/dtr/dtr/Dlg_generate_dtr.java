@@ -1342,14 +1342,13 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
                         try {
                             Date f_date = dtr.util.DateType.slash_w_time3.parse(f.datetime);
-//                            if (f_date.compareTo(d_from) >= 0 && f_date.compareTo(d_to) <= 0) {
-//                                dtrs.add(dtr1);
-//                            }
-
-                            if (d_from.getTime() >= f_date.getTime() && f_date.getTime() <= d_to.getTime()) {
+                            if (f_date.compareTo(d_from) == 1 && f_date.compareTo(d_to) == -1 || f_date.compareTo(d_from) == 1 && f_date.compareTo(d_to) == 1) {
                                 dtrs.add(dtr1);
                             }
 
+//                            if (d_from.getTime() >= f_date.getTime() && d_to.getTime() <= f_date.getTime()) {
+//                                dtrs.add(dtr1);
+//                            }
                         } catch (ParseException ex) {
                             Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -3194,6 +3193,59 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     if (pm_departure.isEmpty()) {
                                         pm_departure = null;
                                     }
+                                    if (d == 2) {
+                                        try {
+                                            String d1 = DateType.aa.format(DateType.datetime.parse(am_arrival));
+                                            String d2 = DateType.aa.format(DateType.datetime.parse(pm_departure));
+                                            if (d1.equalsIgnoreCase("AM") && d2.equalsIgnoreCase("AM")) {
+                                                am_departure = pm_departure;
+                                                pm_departure = null;
+                                            }
+                                            if (d1.equalsIgnoreCase("PM") && d2.equalsIgnoreCase("PM")) {
+                                                pm_arrival = am_arrival;
+                                                am_arrival = null;
+                                            }
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+
+                                    }
+
+                                    if (d == 1) {
+
+                                        if (pm_departure != null) {
+                                            pm_arrival = am_arrival;
+                                            am_arrival = null;
+                                        }
+                                        if (am_arrival != null) {
+                                            try {
+                                                String d1 = DateType.aa.format(DateType.datetime.parse(am_arrival));
+                                                if (d1.equalsIgnoreCase("PM")) {
+                                                    pm_arrival = am_arrival;
+                                                    am_arrival = null;
+                                                }
+                                            } catch (ParseException ex) {
+                                                Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
+                                        }
+                                    }
+                                    if (d == 3) {
+
+                                        if (am_departure != null && pm_arrival != null) {
+                                            try {
+                                                String d1 = DateType.aa.format(DateType.datetime.parse(am_departure));
+                                                String d2 = DateType.aa.format(DateType.datetime.parse(pm_arrival));
+                                                if (d1.equalsIgnoreCase("PM") && d2.equalsIgnoreCase("PM")) {
+                                                    pm_departure = pm_arrival;
+                                                    pm_arrival = am_departure;
+                                                    am_departure = null;
+                                                }
+                                            } catch (ParseException ex) {
+                                                Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
+                                        }
+                                    }
+
                                     int id = 0;
                                     String employee_id = "" + e.id;
                                     String employee_name = e.lname + ", " + e.fname + " " + e.mi;
@@ -3205,7 +3257,13 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     String user_id = "";
                                     String user_screen_name = "";
                                     if (!dtr_date2.isEmpty()) {
+//                                        if (d == 2) {
+//                                            System.out.println("employee_id: " + employee_id + " = am_arrival: " + am_arrival + " ,am_departure: " + am_departure + " ,pm_arrival: " + pm_arrival + " ,pm_departure: " + pm_departure);
+//
+//                                        }
+
                                         Dtrs.to_dtrs dtrrs = new Dtrs.to_dtrs(id, employee_id, employee_name, department_id, department_name, dtr_date2, am_arrival, am_departure, pm_arrival, pm_departure, undertime_hours, undertime_minutes, date_added, user_id, user_screen_name, false, "");
+
                                         my_dtr.add(dtrrs);
                                     }
                                 }
