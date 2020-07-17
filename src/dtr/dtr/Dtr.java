@@ -28,7 +28,7 @@ public class Dtr {
         public final String department;
         public final String name;
         public final String no;
-        public final String datetime;
+        public  String datetime;
         public final String location_id;
         public final String id_no;
         public final String verify_code;
@@ -52,6 +52,15 @@ public class Dtr {
             this.user_screen_name = user_screen_name;
         }
 
+        public String getDatetime() {
+            return datetime;
+        }
+
+        public void setDatetime(String datetime) {
+            this.datetime = datetime;
+        }
+
+        
     }
 
     public static class hours {

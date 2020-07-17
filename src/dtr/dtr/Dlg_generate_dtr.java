@@ -1334,7 +1334,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         String datetime = f.datetime;
                         try {
                             Date d2 = DateType.slash_w_time4.parse(datetime);
-                            datetime = DateType.slash_w_time3.format(d2);
+                            datetime = DateType.slash_w_time4.format(d2);
                         } catch (ParseException ex) {
                             Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -1348,8 +1348,15 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         Dtr.to_dtr dtr1 = new Dtr.to_dtr(id, department, name, no, datetime, location_id, id_no, verify_code, card_no, date_added, user_id, user_screen_name);
 
                         try {
-                            Date f_date = dtr.util.DateType.slash_w_time3.parse(f.datetime);
+                            Date f_date = dtr.util.DateType.slash_w_time4.parse(f.datetime);
                             if (f_date.compareTo(d_from) == 1 && f_date.compareTo(d_to) == -1 || f_date.compareTo(d_from) == 1 && f_date.compareTo(d_to) == 1) {
+                                try {
+                                    Date d2 = DateType.slash_w_time4.parse(datetime);
+                                    datetime = DateType.slash_w_time3.format(d2);
+                                   dtr1.setDatetime(datetime);
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 dtrs.add(dtr1);
                             }
 
