@@ -165,6 +165,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(16, 88, 197));
         jLabel8.setText("Username:");
 
+        tf_username.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tf_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_usernameActionPerformed(evt);
@@ -176,6 +177,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(16, 88, 197));
         jLabel12.setText("Password:");
 
+        tf_password.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tf_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_passwordActionPerformed(evt);

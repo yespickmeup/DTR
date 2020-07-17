@@ -41,6 +41,7 @@ public class DateType {
     public static SimpleDateFormat slash_w_time = new SimpleDateFormat("MM/dd/yyyy HH:mm aa");
     public static SimpleDateFormat slash_w_time2 = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss aa");
     public static SimpleDateFormat slash_w_time3 = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+    public static SimpleDateFormat slash_w_time4 = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss aa");
     public static SimpleDateFormat hour_minute = new SimpleDateFormat("HH:mm:ss");
     public static SimpleDateFormat hour_minute2 = new SimpleDateFormat("HH:mm aa");
     public static SimpleDateFormat hour_minute3 = new SimpleDateFormat("hh:mm aa");

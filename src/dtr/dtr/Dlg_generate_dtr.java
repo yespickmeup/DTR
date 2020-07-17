@@ -1047,14 +1047,14 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_ESCAPE, new KeyAction() {
+                              KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                              disposed();
+                          }
+                      });
     }
 
     // </editor-fold>
@@ -1332,6 +1332,13 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         String name = f.name;
                         String no = f.no;
                         String datetime = f.datetime;
+                        try {
+                            Date d2 = DateType.slash_w_time4.parse(datetime);
+                            datetime = DateType.slash_w_time3.format(d2);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
                         String location_id = f.location_id;
                         String id_no = f.id_no;
                         String verify_code = f.verify_code;
