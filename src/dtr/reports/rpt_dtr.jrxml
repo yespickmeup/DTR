@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="64b07076-e8e6-408c-a537-169568e03f44">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="144"/>
+	<property name="ireport.y" value="720"/>
 	<parameter name="dtr_date" class="java.lang.String"/>
 	<parameter name="date_printed" class="java.lang.String"/>
 	<parameter name="regular_day_am" class="java.lang.String"/>
@@ -1670,7 +1670,7 @@
 				<text><![CDATA[Total......................................................................................]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="53" y="594" width="177" height="42"/>
+				<reportElement uuid="32f5d8bc-e5c0-492a-9879-93c57f03dbc2" x="53" y="595" width="177" height="42"/>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
 					<paragraph leftIndent="5"/>

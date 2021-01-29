@@ -1723,7 +1723,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                             if (my_dtr.id != 0) {
                                 double hh = FitIn.toInt(my_dtr.undertime_hours);
                                 double mm = FitIn.toInt(my_dtr.undertime_minutes);
-
+//                                System.out.println("mm: "+mm);
                                 String hhh = "" + FitIn.fmt_woc(hh);
                                 if (hhh.length() == 1) {
                                     hhh = "0" + hhh;
@@ -2934,6 +2934,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         //end of day loop
 
                         String[] total = sumTimes(times).split(":");
+//                        System.out.println("total: "+total[1]);
                         Srpt_dtr.field field = new Srpt_dtr.field(employee_id, employee_name, aa1, aa2, aa3, aa4, aa5, aa6, aa7, aa8, aa9, aa10, aa11, aa12, aa13, aa14, aa15, aa16, aa17, aa18, aa19, aa20, aa21, aa22, aa23, aa24, aa25, aa26, aa27, aa28, aa29, aa30, aa31, pd1, pd2, pd3, pd4, pd5, pd6, pd7, pd8, pd9, pd10, pd11, pd12, pd13, pd14, pd15, pd16, pd17, pd18, pd19, pd20, pd21, pd22, pd23, pd24, pd25, pd26, pd27, pd28, pd29, pd30, pd31, ad1, ad2, ad3, ad4, ad5, ad6, ad7, ad8, ad9, ad10, ad11, ad12, ad13, ad14, ad15, ad16, ad17, ad18, ad19, ad20, ad21, ad22, ad23, ad24, ad25, ad26, ad27, ad28, ad29, ad30, ad31, pa1, pa2, pa3, pa4, pa5, pa6, pa7, pa8, pa9, pa10, pa11, pa12, pa13, pa14, pa15, pa16, pa17, pa18, pa19, pa20, pa21, pa22, pa23, pa24, pa25, pa26, pa27, pa28, pa29, pa30, pa31, uh1, uh2, uh3, uh4, uh5, uh6, uh7, uh8, uh9, uh10, uh11, uh12, uh13, uh14, uh15, uh16, uh17, uh18, uh19, uh20, uh21, uh22, uh23, uh24, uh25, uh26, uh27, uh28, uh29, uh30, uh31, um1, um2, um3, um4, um5, um6, um7, um8, um9, um10, um11, um12, um13, um14, um15, um16, um17, um18, um19, um20, um21, um22, um23, um24, um25, um26, um27, um28, um29, um30, um31, emp.supervisor, total[0], total[1], uh66);
                         datas.add(field);
                         datas.add(field);
