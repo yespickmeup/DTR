@@ -157,10 +157,10 @@ public class DateType {
         String date = "";
         Date d = new Date();
         if (datetime.isEmpty()) {
-            datetime = DateType.slash_w_time3.format(new Date());
+            datetime = DateType.slash_w_time4.format(new Date());
         }
         try {
-            d = DateType.slash_w_time3.parse(datetime);
+            d = DateType.slash_w_time4.parse(datetime);
         } catch (ParseException ex) {
             Logger.getLogger(DateType.class.getName()).
                     log(Level.SEVERE, null, ex);

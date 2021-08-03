@@ -1330,6 +1330,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         int id = 0;
                         String department = f.department;
                         String name = f.name;
+//                        System.out.println("name: "+name);
                         String no = f.no;
                         String datetime = f.datetime;
                         try {
@@ -1338,7 +1339,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                         } catch (ParseException ex) {
                             Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
                         }
-
+//                        System.out.println("datetime: "+datetime);
                         String location_id = f.location_id;
                         String id_no = f.id_no;
                         String verify_code = f.verify_code;
@@ -1349,10 +1350,13 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
                         try {
                             Date f_date = dtr.util.DateType.slash_w_time4.parse(f.datetime);
+//                            System.out.println("f_date.compareTo(d_from): "+f_date.compareTo(d_from));
+//                            System.out.println("f_date.compareTo(d_to): "+f_date.compareTo(d_to));
                             if (f_date.compareTo(d_from) == 1 && f_date.compareTo(d_to) == -1 || f_date.compareTo(d_from) == 1 && f_date.compareTo(d_to) == 1) {
+//                                System.out.println("d_from: "+d_from);
                                 try {
                                     Date d2 = DateType.slash_w_time4.parse(datetime);
-                                    datetime = DateType.slash_w_time3.format(d2);
+                                    datetime = DateType.slash_w_time4.format(d2);
                                    dtr1.setDatetime(datetime);
                                 } catch (ParseException ex) {
                                     Logger.getLogger(Dlg_generate_dtr.class.getName()).log(Level.SEVERE, null, ex);
@@ -3104,7 +3108,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
 
                             payroll_from_day = FitIn.toInt(DateType.d.format(period_from));
                             payroll_to_day = FitIn.toInt(DateType.d.format(period_to));
-                            payroll_month = "" + FitIn.toInt(DateType.m1.format(period_to));
+                            payroll_month = "" + (FitIn.toInt(DateType.m1.format(period_to))-1);
                             payroll_year = "" + FitIn.toInt(DateType.y.format(period_to));
 
                             if (payroll_month.length() == 1) {
@@ -3147,18 +3151,18 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                         j = "0" + j;
                                     }
                                     String payroll_to_date = payroll_year + "-" + payroll_month + "-" + j;
-
+                                    System.out.println("payroll_to_date: "+payroll_to_date);
                                     List<String> dtr_dates = new ArrayList();
                                     for (Dtr.to_dtr d : dtr_emp) {
 
                                         try {
-                                            Date date = dtr.util.DateType.slash_w_time3.parse(d.datetime);
+                                            Date date = dtr.util.DateType.slash_w_time4.parse(d.datetime);
                                             String day1 = DateType.d.format(date);
                                             if (day1.length() == 1) {
                                                 day1 = "0" + day1;
                                             }
                                             dtr_date = dtr.util.DateType.y.format(date) + "-" + dtr.util.DateType.m1.format(date) + "-" + day1;
-
+//                                            System.out.println("dtr_date: "+dtr_date);
                                             if (payroll_to_date.equalsIgnoreCase(dtr_date)) {
                                                 dtr_dates.add(d.datetime);
                                                 dtr_date2 = DateType.sf.format(date);
@@ -3190,6 +3194,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                         }
                                         d++;
                                     }
+//                                    System.out.println("d: "+d);
                                     if (d == 2) {
                                         pm_departure = am_departure;
                                         am_departure = "";
@@ -3271,6 +3276,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                     String date_added = dtr.util.DateType.datetime.format(new Date());
                                     String user_id = "";
                                     String user_screen_name = "";
+//                                    System.out.println("dtr_date2: " +dtr_date2);
                                     if (!dtr_date2.isEmpty()) {
 //                                        if (d == 2) {
 //                                            System.out.println("employee_id: " + employee_id + " = am_arrival: " + am_arrival + " ,am_departure: " + am_departure + " ,pm_arrival: " + pm_arrival + " ,pm_departure: " + pm_departure);
@@ -3284,6 +3290,7 @@ public class Dlg_generate_dtr extends javax.swing.JDialog {
                                 }
                             }
                         }
+                        System.out.println("my_dtr: "+my_dtr.size());
                         Dtrs.add_data(my_dtr);
                         Alert.set(1, "");
                         tbl_dtr_ALM.clear();
